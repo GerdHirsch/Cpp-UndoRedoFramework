@@ -85,7 +85,7 @@ void UndoRedoManagerImpl::clearRedoStack(){
 	while(!redoStack.empty())
 		redoStack.pop();
 }
-bool UndoRedoManagerImpl::canUndo() const
+bool UndoRedoManagerImpl::isUndoable() const
 {
 	return !undoStack.empty();
 }
@@ -103,7 +103,7 @@ void UndoRedoManagerImpl::undo()
 	undoStack.pop();
 }
 
-bool UndoRedoManagerImpl::canRedo() const
+bool UndoRedoManagerImpl::isRedoable() const
 {
 	return !redoStack.empty();
 }

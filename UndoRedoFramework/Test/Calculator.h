@@ -1,6 +1,8 @@
 #ifndef SIMPLE_CALCULATOR_H
 #define SIMPLE_CALCULATOR_H
 
+
+#include <iostream>
 class Calculator
 {
 public:
