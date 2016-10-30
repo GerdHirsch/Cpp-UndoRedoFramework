@@ -1,0 +1,37 @@
+<testsuites>
+	<testsuite name="AllTests" tests="9">
+		<testcase classname="AllTests" name="UndoRedoStackTest">
+			<failure message="..\src\UndoRedoStackTest.cpp:32 testDoIt: expected == result expected:	3	but was:	0	">
+testDoIt: expected == result expected:	3	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="UndoRedoStackTest">
+			<failure message="..\src\UndoRedoStackTest.cpp:48 testDoItWithException: false == urMngr.isUndoable() expected:	0	but was:	1	">
+testDoItWithException: false == urMngr.isUndoable() expected:	0	but was:	1	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="UndoRedoStackTest"/>
+		<testcase classname="AllTests" name="UndoRedoStackTest">
+			<failure message="..\src\UndoRedoStackTest.cpp:69 testUndo: false == urMngr.isRedoable() expected:	0	but was:	1	">
+testUndo: false == urMngr.isRedoable() expected:	0	but was:	1	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="UndoRedoStackTest">
+			<failure message="..\src\UndoRedoStackTest.cpp:83 testUndoWithException: expected == result expected:	3	but was:	0	">
+testUndoWithException: expected == result expected:	3	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="UndoRedoStackTest">
+			<failure message="..\src\UndoRedoStackTest.cpp:93 &quot; expecting &quot; &quot;urMngr.undo()&quot; &quot; to throw &quot; &quot;std::logic_error&quot;">
+&quot; expecting &quot; &quot;urMngr.undo()&quot; &quot; to throw &quot; &quot;std::logic_error&quot;
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="UndoRedoStackTest">
+			<failure message="..\src\UndoRedoStackTest.cpp:107 testRedo: expected == result expected:	3	but was:	0	">
+testRedo: expected == result expected:	3	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="AllTests" name="UndoRedoStackTest"/>
+		<testcase classname="AllTests" name="UndoRedoStackTest"/>
+	</testsuite>
+</testsuites>
