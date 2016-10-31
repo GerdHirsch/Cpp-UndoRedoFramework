@@ -7,35 +7,171 @@
 
 #include "../include/UndoRedoManagerTest.h"
 
+#include <iostream>
+
 void UndoRedoManagerTest::IsModifiedSimple(){
-//	ASSERT_EQUAL(false, urMngr.isModified());
-//
-//	urMngr.doIt(plus);
-//	urMngr.doIt(plus);
-//	ASSERT_EQUAL(true, urMngr.isModified());
-//	urMngr.undo();
-//	ASSERT_EQUAL(true, urMngr.isModified());
-//
-//	urMngr.resetModified();
-//	ASSERT_EQUAL(false, urMngr.isModified());
-//
-//	urMngr.redo();
-//	ASSERT_EQUAL(true, urMngr.isModified());
-//	urMngr.undo();
-//	ASSERT_EQUAL(false, urMngr.isModified());
-//	urMngr.undo();
-//	ASSERT_EQUAL(true, urMngr.isModified());
-//	urMngr.redo();
-//	ASSERT_EQUAL(false, urMngr.isModified());
-//	urMngr.redo();
-//	ASSERT_EQUAL(true, urMngr.isModified());
+//	Plus::throwException() = false;
+
+	ASSERT_EQUAL(false, urMngr.isModified());
+
+	urMngr.doIt(plus);
+	urMngr.doIt(plus);
+	ASSERT_EQUAL(true, urMngr.isModified());
+	urMngr.undo();
+	ASSERT_EQUAL(true, urMngr.isModified());
+
+	urMngr.resetModified();
+	ASSERT_EQUAL(false, urMngr.isModified());
+
+	urMngr.redo();
+	ASSERT_EQUAL(true, urMngr.isModified());
+	urMngr.undo();
+	ASSERT_EQUAL(false, urMngr.isModified());
+	urMngr.undo();
+	ASSERT_EQUAL(true, urMngr.isModified());
+	urMngr.redo();
+	ASSERT_EQUAL(false, urMngr.isModified());
+	urMngr.redo();
+	ASSERT_EQUAL(true, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
+	urMngr.doIt(plus);
+	urMngr.doIt(plus); // modified Count == 2
+	ASSERT_EQUAL(true, urMngr.isModified());
 
+	// modified Count == 0 undoStack.size == 1
+	urMngr.resetModified();
+	ASSERT_EQUAL(false, urMngr.isModified());
+
+	urMngr.undo(); // -1
+	ASSERT_EQUAL(true, urMngr.isModified());
+	urMngr.redo(); // 0
+	ASSERT_EQUAL(false, urMngr.isModified());
+	urMngr.undo(); // -1
+	ASSERT_EQUAL(true, urMngr.isModified());
+
+	// NewCommand danach kommen wir nicht mehr
+	// in den unmodified State
+	urMngr.doIt(plus); // modified Count == 3 undoStack.size == 2
+	ASSERT_EQUAL(true, urMngr.isModified());
+	//nach neuem Command darf kein redo mehr möglich sein
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+
+	while(urMngr.isUndoable()){
+		urMngr.undo();
+		ASSERT_EQUAL(true, urMngr.isModified());
+	}
+}
+void UndoRedoManagerTest::ResetModified(){
+	urMngr.doIt(plus);
+	urMngr.resetModified();
+	ASSERT_EQUAL(false, urMngr.isModified());
+}
+void UndoRedoManagerTest::IsModifiedtwithExceptionDoIt(){
+	// initial modified Count == 0
+	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUAL(false, urMngr.isUndoable());
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+
+	Plus::throwException() = true;
+
+	try{
+		urMngr.doIt(plus);
+	}catch (std::exception& e){
+			std::cout << "catch: " << e.what() << std::endl;
+	}
+	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUAL(false, urMngr.isUndoable());
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+}
+void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
+	// initial modified Count == 0
+	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUAL(false, urMngr.isUndoable());
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+
+	urMngr.doIt(plus);
+	ASSERT_EQUAL(true, urMngr.isModified());
+	ASSERT_EQUAL(true, urMngr.isUndoable());
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+
+	Plus::throwException() = true;
+
+	try{
+		urMngr.undo();
+	}catch (std::exception& e){
+//			System.out.println("catch: " + e.getMessage());
+	}
+	ASSERT_EQUAL(true, urMngr.isModified());
+	ASSERT_EQUAL(true, urMngr.isUndoable());
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+}
+void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
+	// initial modified Count == 0
+	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUAL(false, urMngr.isUndoable());
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+
+	urMngr.doIt(plus);
+	urMngr.doIt(plus);
+	urMngr.undo();
+	ASSERT_EQUAL(true, urMngr.isModified());
+	ASSERT_EQUAL(true, urMngr.isUndoable());
+	ASSERT_EQUAL(true, urMngr.isRedoable());
+
+	urMngr.resetModified();
+	ASSERT_EQUAL(false, urMngr.isModified());
+
+	Plus::throwException() = true;
+
+	try{
+		urMngr.undo();
+	}catch (std::exception& e){
+//			System.out.println("catch: " + e.getMessage());
+	}
+	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUAL(true, urMngr.isUndoable());
+	ASSERT_EQUAL(true, urMngr.isRedoable());
+
+	try{
+		urMngr.redo();
+	}catch (std::exception& e){
+//			System.out.println("catch: " + e.getMessage());
+	}
+	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUAL(true, urMngr.isUndoable());
+	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 
-cute::suite make_suite(){
-	cute::suite s;
+void UndoRedoManagerTest::DoItExceptionNeutral(){
+	Plus::throwException() = true;
+	ASSERT_THROWSM("Command throws but Manager not!",
+			urMngr.doIt(plus), std::exception);
+}
+void UndoRedoManagerTest::UndoExceptionNeutral(){
+	urMngr.doIt(plus);
+	Plus::throwException() = true;
+	ASSERT_THROWSM("Command throws but Manager not!",
+			urMngr.undo(), std::exception);
+}
+void UndoRedoManagerTest::RedoExceptionNeutral(){
+	urMngr.doIt(plus);
+	urMngr.undo();
+	Plus::throwException() = true;
+	ASSERT_THROWSM("Command throws but Manager not!",
+			urMngr.redo(), std::exception);
+}
+
+cute::suite UndoRedoManagerTest::make_suite(){
+	cute::suite s { };
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedSimple));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedAndIsRedoableWithNewCommand));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, ResetModified));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionDoIt));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionUndo));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionRedo));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, DoItExceptionNeutral));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, RedoExceptionNeutral));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, UndoExceptionNeutral));
 	return s;
 }

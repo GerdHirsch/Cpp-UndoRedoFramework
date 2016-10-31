@@ -23,6 +23,8 @@ public:
 	void Redo();
 	void RedoWithException();
 	void RedoExceptionNeutral();
+
+	static cute::suite make_suite();
 };
 
 #endif /* UNDOREDOSTACKTEST_H_ */

@@ -12,12 +12,6 @@
 #include <exception>
 using namespace std;
 
-//void _UndoRedoStackTest::DoIt(){
-//	char const* message = "DemoTest";
-//	ASSERT_EQUAL_MESSAGE(message, 0, -1);
-//}
-
-
 
 void UndoRedoStackTest::DoIt(){
 	Plus::throwException() = false;
@@ -65,7 +59,7 @@ void UndoRedoStackTest::Undo(){
 	urMngr.undo();
 
 	int result = calculator.getResult();
-	int expected = 0;
+	int expected { 0 };
 
 	ASSERT_EQUAL(expected, result);
 
@@ -103,7 +97,7 @@ void UndoRedoStackTest::Redo(){
 	urMngr.undo();
 
 	int result = calculator.getResult();
-	int expected = plusValue;
+	int expected { plusValue };
 
 	ASSERT_EQUAL(false, urMngr.isUndoable());
 	ASSERT_EQUAL(true, urMngr.isRedoable());
@@ -132,7 +126,7 @@ void UndoRedoStackTest::RedoWithException(){
 	}
 
 	int result = calculator.getResult();
-	int expected = 0;
+	int expected { 0 };
 
 	ASSERT_EQUAL(expected, result);
 
@@ -149,3 +143,17 @@ void UndoRedoStackTest::RedoExceptionNeutral(){
 	ASSERT_THROWS(urMngr.redo(), std::logic_error);
 }
 
+
+cute::suite UndoRedoStackTest::make_suite(){
+	cute::suite s { };
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoIt));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoItWithException));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoItExceptionNeutral));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Undo));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, UndoWithException));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, UndoExceptionNeutral));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Redo));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoWithException));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoExceptionNeutral));
+	return s;
+}

@@ -12,8 +12,10 @@
 class Plus : public Command
 {
 public:
-	Plus(Calculator& calculator, double summand) :
-		calculator(calculator), summand(summand){}
+	Plus(Calculator& calculator, int summand) :
+		calculator(calculator), summand(summand){
+		throwException() = false;
+	}
 
 //	Plus(const Plus& source) :
 //		calculator(source.calculator), summand(source.summand) {}
@@ -50,13 +52,13 @@ public:
 	}
 private:
 	Calculator& calculator;
-	double summand;
+	int summand;
 };
 
 class Minus : public Command
 {
 public:
-	Minus(Calculator& calculator, double subtrahent):calculator(calculator), subtrahent(subtrahent){}
+	Minus(Calculator& calculator, int subtrahent):calculator(calculator), subtrahent(subtrahent){}
 	virtual void doIt() override
 	{
 		calculator.minus(subtrahent);
@@ -80,7 +82,7 @@ public:
 	}
 private:
 	Calculator& calculator;
-	double subtrahent;
+	int subtrahent;
 };
 
 #endif //CALCULATOR_COMMANDS
