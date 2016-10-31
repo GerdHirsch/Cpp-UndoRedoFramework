@@ -4,6 +4,7 @@
 #include "cute_runner.h"
 
 #include "../include/UndoRedoStackTest.h"
+#include "../include/UndoRedoManagerTest.h"
 
 #include <iostream>
 using namespace std;
@@ -12,17 +13,19 @@ using namespace std;
 void runAllTests(int argc, char const *argv[]){
 	cute::suite s;
 
-	s.push_back( DoIt() );
-	s.push_back( DoItWithException() );
-	s.push_back( DoItExceptionNeutral() );
+//	s.push_back( DoIt() );
+//	s.push_back( DoItWithException() );
+//	s.push_back( DoItExceptionNeutral() );
+//
+//	s.push_back( Undo() );
+//	s.push_back( UndoWithException() );
+//	s.push_back( UndoExceptionNeutral() );
+//
+//	s.push_back( Redo() );
+//	s.push_back( RedoWithException() );
+//	s.push_back( RedoExceptionNeutral() );
 
-	s.push_back( Undo() );
-	s.push_back( UndoWithException() );
-	s.push_back( UndoExceptionNeutral() );
-
-	s.push_back( Redo() );
-	s.push_back( RedoWithException() );
-	s.push_back( RedoExceptionNeutral() );
+//	s.push_back( IsModifiedSimple() );
 
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);

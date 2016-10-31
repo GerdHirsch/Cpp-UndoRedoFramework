@@ -13,15 +13,6 @@
 #include <memory>
 
 class UndoRedoTest{
-protected:
-	Calculator calculator;
-	int plusValue;
-	int minusValue;
-	Plus plus;
-	Minus minus;
-	std::shared_ptr<UndoRedoManager> pManager;
-	UndoRedoManager& urMngr;
-
 public:
 	UndoRedoTest():
 		calculator(),
@@ -32,6 +23,16 @@ public:
 		pManager(new UndoRedoManagerImpl()),
 		urMngr(*pManager)
 { }
+
+
+protected:
+	Calculator calculator;
+	int plusValue;
+	int minusValue;
+	Plus plus;
+	Minus minus;
+	std::shared_ptr<UndoRedoManager> pManager;
+	UndoRedoManager& urMngr;
 };
 
 

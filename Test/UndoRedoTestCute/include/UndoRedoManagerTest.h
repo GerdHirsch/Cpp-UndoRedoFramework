@@ -8,12 +8,19 @@
 #ifndef SRC_UNDOREDOMANAGERTEST_H_
 #define SRC_UNDOREDOMANAGERTEST_H_
 
-class UndoRedoManagerTest {
+#include "UndoRedoTest.h"
+
+class UndoRedoManagerTest //: public UndoRedoTest<UndoRedoManagerTest>
+{
+
 public:
-	UndoRedoManagerTest();
-	virtual ~UndoRedoManagerTest();
+//	using UndoRedoTest<UndoRedoManagerTest>::UndoRedoTest;
 
-
+	void IsModifiedSimple();
+	void IsModifiedAndIsRedoableWithNewCommand();
 };
+
+//TEST_CLASS(IsModifiedSimple, UndoRedoManagerTest)
+//TEST_CLASS(IsModifiedAndIsRedoableWithNewCommand, UndoRedoManagerTest)
 
 #endif /* SRC_UNDOREDOMANAGERTEST_H_ */

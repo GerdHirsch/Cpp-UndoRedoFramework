@@ -2,19 +2,19 @@
 	<testsuite name="AllTests" tests="9">
 		<testcase classname="AllTests" name="DoIt"/>
 		<testcase classname="AllTests" name="DoItWithException">
-			<failure message="..\include\UndoRedoStackTest.cpp:50 testDoItWithException: false == urMngr.isUndoable() expected:	0	but was:	1	">
-testDoItWithException: false == urMngr.isUndoable() expected:	0	but was:	1	
+			<failure message="..\include\UndoRedoStackTest.cpp:50 DoItWithException: false == urMngr.isUndoable() expected:	0	but was:	1	">
+DoItWithException: false == urMngr.isUndoable() expected:	0	but was:	1	
 			</failure>
 		</testcase>
 		<testcase classname="AllTests" name="DoItExceptionNeutral"/>
 		<testcase classname="AllTests" name="Undo">
-			<failure message="..\include\UndoRedoStackTest.cpp:71 testUndo: false == urMngr.isRedoable() expected:	0	but was:	1	">
-testUndo: false == urMngr.isRedoable() expected:	0	but was:	1	
+			<failure message="..\include\UndoRedoStackTest.cpp:71 Undo: false == urMngr.isRedoable() expected:	0	but was:	1	">
+Undo: false == urMngr.isRedoable() expected:	0	but was:	1	
 			</failure>
 		</testcase>
 		<testcase classname="AllTests" name="UndoWithException">
-			<failure message="..\include\UndoRedoStackTest.cpp:85 testUndoWithException: expected == result expected:	3	but was:	0	">
-testUndoWithException: expected == result expected:	3	but was:	0	
+			<failure message="..\include\UndoRedoStackTest.cpp:85 UndoWithException: expected == result expected:	3	but was:	0	">
+UndoWithException: expected == result expected:	3	but was:	0	
 			</failure>
 		</testcase>
 		<testcase classname="AllTests" name="UndoExceptionNeutral">
@@ -23,8 +23,8 @@ testUndoWithException: expected == result expected:	3	but was:	0
 			</failure>
 		</testcase>
 		<testcase classname="AllTests" name="Redo">
-			<failure message="..\include\UndoRedoStackTest.cpp:109 testRedo: expected == result expected:	3	but was:	0	">
-testRedo: expected == result expected:	3	but was:	0	
+			<failure message="..\include\UndoRedoStackTest.cpp:109 Redo: expected == result expected:	3	but was:	0	">
+Redo: expected == result expected:	3	but was:	0	
 			</failure>
 		</testcase>
 		<testcase classname="AllTests" name="RedoWithException"/>

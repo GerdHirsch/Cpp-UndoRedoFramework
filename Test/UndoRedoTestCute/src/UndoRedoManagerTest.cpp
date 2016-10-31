@@ -7,12 +7,35 @@
 
 #include "../include/UndoRedoManagerTest.h"
 
-UndoRedoManagerTest::UndoRedoManagerTest() {
-	// TODO Auto-generated constructor stub
+void UndoRedoManagerTest::IsModifiedSimple(){
+//	ASSERT_EQUAL(false, urMngr.isModified());
+//
+//	urMngr.doIt(plus);
+//	urMngr.doIt(plus);
+//	ASSERT_EQUAL(true, urMngr.isModified());
+//	urMngr.undo();
+//	ASSERT_EQUAL(true, urMngr.isModified());
+//
+//	urMngr.resetModified();
+//	ASSERT_EQUAL(false, urMngr.isModified());
+//
+//	urMngr.redo();
+//	ASSERT_EQUAL(true, urMngr.isModified());
+//	urMngr.undo();
+//	ASSERT_EQUAL(false, urMngr.isModified());
+//	urMngr.undo();
+//	ASSERT_EQUAL(true, urMngr.isModified());
+//	urMngr.redo();
+//	ASSERT_EQUAL(false, urMngr.isModified());
+//	urMngr.redo();
+//	ASSERT_EQUAL(true, urMngr.isModified());
+}
+void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
 
 }
 
-UndoRedoManagerTest::~UndoRedoManagerTest() {
-	// TODO Auto-generated destructor stub
+cute::suite make_suite(){
+	cute::suite s;
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedSimple));
+	return s;
 }
-

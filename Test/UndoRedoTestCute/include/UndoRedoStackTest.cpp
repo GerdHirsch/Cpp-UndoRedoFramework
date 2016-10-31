@@ -12,12 +12,14 @@
 #include <exception>
 using namespace std;
 
-//void _UndoRedoStackTest::testDoIt(){
+//void _UndoRedoStackTest::DoIt(){
 //	char const* message = "DemoTest";
 //	ASSERT_EQUAL_MESSAGE(message, 0, -1);
 //}
 
-void UndoRedoStackTest::testDoIt(){
+
+
+void UndoRedoStackTest::DoIt(){
 	Plus::throwException() = false;
 	int result = calculator.getResult();
 	int expected = 0;
@@ -34,8 +36,8 @@ void UndoRedoStackTest::testDoIt(){
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
-void UndoRedoStackTest::testDoItWithException(){
-	cout << "UndoRedoStackTest::testDoItWithException()" << endl;
+void UndoRedoStackTest::DoItWithException(){
+	cout << "UndoRedoStackTest::DoItWithException()" << endl;
 
 	Plus::throwException() = true;
 	int result = calculator.getResult();
@@ -51,13 +53,13 @@ void UndoRedoStackTest::testDoItWithException(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 
-void UndoRedoStackTest::testDoItExceptionNeutral(){
+void UndoRedoStackTest::DoItExceptionNeutral(){
 	Plus::throwException() = true;
 
 	ASSERT_THROWS(urMngr.doIt(plus), std::logic_error);
 }
 //==========
-void UndoRedoStackTest::testUndo(){
+void UndoRedoStackTest::Undo(){
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -70,13 +72,13 @@ void UndoRedoStackTest::testUndo(){
 	ASSERT_EQUAL(false, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
-void UndoRedoStackTest::testUndoWithException(){
+void UndoRedoStackTest::UndoWithException(){
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
 	try{
 		urMngr.undo();
 	}catch(std::exception& e){
-		cout << "catch testUndoWithException" << endl;
+		cout << "catch UndoWithException" << endl;
 	}
 
 	int result = calculator.getResult();
@@ -87,7 +89,7 @@ void UndoRedoStackTest::testUndoWithException(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 
-void UndoRedoStackTest::testUndoExceptionNeutral(){
+void UndoRedoStackTest::UndoExceptionNeutral(){
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
@@ -95,7 +97,7 @@ void UndoRedoStackTest::testUndoExceptionNeutral(){
 	ASSERT_THROWS(urMngr.undo(), std::logic_error);
 }
 //==========
-void UndoRedoStackTest::testRedo(){
+void UndoRedoStackTest::Redo(){
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -118,7 +120,7 @@ void UndoRedoStackTest::testRedo(){
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
-void UndoRedoStackTest::testRedoWithException(){
+void UndoRedoStackTest::RedoWithException(){
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -126,7 +128,7 @@ void UndoRedoStackTest::testRedoWithException(){
 	try{
 		urMngr.redo();
 	}catch(std::exception& e){
-		cout << "catch testUndoWithException" << endl;
+		cout << "catch UndoWithException" << endl;
 	}
 
 	int result = calculator.getResult();
@@ -138,7 +140,7 @@ void UndoRedoStackTest::testRedoWithException(){
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 
-void UndoRedoStackTest::testRedoExceptionNeutral(){
+void UndoRedoStackTest::RedoExceptionNeutral(){
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
