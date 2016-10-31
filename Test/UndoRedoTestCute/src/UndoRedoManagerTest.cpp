@@ -67,7 +67,11 @@ void UndoRedoManagerTest::ResetModified(){
 	urMngr.resetModified();
 	ASSERT_EQUAL(false, urMngr.isModified());
 }
+<<<<<<< HEAD
 void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
+=======
+void UndoRedoManagerTest::IsModifiedtwithExceptionDoIt(){
+>>>>>>> branch 'add-tests' of https://github.com/GerdHirsch/Cpp-UndoRedoFramework.git
 	// initial modified Count == 0
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -146,6 +150,7 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
 void UndoRedoManagerTest::DoItExceptionNeutral(){
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
+<<<<<<< HEAD
 			urMngr.doIt(plus), std::logic_error);
 }
 void UndoRedoManagerTest::UndoExceptionNeutral(){
@@ -160,6 +165,22 @@ void UndoRedoManagerTest::RedoExceptionNeutral(){
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.redo(), std::logic_error);
+=======
+			urMngr.doIt(plus), std::exception);
+}
+void UndoRedoManagerTest::UndoExceptionNeutral(){
+	urMngr.doIt(plus);
+	Plus::throwException() = true;
+	ASSERT_THROWSM("Command throws but Manager not!",
+			urMngr.undo(), std::exception);
+}
+void UndoRedoManagerTest::RedoExceptionNeutral(){
+	urMngr.doIt(plus);
+	urMngr.undo();
+	Plus::throwException() = true;
+	ASSERT_THROWSM("Command throws but Manager not!",
+			urMngr.redo(), std::exception);
+>>>>>>> branch 'add-tests' of https://github.com/GerdHirsch/Cpp-UndoRedoFramework.git
 }
 
 cute::suite UndoRedoManagerTest::make_suite(){
@@ -167,7 +188,11 @@ cute::suite UndoRedoManagerTest::make_suite(){
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedSimple));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedAndIsRedoableWithNewCommand));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, ResetModified));
+<<<<<<< HEAD
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedwithExceptionDoIt));
+=======
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionDoIt));
+>>>>>>> branch 'add-tests' of https://github.com/GerdHirsch/Cpp-UndoRedoFramework.git
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionUndo));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionRedo));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, DoItExceptionNeutral));
