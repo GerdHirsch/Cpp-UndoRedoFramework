@@ -18,11 +18,7 @@ public:
 	void IsModifiedAndIsRedoableWithNewCommand();
 	void ResetModified();
 
-<<<<<<< HEAD
 	void IsModifiedwithExceptionDoIt();
-=======
-	void IsModifiedtwithExceptionDoIt();
->>>>>>> branch 'add-tests' of https://github.com/GerdHirsch/Cpp-UndoRedoFramework.git
 	void IsModifiedtwithExceptionUndo();
 	void IsModifiedtwithExceptionRedo();
 

@@ -18,10 +18,7 @@ void runAllTests(int argc, char const *argv[]){
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(UndoRedoStackTest::make_suite(), "UndoRedoStack");
 	cute::makeRunner(lis,argc,argv)(UndoRedoManagerTest::make_suite(), "UndoRedoManager");
-<<<<<<< HEAD
-	cute::makeRunner(lis,argc,argv)(CompositeCommandTest::make_suite(), "UndoRedoManager");
-=======
->>>>>>> branch 'add-tests' of https://github.com/GerdHirsch/Cpp-UndoRedoFramework.git
+	cute::makeRunner(lis,argc,argv)(CompositeCommandTest::make_suite(), "CompositeCommand");
 }
 
 int main(int argc, char const *argv[]){
