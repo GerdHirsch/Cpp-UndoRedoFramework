@@ -5,6 +5,7 @@
 
 #include "../include/UndoRedoStackTest.h"
 #include "../include/UndoRedoManagerTest.h"
+#include "../include/CompositeCommandTest.h"
 
 #include <iostream>
 using namespace std;
@@ -17,6 +18,7 @@ void runAllTests(int argc, char const *argv[]){
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(UndoRedoStackTest::make_suite(), "UndoRedoStack");
 	cute::makeRunner(lis,argc,argv)(UndoRedoManagerTest::make_suite(), "UndoRedoManager");
+	cute::makeRunner(lis,argc,argv)(CompositeCommandTest::make_suite(), "UndoRedoManager");
 }
 
 int main(int argc, char const *argv[]){

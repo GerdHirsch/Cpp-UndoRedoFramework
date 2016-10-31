@@ -18,7 +18,7 @@ public:
 	void IsModifiedAndIsRedoableWithNewCommand();
 	void ResetModified();
 
-	void IsModifiedtwithExceptionDoIt();
+	void IsModifiedwithExceptionDoIt();
 	void IsModifiedtwithExceptionUndo();
 	void IsModifiedtwithExceptionRedo();
 

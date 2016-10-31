@@ -24,26 +24,26 @@ public:
 	{
 		if(throwException()) throw std::logic_error("Plus.doIt()");
 
-		std::cout << "Plus.doIt()" << std::endl;
+//		std::cout << "Plus.doIt()" << std::endl;
 		calculator.plus(summand);
 	}
 	virtual void undo() override
 	{
-		std::cout << "Plus.undo()" << std::endl;
+//		std::cout << "Plus.undo()" << std::endl;
 		calculator.minus(summand);
 	}
 
 	virtual std::unique_ptr<Command> clone() const & override
 	{
 		using namespace std;
-		cout << "PlusCommand::clone() const & :" << summand << endl;
+//		cout << "PlusCommand::clone() const & :" << summand << endl;
 		return std::unique_ptr<Command>( new Plus(*this));
 	}
 
 	virtual std::unique_ptr<Command> clone() && override
 	{
 		using namespace std;
-		cout << "PlusCommand::clone() &&" << endl;
+//		cout << "PlusCommand::clone() &&" << endl;
 		return std::unique_ptr<Command>( new Plus( std::move(*this) ));
 	}
 	static bool& throwException(){

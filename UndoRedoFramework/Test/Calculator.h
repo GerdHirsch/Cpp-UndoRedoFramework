@@ -10,11 +10,11 @@ public:
 	~Calculator(){};
 
 	void plus(int summand){
-		std::cout << "Calculator.plus: " << summand << std::endl;
+//		std::cout << "Calculator.plus: " << summand << std::endl;
 		result += summand;
 	}
 	void minus(int subtrahent){
-		std::cout << "Calculator.minus: " << subtrahent << std::endl;
+//		std::cout << "Calculator.minus: " << subtrahent << std::endl;
 		result -= subtrahent;
 	}
 	int getResult(){ return result; }

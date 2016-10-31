@@ -67,7 +67,7 @@ void UndoRedoManagerTest::ResetModified(){
 	urMngr.resetModified();
 	ASSERT_EQUAL(false, urMngr.isModified());
 }
-void UndoRedoManagerTest::IsModifiedtwithExceptionDoIt(){
+void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
 	// initial modified Count == 0
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -167,7 +167,7 @@ cute::suite UndoRedoManagerTest::make_suite(){
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedSimple));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedAndIsRedoableWithNewCommand));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, ResetModified));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionDoIt));
+	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedwithExceptionDoIt));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionUndo));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionRedo));
 	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, DoItExceptionNeutral));

@@ -10,10 +10,15 @@
 
 #include <cute.h>
 
+#include <include/CompositeCommand.h>
+
 #include<Test/Calculator.h>
 #include<Test/CalculatorCommands.h>
 
-#include<include/UndoRedoManagerImpl.h>
+#include <include/UndoRedoManagerImpl.h>
+
+
+
 
 
 #endif /* TEST_H_ */

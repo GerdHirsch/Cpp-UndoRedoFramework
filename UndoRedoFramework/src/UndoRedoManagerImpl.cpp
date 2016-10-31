@@ -24,7 +24,7 @@ UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 	redoStack( std::move(rhs.redoStack) ),
 	modifications( rhs.modifications)
 {
-	cout << "UndoRedoManagerImpl(UndoRedoManagerImpl &&)" << endl;
+//	cout << "UndoRedoManagerImpl(UndoRedoManagerImpl &&)" << endl;
 	// TODO: was sollte rhs.isModified() nach move zurückliefern?
 	rhs.modifications = 0;
 }
@@ -40,7 +40,7 @@ UndoRedoManagerImpl::UndoRedoManagerImpl() : modifications(0)
 //}
 unique_ptr<UndoRedoManager> UndoRedoManagerImpl::clone() &&
 {
-	cout << "UndoRedoManagerImpl::clone() &&"<< endl;
+//	cout << "UndoRedoManagerImpl::clone() &&"<< endl;
 	return unique_ptr<UndoRedoManager>(new UndoRedoManagerImpl( std::move(*this) ));
 }
 
@@ -54,7 +54,7 @@ void UndoRedoManagerImpl::doIt(Command const& command)
 }
 void UndoRedoManagerImpl::doIt(SmartPointer && command)
 {
-	std::cout << "UndoRedoManagerImpl::doIt(SmartPointer&&)" << std::endl;
+//	std::cout << "UndoRedoManagerImpl::doIt(SmartPointer&&)" << std::endl;
 
 	command->doIt();
 

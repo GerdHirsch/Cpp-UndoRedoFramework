@@ -19,9 +19,9 @@
 							<builder autoBuildTarget="all" buildPath="${workspace_loc:/UndoRedoTestCute}/Debug" cleanBuildTarget="clean" id="org.eclipse.cdt.build.core.internal.builder.1718346163" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.debug.1943970183" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.debug">
 								<option id="gnu.both.asm.option.include.paths.2011604456" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
 								</option>
@@ -32,9 +32,8 @@
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level.1443746895" name="Optimization Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level.569587335" name="Debug Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.273125603" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.dialect.std.192624431" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.c++1y" valueType="enumerated"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.310790964" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
@@ -43,9 +42,9 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cygwin.exe.debug.option.optimization.level.960823426" name="Optimization Level" superClass="gnu.c.compiler.cygwin.exe.debug.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option id="gnu.c.compiler.cygwin.exe.debug.option.debugging.level.1636232101" name="Debug Level" superClass="gnu.c.compiler.cygwin.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.954394907" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
 								</option>
@@ -62,10 +61,10 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.739875782" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug">
 								<option id="gnu.cpp.link.option.paths.1698898576" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug Gcov}&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.1023338181" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="UndoRedoFramework"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="UndoRedoFramework"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.94716989" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -77,7 +76,13 @@
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-				<externalSettings containerId="UndoRedoFramework;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="UndoRedoFramework;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/UndoRedoFramework"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug Gcov"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="UndoRedoFramework" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
 			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.cygwin.exe.release.2128569341">
@@ -100,9 +105,9 @@
 							<builder buildPath="${workspace_loc:/DemoTestProjectCute}/Release" id="cdt.managedbuild.target.gnu.builder.cygwin.exe.release.111898428" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.target.gnu.builder.cygwin.exe.release"/>
 							<tool id="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.release.897376864" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.release">
 								<option id="gnu.both.asm.option.include.paths.1905446479" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
 								</option>
@@ -113,9 +118,9 @@
 								<option id="gnu.cpp.compiler.cygwin.exe.release.option.optimization.level.1228316571" name="Optimization Level" superClass="gnu.cpp.compiler.cygwin.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.cygwin.exe.release.option.debugging.level.889481400" name="Debug Level" superClass="gnu.cpp.compiler.cygwin.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.663658796" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
 								</option>
@@ -125,9 +130,9 @@
 								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.cygwin.exe.release.option.optimization.level.233310036" name="Optimization Level" superClass="gnu.c.compiler.cygwin.exe.release.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.cygwin.exe.release.option.debugging.level.737048494" name="Debug Level" superClass="gnu.c.compiler.cygwin.exe.release.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.63347324" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
 								</option>
@@ -143,10 +148,11 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.release.709667028" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.release">
 								<option id="gnu.cpp.link.option.paths.991201619" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug Gcov}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Release}&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.879763093" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
-									<listOptionValue builtIn="false" value="UndoRedoFramework"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="UndoRedoFramework"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.88223261" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
@@ -158,7 +164,13 @@
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
-				<externalSettings containerId="UndoRedoFramework;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+				<externalSettings containerId="UndoRedoFramework;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/UndoRedoFramework"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug Gcov"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="UndoRedoFramework" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
 			</storageModule>
 		</cconfiguration>
 	</storageModule>
