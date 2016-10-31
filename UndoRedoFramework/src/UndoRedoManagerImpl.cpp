@@ -47,39 +47,24 @@ unique_ptr<UndoRedoManager> UndoRedoManagerImpl::clone() &&
 void UndoRedoManagerImpl::doIt(Command && command)
 {
 	doIt(std::move(command).clone());
-//
-//	if(modifications < 0)
-//		modifications = undoStack.size() + 1;
-//	modifications++;
-//
-//	undoStack.push( std::move(command).clone());
-//	clearRedoStack();
-//
-//	undoStack.top()->doIt();
 }
 void UndoRedoManagerImpl::doIt(Command const& command)
 {
 	doIt(command.clone());
-//
-//	if(modifications < 0)
-//		modifications = undoStack.size() + 1;
-//	modifications++;
-//
-//	undoStack.push( command.clone());
-//	clearRedoStack();
-//
-//	undoStack.top()->doIt();
 }
 void UndoRedoManagerImpl::doIt(SmartPointer && command)
 {
-	if(modifications < 0)
-		modifications = undoStack.size() + 1;
-	modifications++;
+	std::cout << "UndoRedoManagerImpl::doIt(SmartPointer&&)" << std::endl;
+
+	command->doIt();
 
 	undoStack.push( std::move(command) );
 	clearRedoStack();
 
-	undoStack.top()->doIt();
+	if(modifications < 0)
+		modifications = undoStack.size() + 1;
+	else
+		modifications++;
 }
 void UndoRedoManagerImpl::clearRedoStack(){
 	while(!redoStack.empty())

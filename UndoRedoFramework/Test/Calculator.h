@@ -9,8 +9,14 @@ public:
 	Calculator() : result(0){};
 	~Calculator(){};
 
-	void plus(double summand){ result += summand; }
-	void minus(double subtrahent){ result -= subtrahent; }
+	void plus(double summand){
+		std::cout << "Calculator.plus: " << summand << std::endl;
+		result += summand;
+	}
+	void minus(double subtrahent){
+		std::cout << "Calculator.minus: " << subtrahent << std::endl;
+		result -= subtrahent;
+	}
 	double getResult(){ return result; }
 	void clear() { result = 0; }
 private:

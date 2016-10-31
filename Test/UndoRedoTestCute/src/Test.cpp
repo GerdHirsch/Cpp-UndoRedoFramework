@@ -5,6 +5,43 @@
 
 #include "../include/UndoRedoStackTest.h"
 
+#include <iostream>
+using namespace std;
+
+
+void runAllTests(int argc, char const *argv[]){
+	cute::suite s;
+
+	s.push_back( DoIt() );
+	s.push_back( DoItWithException() );
+	s.push_back( DoItExceptionNeutral() );
+
+	s.push_back( Undo() );
+	s.push_back( UndoWithException() );
+	s.push_back( UndoExceptionNeutral() );
+
+	s.push_back( Redo() );
+	s.push_back( RedoWithException() );
+	s.push_back( RedoExceptionNeutral() );
+
+	cute::xml_file_opener xmlfile(argc,argv);
+	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
+	cute::makeRunner(lis,argc,argv)(s, "AllTests");
+}
+
+int main(int argc, char const *argv[]){
+	cout << "main()" << endl;
+
+//	Calculator calculator;
+//	UndoRedoManagerImpl urMngr;
+//	urMngr.doIt(Plus(calculator, 3));
+//
+//	cout << calculator.getResult() << endl;
+    runAllTests(argc,argv);
+    return 0;
+}
+/*
+ *
 class TestClass{
 	typedef void(TestClass::*TestMethod)();
 	TestMethod testMethod;
@@ -24,35 +61,8 @@ public:
 };
 
 void thisIsATest() {
-	ASSERTM("start writing tests", false);	
+	ASSERTM("start writing tests", false);
 }
-
-void runAllTests(int argc, char const *argv[]){
-	cute::suite s;
-	//TODO add your test here
-//	s.push_back(CUTE(thisIsATest));
-//	s.push_back( TestClass(&TestClass::test1) );
-//	s.push_back( TestClass(&TestClass::test2) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testDoIt) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testDoItWithException) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testDoItExceptionNeutral) );
-
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testUndo) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testUndoWithException) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testUndoExceptionNeutral) );
-
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testRedo) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testRedoWithException) );
-	s.push_back( UndoRedoStackTest(&UndoRedoStackTest::testRedoExceptionNeutral) );
-	cute::xml_file_opener xmlfile(argc,argv);
-	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
-	cute::makeRunner(lis,argc,argv)(s, "AllTests");
-}
-
-int main(int argc, char const *argv[]){
-    runAllTests(argc,argv);
-    return 0;
-}
-
+ */
 
 

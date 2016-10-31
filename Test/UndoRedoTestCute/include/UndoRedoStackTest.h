@@ -15,7 +15,10 @@ class UndoRedoStackTest : public UndoRedoTest {
 	typedef void(UndoRedoStackTest::*TestMethod)();
 	TestMethod testMethod;
 public:
-	UndoRedoStackTest(TestMethod testMethod) : testMethod(testMethod){}
+//	UndoRedoStackTest(TestMethod testMethod) :
+//		UndoRedoTest(testMethod){}
+	UndoRedoStackTest(TestMethod testMethod) :
+		testMethod(testMethod){}
 
 	void operator()(){
 		(this->*testMethod)();
@@ -32,5 +35,27 @@ public:
 	void testRedoWithException();
 	void testRedoExceptionNeutral();
 };
+
+#define TEST_CLASS(Name, Base)				\
+struct Name : Base{							\
+	Name() : Base(&Base::test##Name){}		\
+};											\
+
+//struct DoIt : UndoRedoStackTest{
+//	using UndoRedoStackTest::UndoRedoStackTest;
+//};
+
+TEST_CLASS(DoIt, UndoRedoStackTest)
+TEST_CLASS(DoItWithException, UndoRedoStackTest)
+TEST_CLASS(DoItExceptionNeutral, UndoRedoStackTest)
+
+TEST_CLASS(Undo, UndoRedoStackTest)
+TEST_CLASS(UndoWithException, UndoRedoStackTest)
+TEST_CLASS(UndoExceptionNeutral, UndoRedoStackTest)
+
+TEST_CLASS(Redo, UndoRedoStackTest)
+TEST_CLASS(RedoWithException, UndoRedoStackTest)
+TEST_CLASS(RedoExceptionNeutral, UndoRedoStackTest)
+
 
 #endif /* UNDOREDOSTACKTEST_H_ */
