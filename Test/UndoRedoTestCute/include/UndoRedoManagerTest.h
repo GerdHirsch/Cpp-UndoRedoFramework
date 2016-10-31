@@ -10,17 +10,24 @@
 
 #include "UndoRedoTest.h"
 
-class UndoRedoManagerTest //: public UndoRedoTest<UndoRedoManagerTest>
+class UndoRedoManagerTest : public UndoRedoTest
 {
 
 public:
-//	using UndoRedoTest<UndoRedoManagerTest>::UndoRedoTest;
-
 	void IsModifiedSimple();
 	void IsModifiedAndIsRedoableWithNewCommand();
+	void ResetModified();
+
+	void IsModifiedtwithExceptionDoIt();
+	void IsModifiedtwithExceptionUndo();
+	void IsModifiedtwithExceptionRedo();
+
+	void DoItExceptionNeutral();
+	void UndoExceptionNeutral();
+	void RedoExceptionNeutral();
+
+	static cute::suite make_suite();
 };
 
-//TEST_CLASS(IsModifiedSimple, UndoRedoManagerTest)
-//TEST_CLASS(IsModifiedAndIsRedoableWithNewCommand, UndoRedoManagerTest)
 
 #endif /* SRC_UNDOREDOMANAGERTEST_H_ */
