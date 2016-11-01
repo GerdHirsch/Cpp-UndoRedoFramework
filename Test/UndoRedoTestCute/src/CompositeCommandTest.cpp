@@ -192,8 +192,10 @@ void CompositeCommandTest::RedoExceptionNeutral() {
 	urMngr.undo();
 	Plus::throwException() = true;
 
-	ASSERT_THROWS(urMngr.redo(), std::logic_error);
+	ASSERT_THROWS(urMngr.redo(), std::exception);
+//	ASSERT_THROWS(urMngr.redo(), std::logic_error);
 }
+
 void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 	Plus::throwException() = false;
 
@@ -218,6 +220,7 @@ void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 		ASSERT_EQUAL(expected, result);
 	}
 }
+
 void CompositeCommandTest::DoItThrowsCannotRollback(){
 	Plus::throwException() = false;
 	ccmd.doIt(minus);
