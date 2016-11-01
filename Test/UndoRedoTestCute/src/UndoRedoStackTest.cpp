@@ -67,11 +67,13 @@ void UndoRedoStackTest::Undo(){
 	ASSERT_EQUAL(expected, result);
 
 	ASSERT_EQUAL(false, urMngr.isUndoable());
-	ASSERT_EQUAL(false, urMngr.isRedoable());
+	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 void UndoRedoStackTest::UndoWithException(){
 	urMngr.doIt(plus);
+
 	Plus::throwException() = true;
+
 	try{
 		urMngr.undo();
 	}catch(std::exception& e){

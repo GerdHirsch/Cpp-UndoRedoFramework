@@ -29,6 +29,7 @@ public:
 	}
 	virtual void undo() override
 	{
+		if(throwException()) throw std::logic_error("Plus.doIt()");
 //		std::cout << "Plus.undo()" << std::endl;
 		calculator.minus(summand);
 	}
