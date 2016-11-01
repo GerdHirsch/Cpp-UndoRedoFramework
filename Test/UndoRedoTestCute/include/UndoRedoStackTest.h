@@ -24,6 +24,9 @@ public:
 	void RedoWithException();
 	void RedoExceptionNeutral();
 
+	void IsUndoable();
+	void IsRedoable();
+
 	static cute::suite make_suite();
 };
 

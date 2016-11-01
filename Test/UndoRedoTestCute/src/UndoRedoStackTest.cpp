@@ -7,6 +7,15 @@
 
 #include "../include/UndoRedoStackTest.h"
 
+void UndoRedoStackTest::IsUndoable(){
+	urMngr.doIt(plus);
+	ASSERT_EQUAL(true, urMngr.isUndoable());
+}
+void UndoRedoStackTest::IsRedoable(){
+	urMngr.doIt(plus);
+	urMngr.undo();
+	ASSERT_EQUAL(true, urMngr.isRedoable());
+}
 
 void UndoRedoStackTest::DoIt(){
 	Plus::throwException() = false;
@@ -149,5 +158,7 @@ cute::suite UndoRedoStackTest::make_suite(){
 	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Redo));
 	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoWithException));
 	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoExceptionNeutral));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, IsRedoable));
+	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, IsUndoable));
 	return s;
 }
