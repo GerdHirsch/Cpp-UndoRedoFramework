@@ -12,6 +12,8 @@ using namespace std;
 
 
 void runAllTests(int argc, char const *argv[]){
+	cout << "runAllTests()" << endl;
+
 	cute::suite s;
 
 	cute::xml_file_opener xmlfile(argc,argv);

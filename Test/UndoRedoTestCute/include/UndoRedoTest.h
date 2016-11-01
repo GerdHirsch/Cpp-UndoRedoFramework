@@ -11,6 +11,7 @@
 #include "../include/Test.h"
 
 #include <memory>
+#include <iostream>
 
 class UndoRedoTest{
 public:
@@ -22,7 +23,9 @@ public:
 		minus(calculator, minusValue),
 		pManager(new UndoRedoManagerImpl()),
 		urMngr(*pManager)
-{ }
+	{
+		std::cout << "UndoRedoTest()"  << std::endl;
+	}
 
 
 protected:

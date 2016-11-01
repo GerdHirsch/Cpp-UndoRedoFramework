@@ -109,18 +109,17 @@ void UndoRedoStackTest::Redo(){
 	urMngr.undo();
 
 	int result = calculator.getResult();
-	int expected { plusValue };
+	int expected { 0 };
+	ASSERT_EQUAL(expected, result);
 
 	ASSERT_EQUAL(false, urMngr.isUndoable());
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 
-	ASSERT_EQUAL(expected, result);
 
 	urMngr.redo();
 
+	expected = plusValue;
 	result = calculator.getResult();
-	expected = 0;
-
 	ASSERT_EQUAL(expected, result);
 
 	ASSERT_EQUAL(true, urMngr.isUndoable());
@@ -139,7 +138,6 @@ void UndoRedoStackTest::RedoWithException(){
 
 	int result = calculator.getResult();
 	int expected { 0 };
-
 	ASSERT_EQUAL(expected, result);
 
 	ASSERT_EQUAL(false, urMngr.isUndoable());

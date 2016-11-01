@@ -73,6 +73,7 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.2087371820" name="CalculatorCommands.h" rcbsApplicability="disable" resourcePath="include/CalculatorCommands.h" toolsToInvoke=""/>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">

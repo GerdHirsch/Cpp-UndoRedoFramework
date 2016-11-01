@@ -7,14 +7,21 @@
 
 #include "../include/CompositeCommand.h"
 #include "../include/UndoRedoManager.h"
+#include "../include/CannotRollbackException.h"
+
+#include <iostream>
+using namespace std;
 
 CompositeCommand::CompositeCommand(UndoRedoManager && urMngr)
-: urMngr( std::move(urMngr).clone())
-//: urMngr( urMngr.clone())
+: urMngr( std::move(urMngr).clone()),
+  doItExceptionCatched(false),
+  undoExceptionCatched(false)
 { }
 
 CompositeCommand::CompositeCommand(CompositeCommand && rhs)
-: urMngr( std::move(rhs.urMngr) )
+: urMngr( std::move(rhs.urMngr) ),
+  doItExceptionCatched(false),
+  undoExceptionCatched(false)
 {  }
 
 std::unique_ptr<Command> CompositeCommand::clone() const&
@@ -37,14 +44,23 @@ CompositeCommand::~CompositeCommand() {
  *
  * @param c
  */
-void CompositeCommand::doIt(Command&& c) {
-	urMngr->doIt( std::move(c) );
+void CompositeCommand::doIt(Command&& command) {
+	doIt(std::move(command).clone());
+//	urMngr->doIt( std::move(c) );
 }
-void CompositeCommand::doIt(Command const& c) {
-	urMngr->doIt(c);
+void CompositeCommand::doIt(Command const& command) {
+	doIt(command.clone());
+//	urMngr->doIt(c);
 }
 void CompositeCommand::doIt(SmartPointer&& c) {
-	urMngr->doIt( std::move(c) );
+	try{
+		urMngr->doIt( std::move(c) );
+	}catch(...){
+		doItExceptionCatched = true;
+		undo();
+		urMngr->clear();
+		throw;
+	}
 }
 /**
  * führt die Commands wieder aus
@@ -54,8 +70,20 @@ void CompositeCommand::doIt(SmartPointer&& c) {
  * @throws Exception
  */
 void CompositeCommand::doIt() {
-	while (urMngr->isRedoable()) {
-		urMngr->redo();
+	try{
+		while (urMngr->isRedoable()) {
+			urMngr->redo();
+	}
+	}catch(std::exception& e){
+		doItExceptionCatched = true;
+		if(undoExceptionCatched){
+			undoExceptionCatched = false;
+			throw CannotRollbackException("undo not possible, cause Command.doIt() throws Exception see getCause()", e);
+		}else{
+			undo();
+			doItExceptionCatched = false;
+			throw e;
+		}
 	}
 }
 /**
@@ -66,8 +94,20 @@ void CompositeCommand::doIt() {
  * @supplierRole Command Manager
  */
 void CompositeCommand::undo() {
-	while (urMngr->isUndoable()) {
-		urMngr->undo();
+	try{
+		while (urMngr->isUndoable()) {
+			urMngr->undo();
+		}
+	}catch(std::exception& e){
+		undoExceptionCatched = true;
+		if(doItExceptionCatched){
+			doItExceptionCatched = false;
+			throw CannotRollbackException("doIt not possible, cause Command.undo() throws Exception see getCause()", e);
+		}else{
+			doIt();
+			undoExceptionCatched = false;
+			throw e;
+		}
 	}
 }
 

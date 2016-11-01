@@ -4,6 +4,7 @@
 
 #include "../include/UndoRedoManagerImpl.h"
 #include "../include/Command.h"
+#include "../include/IllegalArgumentException.h"
 
 #include <iostream>
 //using namespace boost;
@@ -54,7 +55,8 @@ void UndoRedoManagerImpl::doIt(Command const& command)
 }
 void UndoRedoManagerImpl::doIt(SmartPointer && command)
 {
-//	std::cout << "UndoRedoManagerImpl::doIt(SmartPointer&&)" << std::endl;
+	if(command == nullptr)
+		throw IllegalArgumentException("command must not be nullptr");
 
 	command->doIt();
 
@@ -69,6 +71,14 @@ void UndoRedoManagerImpl::doIt(SmartPointer && command)
 void UndoRedoManagerImpl::clearRedoStack(){
 	while(!redoStack.empty())
 		redoStack.pop();
+}
+void UndoRedoManagerImpl::clearUndoStack(){
+	while(!undoStack.empty())
+		undoStack.pop();
+}
+void UndoRedoManagerImpl::clear(){
+	clearRedoStack();
+	clearUndoStack();
 }
 bool UndoRedoManagerImpl::isUndoable() const
 {
