@@ -5,8 +5,8 @@
  *      Author: Gerd
  */
 
-#ifndef COMPSITECOMMANDTEST_H_
-#define COMPSITECOMMANDTEST_H_
+#ifndef COMPOSITECOMMANDTEST_H_
+#define COMPOSITECOMMANDTEST_H_
 
 #include "../include/UndoRedoTest.h"
 
@@ -34,4 +34,4 @@ public:
 	static cute::suite make_suite();
 };
 
-#endif /* COMPSITECOMMANDTEST_H_ */
+#endif /* COMPOSITECOMMANDTEST_H_ */
