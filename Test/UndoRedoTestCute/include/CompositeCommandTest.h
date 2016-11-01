@@ -20,7 +20,7 @@ public:
 		UndoRedoTest(),
 		ccmd(UndoRedoManagerImpl())
 {
-		std::cout << "CompositeCommandTest()" << std::endl;
+//		std::cout << "CompositeCommandTest()" << std::endl;
 }
 //	void CommandCompositeCtor();
 	void DoItCommand();

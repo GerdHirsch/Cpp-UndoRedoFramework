@@ -29,7 +29,7 @@ public:
 				--throwAtTimes();
 		}
 
-		std::cout << "Plus.doIt()" << std::endl;
+//		std::cout << "Plus.doIt()" << std::endl;
 		calculator.plus(summand);
 	}
 	virtual void undo() override

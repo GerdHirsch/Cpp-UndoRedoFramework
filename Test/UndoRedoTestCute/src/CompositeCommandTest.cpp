@@ -18,28 +18,23 @@ using namespace std;
 //}
 void CompositeCommandTest::DoItCommand() {
 	Plus::throwException() = false;
-	CompositeCommand ccmd1(UndoRedoManagerImpl());
 
 	ccmd.doIt(minus);
 	ccmd.doIt(plus);
 	urMngr.doIt(std::move(ccmd));
 
 	int expected { plusValue - minusValue };
-	ASSERT_EQUAL(expected, calculator.getResult());
+	int result = calculator.getResult();
+	ASSERT_EQUAL(expected, result);
 
-//	urMngr.doIt(plus);
-//
-//	expected += plusValue;
-//	ASSERT_EQUAL(expected, calculator.getResult());
+	urMngr.doIt(plus);
+
+	expected += plusValue;
+	result = calculator.getResult();
+	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::DoItCommandWithException() {
 	Plus::throwException() = true;
-
-//	Calculator calculator;
-//	UndoRedoManagerImpl urMngr;
-//	CompositeCommand ccmd((UndoRedoManagerImpl()) );
-//	Plus plus(calculator, 3);
-//	Minus minus(calculator, 1);
 
 	int expected { 0 };
 	int result = calculator.getResult();
@@ -127,7 +122,7 @@ void CompositeCommandTest::UndoWithException() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::RedoWithException() {
-	int expected = 0;
+	int expected { 0 };
 	ccmd.doIt(minus);
 	ccmd.doIt(plus);
 	ccmd.doIt(minus);
@@ -209,7 +204,7 @@ void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 	}catch(CannotRollbackException& e){
 
 		int result = calculator.getResult();
-		int expected = 2;
+		int expected { 2 };
 		ASSERT_EQUAL(expected, result);
 
 		Plus::throwException() = false;

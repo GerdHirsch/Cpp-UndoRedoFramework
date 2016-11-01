@@ -24,7 +24,7 @@ public:
 		pManager(new UndoRedoManagerImpl()),
 		urMngr(*pManager)
 	{
-		std::cout << "UndoRedoTest()"  << std::endl;
+//		std::cout << "UndoRedoTest()"  << std::endl;
 	}
 
 
