@@ -10,6 +10,8 @@
 
 #include "../include/UndoRedoTest.h"
 
+#include <iostream>
+
 class CompositeCommandTest: public UndoRedoTest {
 	CompositeCommand ccmd;
 public:
@@ -18,18 +20,25 @@ public:
 		UndoRedoTest(),
 		ccmd(UndoRedoManagerImpl())
 {
-
+		std::cout << "CompositeCommandTest()" << std::endl;
 }
+//	void CommandCompositeCtor();
 	void DoItCommand();
 	void DoItCommandWithException();
 
-	void testUndoRedoDoIt();
+	void UndoRedoDoIt();
 	void UndoWithException();
 	void RedoWithException();
 
 	void DoItExceptionNeutral();
 	void UndoExceptionNeutral();
 	void RedoExceptionNeutral();
+
+	void DoItCommandWithExceptionInRollback();
+	void DoItThrowsCannotRollback();
+	void UndoThrowsCannotRollback();
+	void RedoThrowsCannotRollback();
+
 
 	static cute::suite make_suite();
 };

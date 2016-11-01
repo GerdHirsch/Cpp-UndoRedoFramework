@@ -33,6 +33,8 @@ public:
 
 private:
 	std::unique_ptr<UndoRedoManager> urMngr;
+	bool doItExceptionCatched;
+	bool undoExceptionCatched;
 };
 
 #endif /* COMPOSITECOMMAND_H_ */

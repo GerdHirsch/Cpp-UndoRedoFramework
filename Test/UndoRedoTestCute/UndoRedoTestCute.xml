@@ -6,11 +6,7 @@
 		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::Undo"/>
 		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::UndoWithException"/>
 		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::UndoExceptionNeutral"/>
-		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::Redo">
-			<failure message="..\src\UndoRedoStackTest.cpp:117 Redo: expected == result expected:	3	but was:	0	">
-Redo: expected == result expected:	3	but was:	0	
-			</failure>
-		</testcase>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::Redo"/>
 		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::RedoWithException"/>
 		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::RedoExceptionNeutral"/>
 		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::IsRedoable"/>
@@ -27,19 +23,16 @@ Redo: expected == result expected:	3	but was:	0
 		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::RedoExceptionNeutral"/>
 		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::UndoExceptionNeutral"/>
 	</testsuite>
-	<testsuite name="CompositeCommand" tests="7">
+	<testsuite name="CompositeCommand" tests="12">
 		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItCommand"/>
-		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItCommandWithException">
-			<failure message="..\src\CompositeCommandTest.cpp:42 DoItCommandWithException: expected == result expected:	0	but was:	-2	">
-DoItCommandWithException: expected == result expected:	0	but was:	-2	
-			</failure>
-		</testcase>
-		<testcase classname="CompositeCommand" name="CompositeCommandTest::testUndoRedoDoIt"/>
-		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoWithException">
-			<failure message="..\src\CompositeCommandTest.cpp:92 UndoWithException: expected == result expected:	1	but was:	2	">
-UndoWithException: expected == result expected:	1	but was:	2	
-			</failure>
-		</testcase>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItCommandWithException"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoRedoDoIt"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoWithException"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::RedoWithException"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItCommandWithExceptionInRollback"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::RedoThrowsCannotRollback"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoThrowsCannotRollback"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItThrowsCannotRollback"/>
 		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItExceptionNeutral"/>
 		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoExceptionNeutral"/>
 		<testcase classname="CompositeCommand" name="CompositeCommandTest::RedoExceptionNeutral"/>

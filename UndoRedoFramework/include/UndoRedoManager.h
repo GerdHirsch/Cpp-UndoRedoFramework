@@ -25,6 +25,8 @@ public:
 	virtual bool isModified() const = 0;
 	virtual void resetModified() = 0;
 
+	virtual void clear() = 0;
+
 //	virtual std::unique_ptr<UndoRedoManager> clone() const & = 0;
 	// move clone!
 	virtual std::unique_ptr<UndoRedoManager> clone() && = 0;

@@ -14,6 +14,7 @@ public:
 	Plus(Calculator& calculator, int summand) :
 		calculator(calculator), summand(summand){
 		throwException() = false;
+		throwAtTimes() = 0;
 	}
 
 //	Plus(const Plus& source) :
@@ -21,14 +22,24 @@ public:
 
 	virtual void doIt() override
 	{
-		if(throwException()) throw std::logic_error("Plus.doIt()");
+		if(throwException()) {
+			if(throwAtTimes() <= 0)
+				throw std::logic_error("Plus.doIt() throws");
+			else
+				--throwAtTimes();
+		}
 
 //		std::cout << "Plus.doIt()" << std::endl;
 		calculator.plus(summand);
 	}
 	virtual void undo() override
 	{
-		if(throwException()) throw std::logic_error("Plus.undo()");
+		if(throwException()) {
+			if(throwAtTimes() <= 0)
+				throw std::logic_error("Plus.doIt() throws");
+			else
+				--throwAtTimes();
+		}
 //		std::cout << "Plus.undo()" << std::endl;
 		calculator.minus(summand);
 	}
@@ -49,6 +60,10 @@ public:
 	static bool& throwException(){
 		static bool b = false;
 		return b;
+	}
+	static int& throwAtTimes(){
+		static int times = 0;
+		return times;
 	}
 private:
 	Calculator& calculator;

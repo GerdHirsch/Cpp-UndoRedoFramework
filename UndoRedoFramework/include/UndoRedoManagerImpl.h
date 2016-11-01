@@ -37,8 +37,10 @@ public:
 	virtual void resetModified() override;
 	virtual std::unique_ptr<UndoRedoManager> clone() && override;
 
+	virtual void clear() override;
 private:
 	void clearRedoStack();
+	void clearUndoStack();
 
 	std::stack<SmartPointer> undoStack;
 	std::stack<SmartPointer> redoStack;
