@@ -54,7 +54,7 @@ void CompositeCommand::doIt(SmartPointer&& c) {
  * @throws Exception
  */
 void CompositeCommand::doIt() {
-	while (urMngr->canRedo()) {
+	while (urMngr->isRedoable()) {
 		urMngr->redo();
 	}
 }
@@ -66,7 +66,7 @@ void CompositeCommand::doIt() {
  * @supplierRole Command Manager
  */
 void CompositeCommand::undo() {
-	while (urMngr->canUndo()) {
+	while (urMngr->isUndoable()) {
 		urMngr->undo();
 	}
 }

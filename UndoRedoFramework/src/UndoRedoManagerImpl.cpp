@@ -24,7 +24,7 @@ UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 	redoStack( std::move(rhs.redoStack) ),
 	modifications( rhs.modifications)
 {
-	cout << "UndoRedoManagerImpl(UndoRedoManagerImpl &&)" << endl;
+//	cout << "UndoRedoManagerImpl(UndoRedoManagerImpl &&)" << endl;
 	// TODO: was sollte rhs.isModified() nach move zurückliefern?
 	rhs.modifications = 0;
 }
@@ -40,52 +40,37 @@ UndoRedoManagerImpl::UndoRedoManagerImpl() : modifications(0)
 //}
 unique_ptr<UndoRedoManager> UndoRedoManagerImpl::clone() &&
 {
-	cout << "UndoRedoManagerImpl::clone() &&"<< endl;
+//	cout << "UndoRedoManagerImpl::clone() &&"<< endl;
 	return unique_ptr<UndoRedoManager>(new UndoRedoManagerImpl( std::move(*this) ));
 }
 
 void UndoRedoManagerImpl::doIt(Command && command)
 {
 	doIt(std::move(command).clone());
-//
-//	if(modifications < 0)
-//		modifications = undoStack.size() + 1;
-//	modifications++;
-//
-//	undoStack.push( std::move(command).clone());
-//	clearRedoStack();
-//
-//	undoStack.top()->doIt();
 }
 void UndoRedoManagerImpl::doIt(Command const& command)
 {
 	doIt(command.clone());
-//
-//	if(modifications < 0)
-//		modifications = undoStack.size() + 1;
-//	modifications++;
-//
-//	undoStack.push( command.clone());
-//	clearRedoStack();
-//
-//	undoStack.top()->doIt();
 }
 void UndoRedoManagerImpl::doIt(SmartPointer && command)
 {
-	if(modifications < 0)
-		modifications = undoStack.size() + 1;
-	modifications++;
+//	std::cout << "UndoRedoManagerImpl::doIt(SmartPointer&&)" << std::endl;
+
+	command->doIt();
 
 	undoStack.push( std::move(command) );
 	clearRedoStack();
 
-	undoStack.top()->doIt();
+	if(modifications < 0)
+		modifications = undoStack.size() + 1;
+	else
+		modifications++;
 }
 void UndoRedoManagerImpl::clearRedoStack(){
 	while(!redoStack.empty())
 		redoStack.pop();
 }
-bool UndoRedoManagerImpl::canUndo() const
+bool UndoRedoManagerImpl::isUndoable() const
 {
 	return !undoStack.empty();
 }
@@ -103,7 +88,7 @@ void UndoRedoManagerImpl::undo()
 	undoStack.pop();
 }
 
-bool UndoRedoManagerImpl::canRedo() const
+bool UndoRedoManagerImpl::isRedoable() const
 {
 	return !redoStack.empty();
 }

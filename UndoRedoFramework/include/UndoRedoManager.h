@@ -16,10 +16,10 @@ public:
 	//for SmartPointers
 	virtual void doIt(SmartPointer&& command) = 0;
 
-	virtual bool canUndo() const = 0;
+	virtual bool isUndoable() const = 0;
 	virtual void undo() = 0;
 
-	virtual bool canRedo() const = 0;
+	virtual bool isRedoable() const = 0;
 	virtual void redo() = 0;
 	
 	virtual bool isModified() const = 0;

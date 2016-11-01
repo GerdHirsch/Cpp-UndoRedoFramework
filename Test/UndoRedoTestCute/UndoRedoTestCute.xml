@@ -1,0 +1,75 @@
+<testsuites>
+	<testsuite name="UndoRedoStack" tests="11">
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::DoIt"/>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::DoItWithException"/>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::DoItExceptionNeutral"/>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::Undo">
+			<failure message="..\src\UndoRedoStackTest.cpp:70 Undo: false == urMngr.isRedoable() expected:	0	but was:	1	">
+Undo: false == urMngr.isRedoable() expected:	0	but was:	1	
+			</failure>
+		</testcase>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::UndoWithException">
+			<failure message="..\src\UndoRedoStackTest.cpp:84 UndoWithException: expected == result expected:	3	but was:	0	">
+UndoWithException: expected == result expected:	3	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::UndoExceptionNeutral">
+			<failure message="..\src\UndoRedoStackTest.cpp:94 &quot; expecting &quot; &quot;urMngr.undo()&quot; &quot; to throw &quot; &quot;std::logic_error&quot;">
+&quot; expecting &quot; &quot;urMngr.undo()&quot; &quot; to throw &quot; &quot;std::logic_error&quot;
+			</failure>
+		</testcase>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::Redo">
+			<failure message="..\src\UndoRedoStackTest.cpp:108 Redo: expected == result expected:	3	but was:	0	">
+Redo: expected == result expected:	3	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::RedoWithException"/>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::RedoExceptionNeutral"/>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::IsRedoable"/>
+		<testcase classname="UndoRedoStack" name="UndoRedoStackTest::IsUndoable"/>
+	</testsuite>
+	<testsuite name="UndoRedoManager" tests="9">
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::IsModifiedSimple"/>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand"/>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::ResetModified"/>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::IsModifiedwithExceptionDoIt"/>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::IsModifiedtwithExceptionUndo">
+			<failure message="..\src\UndoRedoManagerTest.cpp:105 IsModifiedtwithExceptionUndo: true == urMngr.isModified() expected:	1	but was:	0	">
+IsModifiedtwithExceptionUndo: true == urMngr.isModified() expected:	1	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::IsModifiedtwithExceptionRedo">
+			<failure message="..\src\UndoRedoManagerTest.cpp:132 IsModifiedtwithExceptionRedo: false == urMngr.isModified() expected:	0	but was:	1	">
+IsModifiedtwithExceptionRedo: false == urMngr.isModified() expected:	0	but was:	1	
+			</failure>
+		</testcase>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::DoItExceptionNeutral"/>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::RedoExceptionNeutral"/>
+		<testcase classname="UndoRedoManager" name="UndoRedoManagerTest::UndoExceptionNeutral">
+			<failure message="..\src\UndoRedoManagerTest.cpp:155 &quot;Command throws but Manager not!&quot;">
+&quot;Command throws but Manager not!&quot;
+			</failure>
+		</testcase>
+	</testsuite>
+	<testsuite name="CompositeCommand" tests="7">
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItCommand"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItCommandWithException">
+			<failure message="..\src\CompsiteCommandTest.cpp:42 DoItCommandWithException: expected == result expected:	0	but was:	-2	">
+DoItCommandWithException: expected == result expected:	0	but was:	-2	
+			</failure>
+		</testcase>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::testUndoRedoDoIt"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoWithException">
+			<failure message="..\src\CompsiteCommandTest.cpp:92 UndoWithException: expected == result expected:	1	but was:	0	">
+UndoWithException: expected == result expected:	1	but was:	0	
+			</failure>
+		</testcase>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::DoItExceptionNeutral"/>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::UndoExceptionNeutral">
+			<failure message="..\src\CompsiteCommandTest.cpp:165 &quot; expecting &quot; &quot;urMngr.undo()&quot; &quot; to throw &quot; &quot;std::logic_error&quot;">
+&quot; expecting &quot; &quot;urMngr.undo()&quot; &quot; to throw &quot; &quot;std::logic_error&quot;
+			</failure>
+		</testcase>
+		<testcase classname="CompositeCommand" name="CompositeCommandTest::RedoExceptionNeutral"/>
+	</testsuite>
+</testsuites>

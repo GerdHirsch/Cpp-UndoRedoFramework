@@ -9,13 +9,14 @@
 #define COMPOSITECOMMAND_H_
 
 #include "Command.h"
+
 #include<memory>
 
 class UndoRedoManager;
 
 class CompositeCommand: public Command {
 public:
-	using SmartPointer = std::unique_ptr<Command>;
+	using SmartPointer = Command::SmartPointer;
 
 	CompositeCommand(UndoRedoManager && urMngr);
 	CompositeCommand(CompositeCommand && rhs);
@@ -26,8 +27,9 @@ public:
 	void doIt(SmartPointer && cmd);
 	void doIt() override;
 	void undo() override;
-	virtual std::unique_ptr<Command> clone() && override;
-	virtual std::unique_ptr<Command> clone() const& override;
+
+	virtual SmartPointer clone() && override;
+	virtual SmartPointer clone() const& override;
 
 private:
 	std::unique_ptr<UndoRedoManager> urMngr;
