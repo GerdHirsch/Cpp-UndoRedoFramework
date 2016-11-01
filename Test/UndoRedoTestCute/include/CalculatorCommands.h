@@ -1,11 +1,10 @@
 #ifndef CALCULATOR_COMMANDS
 #define CALCULATOR_COMMANDS
 
-#include "../include/Command.h"
-
-#include <iostream>
+#include <include/Command.h>
 #include "Calculator.h"
 
+#include <iostream>
 #include <stdexcept>
 
 
@@ -29,7 +28,7 @@ public:
 	}
 	virtual void undo() override
 	{
-		if(throwException()) throw std::logic_error("Plus.doIt()");
+		if(throwException()) throw std::logic_error("Plus.undo()");
 //		std::cout << "Plus.undo()" << std::endl;
 		calculator.minus(summand);
 	}

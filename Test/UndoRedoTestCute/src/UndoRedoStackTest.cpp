@@ -70,7 +70,15 @@ void UndoRedoStackTest::Undo(){
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 void UndoRedoStackTest::UndoWithException(){
+	int result = calculator.getResult();
+	int expected = 0;
+	ASSERT_EQUAL(expected, result);
+
 	urMngr.doIt(plus);
+
+	expected = plusValue;
+	result = calculator.getResult();
+	ASSERT_EQUAL(expected, result);
 
 	Plus::throwException() = true;
 
@@ -80,12 +88,11 @@ void UndoRedoStackTest::UndoWithException(){
 //		cout << "catch UndoWithException" << endl;
 	}
 
-	int result = calculator.getResult();
-	int expected = plusValue;
-
-	ASSERT_EQUAL(expected, result);
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
+
+	result = calculator.getResult();
+	ASSERT_EQUAL(expected, result);
 }
 
 void UndoRedoStackTest::UndoExceptionNeutral(){

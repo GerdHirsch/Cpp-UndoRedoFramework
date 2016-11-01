@@ -11,11 +11,11 @@
 #include <cute.h>
 
 #include <include/CompositeCommand.h>
-
-#include<Test/Calculator.h>
-#include<Test/CalculatorCommands.h>
-
 #include <include/UndoRedoManagerImpl.h>
+
+#include "Calculator.h"
+#include "CalculatorCommands.h"
+
 
 
 
