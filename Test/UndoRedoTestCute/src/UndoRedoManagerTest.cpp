@@ -12,11 +12,12 @@
 void UndoRedoManagerTest::IsModifiedSimple(){
 //	Plus::throwException() = false;
 
-	ASSERT_EQUAL(false, urMngr.isModified());
+	ASSERT_EQUALM("new Manager must be unmodified!", false, urMngr.isModified());
 
 	urMngr.doIt(plus);
 	urMngr.doIt(plus);
-	ASSERT_EQUAL(true, urMngr.isModified());
+	ASSERT_EQUALM("Manager with two Commands must be modified!",
+					true, urMngr.isModified());
 	urMngr.undo();
 	ASSERT_EQUAL(true, urMngr.isModified());
 

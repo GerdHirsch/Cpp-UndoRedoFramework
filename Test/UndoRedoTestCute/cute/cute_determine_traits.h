@@ -26,9 +26,9 @@
 #elif defined(USE_TR1)
 #include <tr1/type_traits>
 #else
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/type_traits/make_signed.hpp>
+#include "../_boost_/boost/type_traits/is_integral.hpp"
+#include "../_boost_/boost/type_traits/is_floating_point.hpp"
+#include "../_boost_/boost/type_traits/make_signed.hpp"
 #endif
 #if defined(USE_STD11)
 	namespace impl_place_for_traits = std;
