@@ -10,7 +10,6 @@
 
 #include "../include/UndoRedoTest.h"
 
-#include <iostream>
 
 class CompositeCommandTest: public UndoRedoTest {
 	CompositeCommand ccmd;
@@ -19,9 +18,9 @@ public:
 	:
 		UndoRedoTest(),
 		ccmd(UndoRedoManagerImpl())
-{
-//		std::cout << "CompositeCommandTest()" << std::endl;
-}
+{}
+	virtual std::unique_ptr<CompositeCommand> createCommand() const = 0;
+
 //	void CommandCompositeCtor();
 	void DoItCommand();
 	void DoItCommandWithException();
@@ -40,7 +39,20 @@ public:
 	void RedoThrowsCannotRollback();
 
 
-	static cute::suite make_suite();
+//	static cute::suite make_suite();
 };
+#define CompositeCommandTests(DerivedTest)									\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommand));			\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithException));\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoRedoDoIt));			\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));		\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithExceptionInRollback));\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItThrowsCannotRollback));\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoThrowsCannotRollback));\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoThrowsCannotRollback));
 
 #endif /* COMPOSITECOMMANDTEST_H_ */

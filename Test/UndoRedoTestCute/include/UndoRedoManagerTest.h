@@ -8,9 +8,9 @@
 #ifndef SRC_UNDOREDOMANAGERTEST_H_
 #define SRC_UNDOREDOMANAGERTEST_H_
 
-#include "UndoRedoTest.h"
+#include "UndoRedoStackTest.h"
 
-class UndoRedoManagerTest : public UndoRedoTest
+class UndoRedoManagerTest : public UndoRedoStackTest
 {
 
 public:
@@ -26,8 +26,19 @@ public:
 	void UndoExceptionNeutral();
 	void RedoExceptionNeutral();
 
-	static cute::suite make_suite();
+//	static cute::suite make_suite();
 };
 
+#define UndoRedoManagerTests(DerivedTest)\
+	UndoRedoStackTests(DerivedTest)	\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));				\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsRedoableWithNewCommand));\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, ResetModified));					\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedwithExceptionDoIt));	\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionUndo));	\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionRedo));	\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));			\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));			\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));
 
 #endif /* SRC_UNDOREDOMANAGERTEST_H_ */

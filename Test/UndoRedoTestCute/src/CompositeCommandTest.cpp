@@ -17,6 +17,9 @@ using namespace std;
 //	ASSERT_THROWS(CommandCompositeImpl(), std::logic_error);
 //}
 void CompositeCommandTest::DoItCommand() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 
 	ccmd.doIt(minus);
@@ -34,6 +37,8 @@ void CompositeCommandTest::DoItCommand() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::DoItCommandWithException() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
 	Plus::throwException() = true;
 
 	int expected { 0 };
@@ -62,6 +67,8 @@ void CompositeCommandTest::DoItCommandWithException() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::UndoRedoDoIt() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
 	int expected { 0 };
 	int result = calculator.getResult();
 
@@ -85,6 +92,8 @@ void CompositeCommandTest::UndoRedoDoIt() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::UndoWithException() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in undo
 	ccmd.doIt(minus);
@@ -122,6 +131,8 @@ void CompositeCommandTest::UndoWithException() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::RedoWithException() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
 	int expected { 0 };
 	ccmd.doIt(minus);
 	ccmd.doIt(plus);
@@ -169,6 +180,9 @@ void CompositeCommandTest::DoItExceptionNeutral() {
 	ASSERT_THROWS(ccmd.doIt(plus), std::logic_error);
 }
 void CompositeCommandTest::UndoExceptionNeutral() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	ccmd.doIt(plus);
 	urMngr.doIt(std::move(ccmd));
@@ -181,6 +195,9 @@ void CompositeCommandTest::UndoExceptionNeutral() {
 			urMngr.undo(), std::logic_error);
 }
 void CompositeCommandTest::RedoExceptionNeutral() {
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	ccmd.doIt(plus);
 	urMngr.doIt(std::move(ccmd));
@@ -227,6 +244,9 @@ void CompositeCommandTest::DoItThrowsCannotRollback(){
 			ccmd.doIt(plus), CannotRollbackException);
 }
 void CompositeCommandTest::UndoThrowsCannotRollback(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in undo
@@ -240,6 +260,9 @@ void CompositeCommandTest::UndoThrowsCannotRollback(){
 	ASSERT_THROWS(urMngr.undo(), CannotRollbackException);
 }
 void CompositeCommandTest::RedoThrowsCannotRollback(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in doIt
 	ccmd.doIt(minus);
@@ -253,20 +276,20 @@ void CompositeCommandTest::RedoThrowsCannotRollback(){
 	ASSERT_THROWS(urMngr.redo(), CannotRollbackException);
 }
 
-cute::suite CompositeCommandTest::make_suite(){
-	cute::suite s { };
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommand));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommandWithException));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoRedoDoIt));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoWithException));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoWithException));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommandWithExceptionInRollback));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoThrowsCannotRollback));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoThrowsCannotRollback));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItThrowsCannotRollback));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoExceptionNeutral));
-	return s;
-}
+//cute::suite CompositeCommandTest::make_suite(){
+//	cute::suite s { };
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommand));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommandWithException));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoRedoDoIt));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoWithException));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoWithException));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommandWithExceptionInRollback));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoThrowsCannotRollback));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoThrowsCannotRollback));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItThrowsCannotRollback));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoExceptionNeutral));
+//	return s;
+//}
 

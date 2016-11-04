@@ -10,7 +10,8 @@
 #include <iostream>
 
 void UndoRedoManagerTest::IsModifiedSimple(){
-//	Plus::throwException() = false;
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
 
 	ASSERT_EQUALM("new Manager must be unmodified!", false, urMngr.isModified());
 
@@ -36,6 +37,9 @@ void UndoRedoManagerTest::IsModifiedSimple(){
 	ASSERT_EQUAL(true, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 	urMngr.doIt(plus); // modified Count == 2
 	ASSERT_EQUAL(true, urMngr.isModified());
@@ -64,12 +68,17 @@ void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
 	}
 }
 void UndoRedoManagerTest::ResetModified(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 	urMngr.resetModified();
 	ASSERT_EQUAL(false, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
-	// initial modified Count == 0
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
@@ -86,7 +95,9 @@ void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
-	// initial modified Count == 0
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
@@ -108,7 +119,9 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
-	// initial modified Count == 0
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
 	ASSERT_EQUAL(false, urMngr.isRedoable());
@@ -145,34 +158,43 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
 }
 
 void UndoRedoManagerTest::DoItExceptionNeutral(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.doIt(plus), std::logic_error);
 }
 void UndoRedoManagerTest::UndoExceptionNeutral(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.undo(), std::logic_error);
 }
 void UndoRedoManagerTest::RedoExceptionNeutral(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 	urMngr.undo();
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.redo(), std::logic_error);
 }
-
-cute::suite UndoRedoManagerTest::make_suite(){
-	cute::suite s { };
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedSimple));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedAndIsRedoableWithNewCommand));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, ResetModified));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedwithExceptionDoIt));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionUndo));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionRedo));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, DoItExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, RedoExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, UndoExceptionNeutral));
-	return s;
-}
+//
+//cute::suite UndoRedoManagerTest::make_suite(){
+//	cute::suite s { };
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedSimple));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedAndIsRedoableWithNewCommand));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, ResetModified));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedwithExceptionDoIt));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionUndo));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, IsModifiedtwithExceptionRedo));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, DoItExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, RedoExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoManagerTest, UndoExceptionNeutral));
+//	return s;
+//}

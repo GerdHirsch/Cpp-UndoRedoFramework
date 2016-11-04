@@ -11,7 +11,7 @@
 #include "../include/Test.h"
 
 #include <memory>
-#include <iostream>
+//#include <iostream>
 
 class UndoRedoTest{
 public:
@@ -20,13 +20,13 @@ public:
 		plusValue(3),
 		minusValue(1),
 		plus(calculator, plusValue),
-		minus(calculator, minusValue),
-		pManager(new UndoRedoManagerImpl()),
-		urMngr(*pManager)
+		minus(calculator, minusValue)
+//		pManager(new UndoRedoManagerImpl()),
+//		urMngr(*pManager)
 	{
 //		std::cout << "UndoRedoTest()"  << std::endl;
 	}
-
+	virtual std::unique_ptr<UndoRedoManager> createManager() const = 0;
 
 protected:
 	Calculator calculator;
@@ -34,8 +34,8 @@ protected:
 	int minusValue;
 	Plus plus;
 	Minus minus;
-	std::shared_ptr<UndoRedoManager> pManager;
-	UndoRedoManager& urMngr;
+//	std::shared_ptr<UndoRedoManager> pManager;
+//	UndoRedoManager& urMngr;
 };
 
 

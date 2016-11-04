@@ -8,16 +8,25 @@
 #include "../include/UndoRedoStackTest.h"
 
 void UndoRedoStackTest::IsUndoable(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 }
 void UndoRedoStackTest::IsRedoable(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 	urMngr.undo();
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 
 void UndoRedoStackTest::DoIt(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 
 	urMngr.doIt(Plus(calculator, plusValue));
@@ -30,6 +39,9 @@ void UndoRedoStackTest::DoIt(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoStackTest::Undo(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -43,6 +55,9 @@ void UndoRedoStackTest::Undo(){
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 void UndoRedoStackTest::Redo(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -57,6 +72,8 @@ void UndoRedoStackTest::Redo(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoStackTest::DoItWithException(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
 
 	Plus::throwException() = true;
 	int result = calculator.getResult();
@@ -75,6 +92,9 @@ void UndoRedoStackTest::DoItWithException(){
 }
 
 void UndoRedoStackTest::UndoWithException(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	urMngr.doIt(plus);
 
 	int expected = plusValue;
@@ -97,6 +117,9 @@ void UndoRedoStackTest::UndoWithException(){
 }
 
 void UndoRedoStackTest::RedoWithException(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -116,12 +139,18 @@ void UndoRedoStackTest::RedoWithException(){
 }
 
 void UndoRedoStackTest::DoItExceptionNeutral(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = true;
 
 	ASSERT_THROWS(urMngr.doIt(plus), std::logic_error);
 }
 //==========
 void UndoRedoStackTest::UndoExceptionNeutral(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
@@ -130,6 +159,9 @@ void UndoRedoStackTest::UndoExceptionNeutral(){
 }
 //==========
 void UndoRedoStackTest::RedoExceptionNeutral(){
+	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	UndoRedoManager& urMngr(*pManager);
+
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -139,18 +171,18 @@ void UndoRedoStackTest::RedoExceptionNeutral(){
 }
 
 
-cute::suite UndoRedoStackTest::make_suite(){
-	cute::suite s { };
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoIt));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoItWithException));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoItExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Undo));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, UndoWithException));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, UndoExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Redo));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoWithException));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoExceptionNeutral));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, IsRedoable));
-	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, IsUndoable));
-	return s;
-}
+//cute::suite UndoRedoStackTest::make_suite(){
+//	cute::suite s { };
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoIt));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoItWithException));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, DoItExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Undo));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, UndoWithException));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, UndoExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, Redo));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoWithException));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, RedoExceptionNeutral));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, IsRedoable));
+//	s.push_back(CUTE_SMEMFUN(UndoRedoStackTest, IsUndoable));
+//	return s;
+//}
