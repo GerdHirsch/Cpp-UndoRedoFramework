@@ -12,6 +12,7 @@
 #include <include/CompositeCommand.h>
 #include "CompositeCommandTest.h"
 
+
 class DefaultCompositeCommandTest : public CompositeCommandTest {
 public:
 	virtual std::unique_ptr<UndoRedoManager> createManager() const override {
