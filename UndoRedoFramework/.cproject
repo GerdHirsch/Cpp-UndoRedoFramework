@@ -164,8 +164,8 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.644550124.1651876954.1981469712" name="UndoRedoManagerImpl.cpp" rcbsApplicability="disable" resourcePath="src/UndoRedoManagerImpl.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696.1026080870">
-						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696.1026080870" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696"/>
+					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.644550124.1651876954.825532865" name="CompositeCommandImpl.cpp" rcbsApplicability="disable" resourcePath="src/CompositeCommandImpl.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696.128543491">
+						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696.128543491" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696"/>
 					</fileInfo>
 					<sourceEntries>
 						<entry excluding="src|include" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>

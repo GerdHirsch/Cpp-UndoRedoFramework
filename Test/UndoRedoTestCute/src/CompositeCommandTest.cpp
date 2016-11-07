@@ -16,29 +16,32 @@ using namespace std;
 //CompositeCommandTest::CompositeCommandCtor() {
 //	ASSERT_THROWS(CommandCompositeImpl(), std::logic_error);
 //}
+
+
 void CompositeCommandTest::DoItCommand() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
 
 	Plus::throwException() = false;
 
 	ccmd.doIt(minus);
 	ccmd.doIt(plus);
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	int expected { plusValue - minusValue };
 	int result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 
-	urMngr.doIt(plus);
+	urStack.doIt(plus);
 
 	expected += plusValue;
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::DoItCommandWithException() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
+
 	Plus::throwException() = true;
 
 	int expected { 0 };
@@ -57,47 +60,49 @@ void CompositeCommandTest::DoItCommandWithException() {
 	cout << "result: " << result << endl;
 	ASSERT_EQUAL(expected, result);
 
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
-	urMngr.undo();
+	urStack.undo();
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::UndoRedoDoIt() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
+
 	int expected { 0 };
 	int result = calculator.getResult();
 
 	ccmd.doIt(minus);
 	ccmd.doIt(plus);
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	expected = plusValue - minusValue;
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 
-	urMngr.undo();
+	urStack.undo();
 
 	expected = 0;
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
-	urMngr.redo();
+	urStack.redo();
 
 	expected = plusValue - minusValue;
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::UndoWithException() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
+
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in undo
 	ccmd.doIt(minus);
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	int expected { plusValue - (minusValue + minusValue) };
 	int result = calculator.getResult();
@@ -105,7 +110,7 @@ void CompositeCommandTest::UndoWithException() {
 
 	Plus::throwException() = true;
 	try{
-		urMngr.undo();
+		urStack.undo();
 	}catch(std::exception& e){}
 
 	result = calculator.getResult();
@@ -113,8 +118,8 @@ void CompositeCommandTest::UndoWithException() {
 
 	Plus::throwException() = false;
 
-	ASSERT_EQUAL(true, urMngr.isUndoable());
-	urMngr.undo();
+	ASSERT_EQUAL(true, urStack.isUndoable());
+	urStack.undo();
 
 	expected = 0;
 	result = calculator.getResult();
@@ -124,26 +129,27 @@ void CompositeCommandTest::UndoWithException() {
 	Plus::throwException() = true;
 
 	try{
-		urMngr.redo();
+		urStack.redo();
 	}catch(std::exception& e){}
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::RedoWithException() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
+
 	int expected { 0 };
 	ccmd.doIt(minus);
 	ccmd.doIt(plus);
 	ccmd.doIt(minus);
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	expected = plusValue - (minusValue+minusValue);
 	int result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 
-	urMngr.undo();
+	urStack.undo();
 
 	expected = 0;
 	result = calculator.getResult();
@@ -152,7 +158,7 @@ void CompositeCommandTest::RedoWithException() {
 	Plus::throwException() = true;
 
 	try{
-		urMngr.redo();
+		urStack.redo();
 	}catch(std::exception& e){}
 
 	result = calculator.getResult();
@@ -160,7 +166,7 @@ void CompositeCommandTest::RedoWithException() {
 
 	Plus::throwException() = false;
 
-	urMngr.redo();
+	urStack.redo();
 
 	expected = plusValue - (minusValue+minusValue);
 	result = calculator.getResult();
@@ -169,46 +175,50 @@ void CompositeCommandTest::RedoWithException() {
 	Plus::throwException() = true;
 
 	try{
-		urMngr.undo();
+		urStack.undo();
 	}catch(std::exception& e){}
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::DoItExceptionNeutral() {
+	CompositeCommand& ccmd(getSUT());
+
 	Plus::throwException() = true;
 	ASSERT_THROWS(ccmd.doIt(plus), std::logic_error);
 }
 void CompositeCommandTest::UndoExceptionNeutral() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(plus);
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	Plus::throwException() = true;
 	Plus::throwAtTimes() = 0;
 
-	ASSERT_THROWS(urMngr.undo(), std::exception);
+	ASSERT_THROWS(urStack.undo(), std::exception);
 	ASSERT_THROWSM("should be a std::logic_error",
-			urMngr.undo(), std::logic_error);
+			urStack.undo(), std::logic_error);
 }
 void CompositeCommandTest::RedoExceptionNeutral() {
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(plus);
-	urMngr.doIt(std::move(ccmd));
-	urMngr.undo();
+	urStack.doIt(std::move(ccmd));
+	urStack.undo();
 	Plus::throwException() = true;
 
-	ASSERT_THROWS(urMngr.redo(), std::exception);
-//	ASSERT_THROWS(urMngr.redo(), std::logic_error);
+	ASSERT_THROWS(urStack.redo(), std::exception);
+//	ASSERT_THROWS(urStack.redo(), std::logic_error);
 }
 
 void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
+	CompositeCommand& ccmd(getSUT());
+
 	Plus::throwException() = false;
 
 	ccmd.doIt(minus);
@@ -234,6 +244,8 @@ void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 }
 
 void CompositeCommandTest::DoItThrowsCannotRollback(){
+	CompositeCommand& ccmd(getSUT());
+
 	Plus::throwException() = false;
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in rollback
@@ -244,36 +256,36 @@ void CompositeCommandTest::DoItThrowsCannotRollback(){
 			ccmd.doIt(plus), CannotRollbackException);
 }
 void CompositeCommandTest::UndoThrowsCannotRollback(){
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in undo
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in rollback
-	urMngr.doIt(std::move(ccmd));
+	urStack.doIt(std::move(ccmd));
 
 	Plus::throwException() = true;
 	Plus::throwAtTimes() = 1;
 
-	ASSERT_THROWS(urMngr.undo(), CannotRollbackException);
+	ASSERT_THROWS(urStack.undo(), CannotRollbackException);
 }
 void CompositeCommandTest::RedoThrowsCannotRollback(){
-	std::unique_ptr<UndoRedoManager> pManager = createSUT();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoStack& urStack(getURStack());
+	CompositeCommand& ccmd(getSUT());
 
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in doIt
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in rollback
-	urMngr.doIt(std::move(ccmd));
-	urMngr.undo();
+	urStack.doIt(std::move(ccmd));
+	urStack.undo();
 
 	Plus::throwException() = true;
 	Plus::throwAtTimes() = 1;
 
-	ASSERT_THROWS(urMngr.redo(), CannotRollbackException);
+	ASSERT_THROWS(urStack.redo(), CannotRollbackException);
 }
 
 //cute::suite CompositeCommandTest::make_suite(){

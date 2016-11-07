@@ -18,23 +18,13 @@ class CompositeCommand: public Command {
 public:
 	using SmartPointer = Command::SmartPointer;
 
-	CompositeCommand(UndoRedoStack && urMngr);
-	CompositeCommand(CompositeCommand && rhs);
 	virtual ~CompositeCommand();
 
-	void doIt(Command&& c);
-	void doIt(Command const& c);
-	void doIt(SmartPointer && cmd);
-	void doIt() override;
-	void undo() override;
-
-	virtual SmartPointer clone() && override;
-	virtual SmartPointer clone() const& override;
-
-private:
-	std::unique_ptr<UndoRedoStack> urMngr;
-	bool doItExceptionCatched;
-	bool undoExceptionCatched;
+	virtual void doIt(Command&& c) = 0;
+	virtual void doIt(Command const& c) = 0;
+	virtual void doIt(SmartPointer && cmd) = 0;
 };
+inline
+CompositeCommand::~CompositeCommand(){}
 
 #endif /* COMPOSITECOMMAND_H_ */

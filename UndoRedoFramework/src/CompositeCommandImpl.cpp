@@ -1,40 +1,40 @@
 /*
- * CompositeCommand.cpp
+ * CompositeCommandImpl.cpp
  *
  *  Created on: 19.02.2015
  *      Author: Gerd
  */
 
-#include "../include/CompositeCommand.h"
+#include "../include/CompositeCommandImpl.h"
 #include "../include/UndoRedoStack.h"
 #include "../include/CannotRollbackException.h"
 
 #include <iostream>
 using namespace std;
 
-CompositeCommand::CompositeCommand(UndoRedoStack && urMngr)
-: urMngr( std::move(urMngr).clone()),
+CompositeCommandImpl::CompositeCommandImpl(UndoRedoStack && urStack)
+: urStack( std::move(urStack).clone()),
   doItExceptionCatched(false),
   undoExceptionCatched(false)
 { }
 
-CompositeCommand::CompositeCommand(CompositeCommand && rhs)
-: urMngr( std::move(rhs.urMngr) ),
+CompositeCommandImpl::CompositeCommandImpl(CompositeCommandImpl && rhs)
+: urStack( std::move(rhs.urStack) ),
   doItExceptionCatched(false),
   undoExceptionCatched(false)
 {  }
 
-std::unique_ptr<Command> CompositeCommand::clone() const&
+std::unique_ptr<Command> CompositeCommandImpl::clone() const&
 {
 	// ugly hack, but we must implement all virtual Operations
-	// CompositeCommands cannot be copied
+	// CompositeCommandImpls cannot be copied
 	throw std::logic_error("Operation not supported");
 }
-std::unique_ptr<Command> CompositeCommand::clone() &&
+std::unique_ptr<Command> CompositeCommandImpl::clone() &&
 {
-	return std::unique_ptr<Command>( new CompositeCommand( std::move(*this) ));
+	return std::unique_ptr<Command>( new CompositeCommandImpl( std::move(*this) ));
 }
-CompositeCommand::~CompositeCommand() {
+CompositeCommandImpl::~CompositeCommandImpl() {
 	//definition wird wegen unique_ptr<..> urMngr benötigt
 }
 
@@ -44,21 +44,19 @@ CompositeCommand::~CompositeCommand() {
  *
  * @param c
  */
-void CompositeCommand::doIt(Command&& command) {
+void CompositeCommandImpl::doIt(Command&& command) {
 	doIt(std::move(command).clone());
-//	urMngr->doIt( std::move(c) );
 }
-void CompositeCommand::doIt(Command const& command) {
+void CompositeCommandImpl::doIt(Command const& command) {
 	doIt(command.clone());
-//	urMngr->doIt(c);
 }
-void CompositeCommand::doIt(SmartPointer&& c) {
+void CompositeCommandImpl::doIt(SmartPointer&& c) {
 	try{
-		urMngr->doIt( std::move(c) );
+		urStack->doIt( std::move(c) );
 	}catch(...){
 		doItExceptionCatched = true;
 		undo();
-		urMngr->clear();
+		urStack->clear();
 		throw;
 	}
 }
@@ -69,10 +67,10 @@ void CompositeCommand::doIt(SmartPointer&& c) {
  *
  * @throws Exception
  */
-void CompositeCommand::doIt() {
+void CompositeCommandImpl::doIt() {
 	try{
-		while (urMngr->isRedoable()) {
-			urMngr->redo();
+		while (urStack->isRedoable()) {
+			urStack->redo();
 	}
 	}catch(std::exception& e){
 		doItExceptionCatched = true;
@@ -93,10 +91,10 @@ void CompositeCommand::doIt() {
  * @directed true
  * @supplierRole Command Manager
  */
-void CompositeCommand::undo() {
+void CompositeCommandImpl::undo() {
 	try{
-		while (urMngr->isUndoable()) {
-			urMngr->undo();
+		while (urStack->isUndoable()) {
+			urStack->undo();
 		}
 	}catch(std::exception& e){
 		undoExceptionCatched = true;

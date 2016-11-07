@@ -11,15 +11,19 @@
 #include "../include/UndoRedoTest.h"
 
 
-class CompositeCommandTest: public UndoRedoTest<UndoRedoManager> {
-	CompositeCommand ccmd;
+class CompositeCommandTest: public UndoRedoTest<CompositeCommand> {
+//	CompositeCommand ccmd;
+	std::unique_ptr<CompositeCommand> pCommand;
+	std::unique_ptr<UndoRedoStack> pStack;
 public:
 	CompositeCommandTest()
-	:
-		UndoRedoTest(),
-		ccmd(UndoRedoManagerImpl())
-{}
-	virtual std::unique_ptr<CompositeCommand> createCommand() const = 0;
+	: UndoRedoTest() {}
+
+	virtual std::unique_ptr<UndoRedoStack> createURStack() const = 0;
+	UndoRedoStack& getURStack(){
+		pStack = createURStack();
+		return *pStack;
+	}
 
 //	void CommandCompositeCtor();
 	void DoItCommand();
