@@ -29,6 +29,7 @@ public:
 //		std::cout << "UndoRedoTest()"  << std::endl;
 	}
 	virtual std::unique_ptr<SUT> createSUT() const = 0;
+
 	SUT& getSUT() {
 		pSUT = createSUT();
 		return *pSUT;
