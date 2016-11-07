@@ -8,15 +8,13 @@
 #include "../include/UndoRedoStackTest.h"
 
 void UndoRedoStackTest::IsUndoable(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 }
 void UndoRedoStackTest::IsRedoable(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -24,8 +22,7 @@ void UndoRedoStackTest::IsRedoable(){
 }
 
 void UndoRedoStackTest::DoIt(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = false;
 
@@ -39,8 +36,7 @@ void UndoRedoStackTest::DoIt(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoStackTest::Undo(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -55,8 +51,7 @@ void UndoRedoStackTest::Undo(){
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 void UndoRedoStackTest::Redo(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -72,8 +67,7 @@ void UndoRedoStackTest::Redo(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoStackTest::DoItWithException(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = true;
 	int result = calculator.getResult();
@@ -92,8 +86,7 @@ void UndoRedoStackTest::DoItWithException(){
 }
 
 void UndoRedoStackTest::UndoWithException(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 
@@ -117,8 +110,7 @@ void UndoRedoStackTest::UndoWithException(){
 }
 
 void UndoRedoStackTest::RedoWithException(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -139,8 +131,7 @@ void UndoRedoStackTest::RedoWithException(){
 }
 
 void UndoRedoStackTest::DoItExceptionNeutral(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = true;
 
@@ -148,8 +139,7 @@ void UndoRedoStackTest::DoItExceptionNeutral(){
 }
 //==========
 void UndoRedoStackTest::UndoExceptionNeutral(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -159,8 +149,7 @@ void UndoRedoStackTest::UndoExceptionNeutral(){
 }
 //==========
 void UndoRedoStackTest::RedoExceptionNeutral(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);

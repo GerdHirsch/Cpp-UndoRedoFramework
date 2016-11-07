@@ -10,8 +10,7 @@
 #include <iostream>
 
 void UndoRedoManagerTest::IsModifiedSimple(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	ASSERT_EQUALM("new Manager must be unmodified!", false, urMngr.isModified());
 
@@ -37,8 +36,7 @@ void UndoRedoManagerTest::IsModifiedSimple(){
 	ASSERT_EQUAL(true, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 	urMngr.doIt(plus); // modified Count == 2
@@ -68,16 +66,14 @@ void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
 	}
 }
 void UndoRedoManagerTest::ResetModified(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 	urMngr.resetModified();
 	ASSERT_EQUAL(false, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -95,8 +91,7 @@ void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -119,8 +114,7 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -158,16 +152,14 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
 }
 
 void UndoRedoManagerTest::DoItExceptionNeutral(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.doIt(plus), std::logic_error);
 }
 void UndoRedoManagerTest::UndoExceptionNeutral(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
@@ -175,8 +167,7 @@ void UndoRedoManagerTest::UndoExceptionNeutral(){
 			urMngr.undo(), std::logic_error);
 }
 void UndoRedoManagerTest::RedoExceptionNeutral(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
-	UndoRedoManager& urMngr(*pManager);
+	UndoRedoManager& urMngr(getManager());
 
 	urMngr.doIt(plus);
 	urMngr.undo();

@@ -8,6 +8,8 @@
 #ifndef INCLUDE_DEFAULTUNDOREDOMANAGERTEST_H_
 #define INCLUDE_DEFAULTUNDOREDOMANAGERTEST_H_
 
+#include <memory>
+
 #include <include/UndoRedoManager.h>
 #include "UndoRedoManagerTest.h"
 
