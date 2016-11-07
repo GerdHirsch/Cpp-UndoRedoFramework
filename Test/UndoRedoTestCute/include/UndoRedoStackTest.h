@@ -10,7 +10,7 @@
 
 #include "UndoRedoTest.h"
 
-class UndoRedoStackTest : public UndoRedoTest {
+class UndoRedoStackTest : public UndoRedoTest<UndoRedoManager> {
 
 public:
 	void DoIt();

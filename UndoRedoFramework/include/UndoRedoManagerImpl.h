@@ -1,49 +1,41 @@
 #ifndef UNDOREDOMANAGERIMPL_H
 #define UNDOREDOMANAGERIMPL_H
 
-#include <stack>
-#include <memory>
-//#include <boost/shared_ptr.hpp>
-
 #include "undoredomanager.h"
+#include "UndoRedoStackImpl.h"
 #include "Command.h"
 
+#include <stack>
+#include <memory>
 
-class UndoRedoManagerImpl : public UndoRedoManager
+
+class UndoRedoManagerImpl : public UndoRedoStackImpl, public UndoRedoManager
 {
 
 public:
-//	using SmartPointer = std::unique_ptr<Command>;
 
 	UndoRedoManagerImpl();
-//	UndoRedoManagerImpl(UndoRedoManagerImpl const& rhs);
 	UndoRedoManagerImpl(UndoRedoManagerImpl && rhs);
 
 	//for non copyable commands
 	//for copyable commands
 	//for SmartPointers
-
-	virtual void doIt(Command && command) override;
-	virtual void doIt(Command const& command) override;
+//	virtual void doIt(Command && command) override;
+//	virtual void doIt(Command const& command) override;
 	virtual void doIt(SmartPointer && command) override;
 
-	virtual bool isUndoable() const override;
+//	virtual bool isUndoable() const override;
 	virtual void undo() override;
 
-	virtual bool isRedoable() const override;
+//	virtual bool isRedoable() const override;
 	virtual void redo() override;
 	
 	virtual bool isModified() const override;
 	virtual void resetModified() override;
-	virtual std::unique_ptr<UndoRedoManager> clone() && override;
+//	virtual std::unique_ptr<UndoRedoManager> clone() && override;
 
-	virtual void clear() override;
+//	virtual void clear() override;
 private:
-	void clearRedoStack();
-	void clearUndoStack();
-
-	std::stack<SmartPointer> undoStack;
-	std::stack<SmartPointer> redoStack;
 	int modifications;
 };
 

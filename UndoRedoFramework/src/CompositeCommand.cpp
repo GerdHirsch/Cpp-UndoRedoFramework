@@ -6,13 +6,13 @@
  */
 
 #include "../include/CompositeCommand.h"
-#include "../include/UndoRedoManager.h"
+#include "../include/UndoRedoStack.h"
 #include "../include/CannotRollbackException.h"
 
 #include <iostream>
 using namespace std;
 
-CompositeCommand::CompositeCommand(UndoRedoManager && urMngr)
+CompositeCommand::CompositeCommand(UndoRedoStack && urMngr)
 : urMngr( std::move(urMngr).clone()),
   doItExceptionCatched(false),
   undoExceptionCatched(false)

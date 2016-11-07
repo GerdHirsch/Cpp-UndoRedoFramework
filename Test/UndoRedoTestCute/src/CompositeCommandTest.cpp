@@ -17,7 +17,7 @@ using namespace std;
 //	ASSERT_THROWS(CommandCompositeImpl(), std::logic_error);
 //}
 void CompositeCommandTest::DoItCommand() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 
 	Plus::throwException() = false;
@@ -37,7 +37,7 @@ void CompositeCommandTest::DoItCommand() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::DoItCommandWithException() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 	Plus::throwException() = true;
 
@@ -67,7 +67,7 @@ void CompositeCommandTest::DoItCommandWithException() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::UndoRedoDoIt() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 	int expected { 0 };
 	int result = calculator.getResult();
@@ -92,7 +92,7 @@ void CompositeCommandTest::UndoRedoDoIt() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::UndoWithException() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in undo
@@ -131,7 +131,7 @@ void CompositeCommandTest::UndoWithException() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::RedoWithException() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 	int expected { 0 };
 	ccmd.doIt(minus);
@@ -180,7 +180,7 @@ void CompositeCommandTest::DoItExceptionNeutral() {
 	ASSERT_THROWS(ccmd.doIt(plus), std::logic_error);
 }
 void CompositeCommandTest::UndoExceptionNeutral() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 
 	Plus::throwException() = false;
@@ -195,7 +195,7 @@ void CompositeCommandTest::UndoExceptionNeutral() {
 			urMngr.undo(), std::logic_error);
 }
 void CompositeCommandTest::RedoExceptionNeutral() {
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 
 	Plus::throwException() = false;
@@ -244,7 +244,7 @@ void CompositeCommandTest::DoItThrowsCannotRollback(){
 			ccmd.doIt(plus), CannotRollbackException);
 }
 void CompositeCommandTest::UndoThrowsCannotRollback(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 
 	Plus::throwException() = false;
@@ -260,7 +260,7 @@ void CompositeCommandTest::UndoThrowsCannotRollback(){
 	ASSERT_THROWS(urMngr.undo(), CannotRollbackException);
 }
 void CompositeCommandTest::RedoThrowsCannotRollback(){
-	std::unique_ptr<UndoRedoManager> pManager = createManager();
+	std::unique_ptr<UndoRedoManager> pManager = createSUT();
 	UndoRedoManager& urMngr(*pManager);
 
 	ccmd.doIt(minus);

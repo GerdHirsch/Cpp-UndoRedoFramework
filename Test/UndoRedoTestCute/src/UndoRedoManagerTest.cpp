@@ -10,7 +10,7 @@
 #include <iostream>
 
 void UndoRedoManagerTest::IsModifiedSimple(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	ASSERT_EQUALM("new Manager must be unmodified!", false, urMngr.isModified());
 
@@ -36,7 +36,7 @@ void UndoRedoManagerTest::IsModifiedSimple(){
 	ASSERT_EQUAL(true, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	urMngr.doIt(plus); // modified Count == 2
@@ -66,14 +66,14 @@ void UndoRedoManagerTest::IsModifiedAndIsRedoableWithNewCommand(){
 	}
 }
 void UndoRedoManagerTest::ResetModified(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	urMngr.resetModified();
 	ASSERT_EQUAL(false, urMngr.isModified());
 }
 void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -91,7 +91,7 @@ void UndoRedoManagerTest::IsModifiedwithExceptionDoIt(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -114,7 +114,7 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionUndo(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	ASSERT_EQUAL(false, urMngr.isModified());
 	ASSERT_EQUAL(false, urMngr.isUndoable());
@@ -152,14 +152,14 @@ void UndoRedoManagerTest::IsModifiedtwithExceptionRedo(){
 }
 
 void UndoRedoManagerTest::DoItExceptionNeutral(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = true;
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.doIt(plus), std::logic_error);
 }
 void UndoRedoManagerTest::UndoExceptionNeutral(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
@@ -167,7 +167,7 @@ void UndoRedoManagerTest::UndoExceptionNeutral(){
 			urMngr.undo(), std::logic_error);
 }
 void UndoRedoManagerTest::RedoExceptionNeutral(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	urMngr.undo();

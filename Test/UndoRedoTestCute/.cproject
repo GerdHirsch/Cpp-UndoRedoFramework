@@ -74,13 +74,11 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.2087371820" name="CalculatorCommands.h" rcbsApplicability="disable" resourcePath="include/CalculatorCommands.h" toolsToInvoke=""/>
-					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.426338616" name="CompositeCommandTest.cpp" rcbsApplicability="disable" resourcePath="src/CompositeCommandTest.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.1988764586">
-						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.1988764586" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124">
-							<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1435705426" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
-						</tool>
+					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.88406074" name="CompositeCommandTest.cpp" rcbsApplicability="disable" resourcePath="src/CompositeCommandTest.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.885191041">
+						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.885191041" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124"/>
 					</fileInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/CompositeCommandTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

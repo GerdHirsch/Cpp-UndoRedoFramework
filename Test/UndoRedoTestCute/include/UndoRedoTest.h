@@ -13,24 +13,25 @@
 #include <memory>
 //#include <iostream>
 
-
+template<class SUTType>
 class UndoRedoTest{
 public:
+	using SUT = SUTType;
+
 	UndoRedoTest():
 		calculator(),
 		plusValue(3),
 		minusValue(1),
 		plus(calculator, plusValue),
 		minus(calculator, minusValue),
-		pManager(nullptr)
-//		urMngr(*pManager)
+		pSUT(nullptr)
 	{
 //		std::cout << "UndoRedoTest()"  << std::endl;
 	}
-	virtual std::unique_ptr<UndoRedoManager> createManager() const = 0;
-	UndoRedoManager& getManager() {
-		pManager = createManager();
-		return *pManager;
+	virtual std::unique_ptr<SUT> createSUT() const = 0;
+	SUT& getSUT() {
+		pSUT = createSUT();
+		return *pSUT;
 	}
 
 protected:
@@ -39,8 +40,7 @@ protected:
 	int minusValue;
 	Plus plus;
 	Minus minus;
-	std::unique_ptr<UndoRedoManager> pManager;
-//	UndoRedoManager& urMngr;
+	std::unique_ptr<SUT> pSUT;
 };
 
 

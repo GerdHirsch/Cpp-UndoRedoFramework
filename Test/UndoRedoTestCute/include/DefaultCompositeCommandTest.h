@@ -15,7 +15,7 @@
 
 class DefaultCompositeCommandTest : public CompositeCommandTest {
 public:
-	virtual std::unique_ptr<UndoRedoManager> createManager() const override {
+	virtual std::unique_ptr<UndoRedoManager> createSUT() const override {
 		return std::unique_ptr<UndoRedoManager>(new UndoRedoManagerImpl);
 	}
 	virtual std::unique_ptr<CompositeCommand> createCommand() const override {

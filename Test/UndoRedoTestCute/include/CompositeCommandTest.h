@@ -11,7 +11,7 @@
 #include "../include/UndoRedoTest.h"
 
 
-class CompositeCommandTest: public UndoRedoTest {
+class CompositeCommandTest: public UndoRedoTest<UndoRedoManager> {
 	CompositeCommand ccmd;
 public:
 	CompositeCommandTest()

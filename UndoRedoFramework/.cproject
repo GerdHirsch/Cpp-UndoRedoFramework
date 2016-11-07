@@ -164,10 +164,13 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.644550124.1651876954.1981469712" name="UndoRedoManagerImpl.cpp" rcbsApplicability="disable" resourcePath="src/UndoRedoManagerImpl.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696.1026080870">
+						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696.1026080870" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696"/>
+					</fileInfo>
 					<sourceEntries>
 						<entry excluding="src|include" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
-						<entry excluding="SimpleCalculator.cpp|Main.cpp|DemoCompositeCommand.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="CompositeCommand.cpp|SimpleCalculator.cpp|Main.cpp|DemoCompositeCommand.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -179,6 +182,7 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug Gcov"/>
 		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/UndoRedoFramework"/>
 		</configuration>

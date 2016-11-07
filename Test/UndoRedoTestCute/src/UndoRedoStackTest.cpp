@@ -8,13 +8,13 @@
 #include "../include/UndoRedoStackTest.h"
 
 void UndoRedoStackTest::IsUndoable(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 }
 void UndoRedoStackTest::IsRedoable(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -22,7 +22,7 @@ void UndoRedoStackTest::IsRedoable(){
 }
 
 void UndoRedoStackTest::DoIt(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = false;
 
@@ -36,7 +36,7 @@ void UndoRedoStackTest::DoIt(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoStackTest::Undo(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -51,7 +51,7 @@ void UndoRedoStackTest::Undo(){
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 void UndoRedoStackTest::Redo(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -67,7 +67,7 @@ void UndoRedoStackTest::Redo(){
 	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 void UndoRedoStackTest::DoItWithException(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = true;
 	int result = calculator.getResult();
@@ -86,7 +86,7 @@ void UndoRedoStackTest::DoItWithException(){
 }
 
 void UndoRedoStackTest::UndoWithException(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 
@@ -110,7 +110,7 @@ void UndoRedoStackTest::UndoWithException(){
 }
 
 void UndoRedoStackTest::RedoWithException(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -131,7 +131,7 @@ void UndoRedoStackTest::RedoWithException(){
 }
 
 void UndoRedoStackTest::DoItExceptionNeutral(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = true;
 
@@ -139,7 +139,7 @@ void UndoRedoStackTest::DoItExceptionNeutral(){
 }
 //==========
 void UndoRedoStackTest::UndoExceptionNeutral(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -149,7 +149,7 @@ void UndoRedoStackTest::UndoExceptionNeutral(){
 }
 //==========
 void UndoRedoStackTest::RedoExceptionNeutral(){
-	UndoRedoManager& urMngr(getManager());
+	UndoRedoManager& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);

@@ -15,7 +15,7 @@
 
 class DefaultUndoRedoManagerTest : public UndoRedoManagerTest {
 public:
-	virtual std::unique_ptr<UndoRedoManager> createManager() const override {
+	virtual std::unique_ptr<UndoRedoManager> createSUT() const override {
 		return std::unique_ptr<UndoRedoManager>(new UndoRedoManagerImpl);
 	}
 	static cute::suite make_suite();

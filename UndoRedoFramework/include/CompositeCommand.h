@@ -12,13 +12,13 @@
 
 #include<memory>
 
-class UndoRedoManager;
+class UndoRedoStack;
 
 class CompositeCommand: public Command {
 public:
 	using SmartPointer = Command::SmartPointer;
 
-	CompositeCommand(UndoRedoManager && urMngr);
+	CompositeCommand(UndoRedoStack && urMngr);
 	CompositeCommand(CompositeCommand && rhs);
 	virtual ~CompositeCommand();
 
@@ -32,7 +32,7 @@ public:
 	virtual SmartPointer clone() const& override;
 
 private:
-	std::unique_ptr<UndoRedoManager> urMngr;
+	std::unique_ptr<UndoRedoStack> urMngr;
 	bool doItExceptionCatched;
 	bool undoExceptionCatched;
 };
