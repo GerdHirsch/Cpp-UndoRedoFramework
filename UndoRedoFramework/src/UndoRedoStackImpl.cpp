@@ -8,11 +8,18 @@
 #include "../include/UndoRedoStackImpl.h"
 #include "../include/IllegalArgumentException.h"
 
+#include <iostream>
+using namespace std;
+
 UndoRedoStackImpl::UndoRedoStackImpl(UndoRedoStackImpl&& rhs):
 	undoStack(std::move(rhs.undoStack)),
 	redoStack(std::move(rhs.redoStack))
-{ }
-UndoRedoStackImpl::UndoRedoStackImpl(){}
+{
+//	cout << "UndoRedoStackImpl(UndoRedoStackImpl&& rhs)" << endl;
+}
+UndoRedoStackImpl::UndoRedoStackImpl(){
+//	cout << "UndoRedoStackImpl()" << endl;
+}
 
 std::unique_ptr<UndoRedoStack> UndoRedoStackImpl::clone() &&
 {
