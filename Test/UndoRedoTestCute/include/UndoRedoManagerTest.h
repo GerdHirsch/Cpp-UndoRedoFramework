@@ -17,6 +17,7 @@ public:
 	void IsModifiedSimple();
 	void IsModifiedAndIsRedoableWithNewCommand();
 	void ResetModified();
+	void IsNotModifiedAfterDoItAndUndo();
 
 	void IsModifiedwithExceptionDoIt();
 	void IsModifiedtwithExceptionUndo();
@@ -34,6 +35,7 @@ public:
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));				\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsRedoableWithNewCommand));\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, ResetModified));					\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotModifiedAfterDoItAndUndo));  \
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedwithExceptionDoIt));	\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionUndo));	\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionRedo));	\

@@ -175,6 +175,16 @@ void UndoRedoManagerTest::RedoExceptionNeutral(){
 	ASSERT_THROWSM("Command throws but Manager not!",
 			urMngr.redo(), std::logic_error);
 }
+
+void UndoRedoManagerTest::IsNotModifiedAfterDoItAndUndo() {
+	UndoRedoManager& urMngr(getSUT());
+	urMngr.resetModified();
+
+	urMngr.doIt(plus);
+	urMngr.undo();
+	ASSERT_EQUAL(false, urMngr.isModified());
+
+}
 //
 //cute::suite UndoRedoManagerTest::make_suite(){
 //	cute::suite s { };
