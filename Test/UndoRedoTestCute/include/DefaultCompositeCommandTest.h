@@ -8,8 +8,8 @@
 #ifndef INCLUDE_DEFAULTCOMPOSITECOMMANDTEST_H_
 #define INCLUDE_DEFAULTCOMPOSITECOMMANDTEST_H_
 
-#include <include/UndoRedoStackImpl.h>
-#include <include/CompositeCommandImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/CompositeCommandImpl.h>
 #include "CompositeCommandTest.h"
 
 

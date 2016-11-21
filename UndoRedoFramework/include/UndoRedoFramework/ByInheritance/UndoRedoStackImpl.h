@@ -8,9 +8,10 @@
 #ifndef UNDOREDOSTACKIMPL_H_
 #define UNDOREDOSTACKIMPL_H_
 
-#include "UndoRedoStack.h"
+#include <UndoRedoFramework/UndoRedoStack.h>
 
 #include <stack>
+
 namespace UndoRedoFramework{
 namespace ByInheritance{
 

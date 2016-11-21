@@ -10,7 +10,7 @@
 
 #include <memory>
 
-#include <include/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
 #include "UndoRedoStackTest.h"
 
 

@@ -1,9 +1,9 @@
 #ifndef UNDOREDOMANAGERIMPL_H
 #define UNDOREDOMANAGERIMPL_H
 
-#include "undoredomanager.h"
-#include "UndoRedoStackImpl.h"
-#include "Command.h"
+#include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoManager.h>
+#include <UndoRedoFramework/Command.h>
 
 #include <stack>
 #include <memory>

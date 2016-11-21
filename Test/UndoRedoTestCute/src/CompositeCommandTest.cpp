@@ -8,9 +8,9 @@
 #include "../include/CompositeCommandTest.h"
 
 
-#include <include/UndoRedoStack.h>
-#include <include/CompositeCommand.h>
-#include <include/CannotRollBackException.h>
+#include <UndoRedoFramework/UndoRedoStack.h>
+#include <UndoRedoFramework/CompositeCommand.h>
+#include <UndoRedoFramework/CannotRollBackException.h>
 
 #include "cute.h"
 

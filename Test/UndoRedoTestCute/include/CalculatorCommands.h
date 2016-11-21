@@ -3,7 +3,7 @@
 
 #include "Calculator.h"
 
-#include <include/Command.h>
+#include <UndoRedoFramework/Command.h>
 
 #include <iostream>
 #include <stdexcept>

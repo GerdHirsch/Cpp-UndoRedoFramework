@@ -5,8 +5,8 @@
  *      Author: Gerd
  */
 
-#include "../include/UndoRedoStackImpl.h"
-#include "../include/IllegalArgumentException.h"
+#include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/IllegalArgumentException.h>
 
 #include <iostream>
 using namespace std;

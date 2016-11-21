@@ -8,7 +8,7 @@
 #ifndef COMPOSITECOMMANDTEST_H_
 #define COMPOSITECOMMANDTEST_H_
 #include <memory>
-#include <include/CompositeCommand.h>
+#include <UndoRedoFramework/CompositeCommand.h>
 #include "../include/UndoRedoTest.h"
 
 namespace UndoRedoFramework{

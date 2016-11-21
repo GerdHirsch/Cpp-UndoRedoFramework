@@ -20,7 +20,7 @@ void runAllTests(int argc, char const *argv[]){
 	cute::xml_file_opener xmlfile(argc,argv);
 	cute::xml_listener<cute::ide_listener<> >  lis(xmlfile.out);
 	cute::makeRunner(lis,argc,argv)(UndoRedoStackByInheritanceTest::make_suite(), "UndoRedoStack ByInheritance");
-	cute::makeRunner(lis,argc,argv)(UndoRedoManagerByInheritanceTest::make_suite(), "UndoRedoManager");
+	cute::makeRunner(lis,argc,argv)(UndoRedoManagerByInheritanceTest::make_suite(), "UndoRedoManager ByInheritance");
 	cute::makeRunner(lis,argc,argv)(DefaultCompositeCommandTest::make_suite(), "CompositeCommand");
 }
 

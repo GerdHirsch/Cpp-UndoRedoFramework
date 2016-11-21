@@ -1,9 +1,9 @@
 #include <stack>
 #include <memory>
 
-#include "../include/UndoRedoManagerImpl.h"
-#include "../include/Command.h"
-#include "../include/IllegalArgumentException.h"
+#include <UndoRedoFramework/ByInheritance/UndoRedoManagerImpl.h>
+#include <UndoRedoFramework/Command.h>
+#include <UndoRedoFramework/IllegalArgumentException.h>
 
 #include <iostream>
 using namespace std;

@@ -10,7 +10,7 @@
 
 #include <memory>
 
-#include <include/UndoRedoManagerImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoManagerImpl.h>
 #include "UndoRedoManagerTest.h"
 
 class UndoRedoManagerByInheritanceTest :

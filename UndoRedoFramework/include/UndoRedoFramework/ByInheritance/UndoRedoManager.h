@@ -1,8 +1,8 @@
 #ifndef UNDOREDOMANAGER_H
 #define UNDOREDOMANAGER_H
 
-#include "UndoRedoStack.h"
-#include "Command.h"
+#include <UndoRedoFramework/UndoRedoStack.h>
+#include <UndoRedoFramework/Command.h>
 
 namespace UndoRedoFramework{
 namespace ByInheritance{

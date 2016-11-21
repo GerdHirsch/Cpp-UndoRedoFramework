@@ -5,9 +5,9 @@
  *      Author: Gerd
  */
 
-#include "../include/CompositeCommandImpl.h"
-#include "../include/UndoRedoStack.h"
-#include "../include/CannotRollbackException.h"
+#include <UndoRedoFramework/CompositeCommandImpl.h>
+#include <UndoRedoFramework/UndoRedoStack.h>
+#include <UndoRedoFramework/CannotRollbackException.h>
 
 #include <iostream>
 using namespace std;
