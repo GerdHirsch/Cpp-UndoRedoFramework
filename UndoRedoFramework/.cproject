@@ -3,7 +3,13 @@
 	<storageModule moduleId="org.eclipse.cdt.core.settings">
 		<cconfiguration id="cdt.managedbuild.config.gnu.cygwin.exe.debug.644550124">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.cygwin.exe.debug.644550124" moduleId="org.eclipse.cdt.core.settings" name="Debug">
-				<externalSettings/>
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/UndoRedoFramework"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="UndoRedoFramework" srcPrefixMapping="" srcRootPath=""/>
+					</externalSetting>
+				</externalSettings>
 				<extensions>
 					<extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
 					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
@@ -49,9 +55,9 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="src|ByInheritance|include" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="include|src|ByInheritance" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
-						<entry excluding="Main.cpp|SimpleCalculator.cpp|DemoCompositeCommand.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="Main.cpp|DemoCompositeCommand.cpp|SimpleCalculator.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -99,10 +105,10 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="ByInheritance|include|Test|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="include|Test|src|ByInheritance" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="UndoRedoFramework/ByInheritance|ByInheritance" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include/UndoRedoFramework/ByInheritance"/>
-						<entry excluding="ByInheritance|Test" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="Test|ByInheritance" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/ByInheritance"/>
 					</sourceEntries>
 				</configuration>
@@ -164,21 +170,11 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<folderInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.644550124.1651876954.1730640982" name="/" resourcePath="src/Delegation">
-						<toolChain id="cdt.managedbuild.toolchain.gnu.cygwin.exe.debug.582467122" name="Cygwin GCC" superClass="cdt.managedbuild.toolchain.gnu.cygwin.exe.debug" unusedChildren="">
-							<tool id="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.debug.1827797132" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.debug.171031375"/>
-							<tool id="cdt.managedbuild.tool.gnu.archiver.cygwin.base.1430216396" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.cygwin.base.1249741869"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.25721734" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.829070696"/>
-							<tool id="cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug.334830752" name="Cygwin C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug.1871142748"/>
-							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.1300233979" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.1359013966"/>
-							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.1230925202" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.674189509"/>
-						</toolChain>
-					</folderInfo>
 					<sourceEntries>
-						<entry excluding="ByInheritance|include|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="include|src|ByInheritance" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="UndoRedoFramework/ByInheritance|ByInheritance" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="include/UndoRedoFramework/ByInheritance"/>
-						<entry excluding="ByInheritance|CompositeCommand.cpp|Main.cpp|DemoCompositeCommand.cpp|SimpleCalculator.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
+						<entry excluding="CompositeCommand.cpp|Main.cpp|DemoCompositeCommand.cpp|ByInheritance|SimpleCalculator.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/ByInheritance"/>
 					</sourceEntries>
 				</configuration>
