@@ -8,7 +8,9 @@
 #ifndef SRC_UNDOREDOTEST_H_
 #define SRC_UNDOREDOTEST_H_
 
-#include "../include/Test.h"
+
+#include "Calculator.h"
+#include "CalculatorCommands.h"
 
 #include <memory>
 //#include <iostream>

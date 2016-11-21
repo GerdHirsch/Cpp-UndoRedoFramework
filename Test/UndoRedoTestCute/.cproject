@@ -74,11 +74,11 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.2087371820" name="CalculatorCommands.h" rcbsApplicability="disable" resourcePath="include/CalculatorCommands.h" toolsToInvoke=""/>
-					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.1722562578" name="CompositeCommandTest.cpp" rcbsApplicability="disable" resourcePath="src/CompositeCommandTest.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.1601702735">
-						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.1601702735" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124"/>
+					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.1283380917" name="CompositeCommandTest.cpp" rcbsApplicability="disable" resourcePath="src/CompositeCommandTest.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.584682624">
+						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.584682624" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124"/>
 					</fileInfo>
 					<sourceEntries>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="src/UndoRedoStackTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

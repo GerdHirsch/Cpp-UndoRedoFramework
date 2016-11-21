@@ -8,6 +8,8 @@
 #include <stack>
 #include <memory>
 
+namespace UndoRedoFramework{
+namespace ByInheritance{
 
 class UndoRedoManagerImpl : public UndoRedoStackImpl, public UndoRedoManager
 {
@@ -39,4 +41,5 @@ private:
 	int modifications;
 };
 
+}} // end namespace
 #endif //UNDOREDOMANAGERIMPL_H

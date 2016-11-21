@@ -23,37 +23,11 @@ void runAllTests(int argc, char const *argv[]){
 	cute::makeRunner(lis,argc,argv)(DefaultCompositeCommandTest::make_suite(), "CompositeCommand");
 }
 
-#include <include/CompositeCommandImpl.h>
-
 int main(int argc, char const *argv[]){
 	cout << "main()" << endl;
 
     runAllTests(argc,argv);
     return 0;
 }
-/*
- *
-class TestClass{
-	typedef void(TestClass::*TestMethod)();
-	TestMethod testMethod;
-public:
-	TestClass() : testMethod(&TestClass::test1){}
-	TestClass(TestMethod testMethod) : testMethod(testMethod){}
-
-	void operator()(){
-		(this->*testMethod)();
-	}
-	void test1(){
-		ASSERTM("start writing tests with Classes", false);
-	}
-	void test2(){
-		ASSERTM("start writing tests with Classes", false);
-	}
-};
-
-void thisIsATest() {
-	ASSERTM("start writing tests", false);
-}
- */
 
 

@@ -2,6 +2,8 @@
 #define COMMAND_H
 #include <memory>
 
+namespace UndoRedoFramework{
+
 class Command
 {
 public:
@@ -18,5 +20,7 @@ public:
 	virtual SmartPointer clone() && = 0;
 	virtual SmartPointer clone() const & = 0;
 };
+
+} // end namespace UndoRedoFramework
 
 #endif //COMMAND_H

@@ -12,9 +12,6 @@
 #include <iostream>
 using namespace std;
 
-namespace UndoRedoFramework{
-
-
 CompositeCommandImpl::CompositeCommandImpl(UndoRedoStack && urStack)
 : urStack( std::move(urStack).clone()),
   doItExceptionCatched(false),
@@ -111,6 +108,4 @@ void CompositeCommandImpl::undo() {
 		}
 	}
 }
-
-}//end namespace UndoRedoFramework
 

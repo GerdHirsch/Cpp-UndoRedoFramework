@@ -8,16 +8,20 @@
 #ifndef SRC_DEFAULTUNDOREDOSTACKTEST_H_
 #define SRC_DEFAULTUNDOREDOSTACKTEST_H_
 
+#include <memory>
+
 #include <include/UndoRedoStackImpl.h>
 #include "UndoRedoStackTest.h"
 
-class DefaultUndoRedoStackTest : public UndoRedoStackTest<UndoRedoStack> {
+
+class DefaultUndoRedoStackTest : public UndoRedoStackTest<UndoRedoFramework::UndoRedoStack> {
 public:
-	virtual std::unique_ptr<UndoRedoStack> createSUT() const override {
-		return std::unique_ptr<UndoRedoStack>
-		(
-				new UndoRedoStackImpl
-		);
+	using base_type = UndoRedoStackTest<UndoRedoFramework::UndoRedoStack>;
+	using base_type::SUT;
+	using UndoRedoStackImpl = UndoRedoFramework::ByInheritance::UndoRedoStackImpl;
+
+	virtual std::unique_ptr<SUT> createSUT() const override {
+		return std::unique_ptr<SUT>( new UndoRedoStackImpl );
 	}
 	static cute::suite make_suite();
 

@@ -10,13 +10,22 @@
 
 #include <memory>
 
-#include <include/UndoRedoManager.h>
+//#include <include/UndoRedoManager.h>
+#include <include/UndoRedoManagerImpl.h>
 #include "UndoRedoManagerTest.h"
 
-class DefaultUndoRedoManagerTest : public UndoRedoManagerTest {
+class DefaultUndoRedoManagerTest :
+		public UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager> {
 public:
-	virtual std::unique_ptr<UndoRedoManager> createSUT() const override {
-		return std::unique_ptr<UndoRedoManager>(new UndoRedoManagerImpl);
+	using base_type = UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager>;
+	using base_type::SUT;
+	using UndoRedoManagerImpl = UndoRedoFramework::ByInheritance::UndoRedoManagerImpl;
+
+
+	virtual std::unique_ptr<SUT> createSUT() const override {
+		return std::unique_ptr<SUT>(
+				new UndoRedoManagerImpl
+		);
 	}
 	static cute::suite make_suite();
 };

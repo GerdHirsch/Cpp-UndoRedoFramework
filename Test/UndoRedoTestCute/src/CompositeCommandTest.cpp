@@ -7,8 +7,12 @@
 
 #include "../include/CompositeCommandTest.h"
 
+
+#include <include/UndoRedoStack.h>
 #include <include/CompositeCommand.h>
 #include <include/CannotRollBackException.h>
+
+#include "cute.h"
 
 #include <iostream>
 using namespace std;
@@ -16,11 +20,13 @@ using namespace std;
 //CompositeCommandTest::CompositeCommandCtor() {
 //	ASSERT_THROWS(CommandCompositeImpl(), std::logic_error);
 //}
+// define dtor cause unique_ptr member
+CompositeCommandTest::~CompositeCommandTest(){}
 
 
 void CompositeCommandTest::DoItCommand() {
 	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = false;
 
@@ -40,7 +46,7 @@ void CompositeCommandTest::DoItCommand() {
 }
 void CompositeCommandTest::DoItCommandWithException() {
 	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = true;
 
@@ -71,7 +77,7 @@ void CompositeCommandTest::DoItCommandWithException() {
 }
 void CompositeCommandTest::UndoRedoDoIt() {
 	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	int expected { 0 };
 	int result = calculator.getResult();
@@ -97,7 +103,7 @@ void CompositeCommandTest::UndoRedoDoIt() {
 }
 void CompositeCommandTest::UndoWithException() {
 	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in undo
@@ -137,7 +143,7 @@ void CompositeCommandTest::UndoWithException() {
 }
 void CompositeCommandTest::RedoWithException() {
 	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	int expected { 0 };
 	ccmd.doIt(minus);
@@ -182,14 +188,14 @@ void CompositeCommandTest::RedoWithException() {
 	ASSERT_EQUAL(expected, result);
 }
 void CompositeCommandTest::DoItExceptionNeutral() {
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = true;
 	ASSERT_THROWS(ccmd.doIt(plus), std::logic_error);
 }
 void CompositeCommandTest::UndoExceptionNeutral() {
-	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& urStack(getURStack());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(plus);
@@ -203,8 +209,8 @@ void CompositeCommandTest::UndoExceptionNeutral() {
 			urStack.undo(), std::logic_error);
 }
 void CompositeCommandTest::RedoExceptionNeutral() {
-	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& urStack(getURStack());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(plus);
@@ -217,7 +223,7 @@ void CompositeCommandTest::RedoExceptionNeutral() {
 }
 
 void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = false;
 
@@ -244,7 +250,7 @@ void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 }
 
 void CompositeCommandTest::DoItThrowsCannotRollback(){
-	CompositeCommand& ccmd(getSUT());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(minus);
@@ -256,8 +262,8 @@ void CompositeCommandTest::DoItThrowsCannotRollback(){
 			ccmd.doIt(plus), CannotRollbackException);
 }
 void CompositeCommandTest::UndoThrowsCannotRollback(){
-	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& urStack(getURStack());
+	auto& ccmd(getSUT());
 
 	Plus::throwException() = false;
 	ccmd.doIt(minus);
@@ -272,8 +278,8 @@ void CompositeCommandTest::UndoThrowsCannotRollback(){
 	ASSERT_THROWS(urStack.undo(), CannotRollbackException);
 }
 void CompositeCommandTest::RedoThrowsCannotRollback(){
-	UndoRedoStack& urStack(getURStack());
-	CompositeCommand& ccmd(getSUT());
+	auto& urStack(getURStack());
+	auto& ccmd(getSUT());
 
 	ccmd.doIt(minus);
 	ccmd.doIt(plus); // throws in doIt
