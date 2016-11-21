@@ -1,16 +1,14 @@
-#include <stack>
-#include <memory>
-
 #include <UndoRedoFramework/ByInheritance/UndoRedoManagerImpl.h>
 #include <UndoRedoFramework/Command.h>
 #include <UndoRedoFramework/IllegalArgumentException.h>
 
+#include <stack>
+#include <memory>
 #include <iostream>
 using namespace std;
 
 namespace UndoRedoFramework{
 namespace ByInheritance{
-
 
 UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 	: UndoRedoStackImpl(std::move(rhs)),

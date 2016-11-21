@@ -105,5 +105,4 @@ void UndoRedoStackImpl::redo()
 
 }
 
-
 }} // end namespace

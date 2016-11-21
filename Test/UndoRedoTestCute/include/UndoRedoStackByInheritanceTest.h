@@ -5,8 +5,8 @@
  *      Author: Gerd
  */
 
-#ifndef SRC_DEFAULTUNDOREDOSTACKTEST_H_
-#define SRC_DEFAULTUNDOREDOSTACKTEST_H_
+#ifndef SRC_UNDOREDOSTACKINHERITANCETEST_H_
+#define SRC_UNDOREDOSTACKINHERITANCETEST_H_
 
 #include <memory>
 
@@ -34,4 +34,4 @@ cute::suite UndoRedoStackByInheritanceTest::make_suite(){
 }
 
 
-#endif /* SRC_DEFAULTUNDOREDOSTACKTEST_H_ */
+#endif /* SRC_UNDOREDOSTACKINHERITANCETEST_H_ */

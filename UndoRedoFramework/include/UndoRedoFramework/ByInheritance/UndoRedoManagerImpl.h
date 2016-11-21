@@ -1,5 +1,5 @@
-#ifndef UNDOREDOMANAGERIMPL_H
-#define UNDOREDOMANAGERIMPL_H
+#ifndef UNDOREDOMANAGERIMPLBYINHERITANCE_H
+#define UNDOREDOMANAGERIMPLBYINHERITANCE_H
 
 #include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
 #include <UndoRedoFramework/ByInheritance/UndoRedoManager.h>
@@ -24,6 +24,7 @@ public:
 	//for SmartPointers
 //	virtual void doIt(Command && command) override;
 //	virtual void doIt(Command const& command) override;
+
 	virtual void doIt(SmartPointer && command) override;
 
 //	virtual bool isUndoable() const override;
@@ -42,4 +43,4 @@ private:
 };
 
 }} // end namespace
-#endif //UNDOREDOMANAGERIMPL_H
+#endif //UNDOREDOMANAGERIMPLBYINHERITANCE_H

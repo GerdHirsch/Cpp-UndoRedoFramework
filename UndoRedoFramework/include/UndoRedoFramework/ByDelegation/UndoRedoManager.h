@@ -1,14 +1,14 @@
-#ifndef UNDOREDOMANAGERBYINHERITANCE_H
-#define UNDOREDOMANAGERBYINHERITANCE_H
+#ifndef UNDOREDOMANAGERBYDELEGATION_H
+#define UNDOREDOMANAGERBYDELEGATION_H
 
 #include <UndoRedoFramework/UndoRedoStack.h>
 #include <UndoRedoFramework/Command.h>
 
 namespace UndoRedoFramework{
-namespace ByInheritance{
+namespace ByDelegation{
 
 class UndoRedoManager : public
-virtual
+//virtual
 UndoRedoStack
 {
 public:
@@ -25,5 +25,4 @@ public:
 inline
 UndoRedoManager::~UndoRedoManager(){}
 }} // end namespace
-
-#endif //UNDOREDOMANAGERBYINHERITANCE_H
+#endif //UNDOREDOMANAGERBYDELEGATION_H

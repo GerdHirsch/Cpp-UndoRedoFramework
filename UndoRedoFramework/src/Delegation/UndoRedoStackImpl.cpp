@@ -5,12 +5,17 @@
  *      Author: Gerd
  */
 
-#include "../include/UndoRedoStackImpl.h"
-#include "../include/IllegalArgumentException.h"
-#include "../include/EmptyStackException.h"
+
+#include <UndoRedoFramework/ByDelegation/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/IllegalArgumentException.h>
+#include <UndoRedoFramework/EmptyStackException.h>
 
 #include <iostream>
 using namespace std;
+
+namespace UndoRedoFramework{
+namespace ByDelegation{
+
 
 UndoRedoStackImpl::UndoRedoStackImpl(UndoRedoStackImpl&& rhs):
 	undoStack(std::move(rhs.undoStack)),
@@ -106,4 +111,4 @@ void UndoRedoStackImpl::redo()
 
 }
 
-
+}} // end namespace

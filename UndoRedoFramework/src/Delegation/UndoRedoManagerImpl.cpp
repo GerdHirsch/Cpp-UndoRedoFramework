@@ -1,13 +1,14 @@
+#include <UndoRedoFramework/ByDelegation/UndoRedoManagerImpl.h>
+#include <UndoRedoFramework/Command.h>
+#include <UndoRedoFramework/IllegalArgumentException.h>
+
 #include <stack>
 #include <memory>
-
-#include "../include/UndoRedoManagerImpl.h"
-#include "../include/UndoRedoStackImpl.h"
-#include "../include/Command.h"
-#include "../include/IllegalArgumentException.h"
-
 #include <iostream>
 using namespace std;
+
+namespace UndoRedoFramework{
+namespace ByDelegation{
 
 UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 	:
@@ -86,3 +87,4 @@ void UndoRedoManagerImpl::resetModified()
 	modifications = 0;
 }
 
+}} // end namespace

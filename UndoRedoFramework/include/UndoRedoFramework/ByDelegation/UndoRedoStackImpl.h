@@ -5,18 +5,18 @@
  *      Author: Gerd
  */
 
-#ifndef UNDOREDOSTACKIMPLBYINHERITANCE_H_
-#define UNDOREDOSTACKIMPLBYINHERITANCE_H_
+#ifndef UNDOREDOSTACKIMPLBYDELEGATION_H_
+#define UNDOREDOSTACKIMPLBYDELEGATION_H_
 
 #include <UndoRedoFramework/UndoRedoStack.h>
 
 #include <stack>
 
 namespace UndoRedoFramework{
-namespace ByInheritance{
+namespace ByDelegation{
 
 class UndoRedoStackImpl : public
-virtual
+//virtual
 UndoRedoStack{
 public:
 //	using SmartPointer = std::unique_ptr<Command>;
@@ -53,4 +53,4 @@ private:
 	std::stack<SmartPointer> redoStack;
 };
 }} // end namespace
-#endif /* UNDOREDOSTACKIMPLBYINHERITANCE_H_ */
+#endif /* UNDOREDOSTACKIMPLBYDELEGATION_H_ */
