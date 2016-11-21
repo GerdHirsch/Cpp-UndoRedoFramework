@@ -11,6 +11,9 @@
 #include "UndoRedoStack.h"
 
 #include <stack>
+namespace UndoRedoFramework{
+namespace ByInheritance{
+
 
 class UndoRedoStackImpl : public virtual UndoRedoStack{
 public:
@@ -47,5 +50,8 @@ private:
 	std::stack<SmartPointer> undoStack;
 	std::stack<SmartPointer> redoStack;
 };
+
+} // end namespace ByInheritance
+}
 
 #endif /* UNDOREDOSTACKIMPL_H_ */

@@ -10,6 +10,10 @@
 
 #include "CompositeCommand.h"
 
+namespace UndoRedoFramework{
+
+class UndoRedoStack;
+
 class CompositeCommandImpl : public CompositeCommand{
 public:
 	CompositeCommandImpl(UndoRedoStack && urStack);
@@ -31,6 +35,7 @@ private:
 	bool undoExceptionCatched;
 };
 
+}
 
 
 

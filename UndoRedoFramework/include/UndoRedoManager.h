@@ -4,6 +4,9 @@
 #include "UndoRedoStack.h"
 #include "Command.h"
 
+namespace UndoRedoFramework{
+namespace ByInheritance{
+
 class UndoRedoManager : public virtual UndoRedoStack
 {
 public:
@@ -19,5 +22,6 @@ public:
 
 inline
 UndoRedoManager::~UndoRedoManager(){}
+}} // end namespace
 
 #endif //UNDOREDOMANAGER_H

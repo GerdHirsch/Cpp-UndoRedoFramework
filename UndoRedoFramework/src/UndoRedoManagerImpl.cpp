@@ -8,6 +8,10 @@
 #include <iostream>
 using namespace std;
 
+namespace UndoRedoFramework{
+namespace ByInheritance{
+
+
 UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 	: UndoRedoStackImpl(std::move(rhs)),
 	modifications( rhs.modifications)
@@ -55,3 +59,4 @@ void UndoRedoManagerImpl::resetModified()
 	modifications = 0;
 }
 
+}} // end namespace
