@@ -1,16 +1,20 @@
 #ifndef CALCULATOR_COMMANDS
 #define CALCULATOR_COMMANDS
 
-#include <include/Command.h>
 #include "Calculator.h"
+
+#include <UndoRedoFramework/Command.h>
 
 #include <iostream>
 #include <stdexcept>
 
 
-class Plus : public Command
+class Plus : public UndoRedoFramework::Command
 {
 public:
+	using Command = UndoRedoFramework::Command;
+	using Command::SmartPointer;
+
 	Plus(Calculator& calculator, int summand) :
 		calculator(calculator), summand(summand){
 		throwException() = false;
@@ -43,17 +47,17 @@ public:
 		calculator.minus(summand);
 	}
 
-	virtual std::unique_ptr<Command> clone() const & override
+	virtual SmartPointer clone() const & override
 	{
 		using namespace std;
-		return std::unique_ptr<Command>( new Plus(*this));
+		return SmartPointer( new Plus(*this));
 	}
 
-	virtual std::unique_ptr<Command> clone() && override
+	virtual SmartPointer clone() && override
 	{
 		using namespace std;
 //		cout << "PlusCommand::clone() &&" << endl;
-		return std::unique_ptr<Command>( new Plus( std::move(*this) ));
+		return SmartPointer ( new Plus( std::move(*this) ));
 	}
 	static bool& throwException(){
 		static bool b = false;
@@ -68,9 +72,12 @@ private:
 	int summand;
 };
 
-class Minus : public Command
+class Minus : public UndoRedoFramework::Command
 {
 public:
+	using UndoRedoFramework::Command::SmartPointer;
+
+
 	Minus(Calculator& calculator, int subtrahent):calculator(calculator), subtrahent(subtrahent){}
 	virtual void doIt() override
 	{
@@ -81,17 +88,17 @@ public:
 		calculator.plus(subtrahent);
 	}
 
-	virtual std::unique_ptr<Command> clone() const& override
+	virtual SmartPointer clone() const& override
 	{
 		using namespace std;
 //		cout << "MinusCommand::clone() const&" << endl;
-		return std::unique_ptr<Command>( new Minus( std::move(*this) ));
+		return SmartPointer ( new Minus( std::move(*this) ));
 	}
-	virtual std::unique_ptr<Command> clone() && override
+	virtual SmartPointer clone() && override
 	{
 		using namespace std;
 //		cout << "MinusCommand::clone() &&" << endl;
-		return std::unique_ptr<Command>( new Minus( std::move(*this) ));
+		return SmartPointer ( new Minus( std::move(*this) ));
 	}
 private:
 	Calculator& calculator;

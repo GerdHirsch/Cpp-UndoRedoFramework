@@ -10,6 +10,8 @@
 
 #include "Command.h"
 
+namespace UndoRedoFramework{
+
 class UndoRedoStack
 {
 public:
@@ -39,6 +41,6 @@ public:
 inline
 UndoRedoStack::~UndoRedoStack(){}
 
-
+} // end namespace UndoRedoFramework
 
 #endif /* UNDOREDOSTACK_H_ */

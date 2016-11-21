@@ -5,14 +5,19 @@
  *      Author: Gerd
  */
 
-#ifndef UNDOREDOSTACKIMPL_H_
-#define UNDOREDOSTACKIMPL_H_
+#ifndef UNDOREDOSTACKIMPLBYDELEGATION_H_
+#define UNDOREDOSTACKIMPLBYDELEGATION_H_
 
-#include "UndoRedoStack.h"
+#include <UndoRedoFramework/UndoRedoStack.h>
 
 #include <stack>
 
-class UndoRedoStackImpl : public virtual UndoRedoStack{
+namespace UndoRedoFramework{
+namespace ByDelegation{
+
+class UndoRedoStackImpl : public
+//virtual
+UndoRedoStack{
 public:
 //	using SmartPointer = std::unique_ptr<Command>;
 
@@ -47,5 +52,5 @@ private:
 	std::stack<SmartPointer> undoStack;
 	std::stack<SmartPointer> redoStack;
 };
-
-#endif /* UNDOREDOSTACKIMPL_H_ */
+}} // end namespace
+#endif /* UNDOREDOSTACKIMPLBYDELEGATION_H_ */
