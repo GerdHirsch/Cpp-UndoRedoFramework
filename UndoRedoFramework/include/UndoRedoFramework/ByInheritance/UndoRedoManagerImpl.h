@@ -1,13 +1,15 @@
-#ifndef UNDOREDOMANAGERIMPL_H
-#define UNDOREDOMANAGERIMPL_H
+#ifndef UNDOREDOMANAGERIMPLBYINHERITANCE_H
+#define UNDOREDOMANAGERIMPLBYINHERITANCE_H
 
-#include "undoredomanager.h"
-#include "UndoRedoStackImpl.h"
-#include "Command.h"
+#include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoManager.h>
+#include <UndoRedoFramework/Command.h>
 
 #include <stack>
 #include <memory>
 
+namespace UndoRedoFramework{
+namespace ByInheritance{
 
 class UndoRedoManagerImpl : public UndoRedoStackImpl, public UndoRedoManager
 {
@@ -22,6 +24,7 @@ public:
 	//for SmartPointers
 //	virtual void doIt(Command && command) override;
 //	virtual void doIt(Command const& command) override;
+
 	virtual void doIt(SmartPointer && command) override;
 
 //	virtual bool isUndoable() const override;
@@ -39,4 +42,5 @@ private:
 	int modifications;
 };
 
-#endif //UNDOREDOMANAGERIMPL_H
+}} // end namespace
+#endif //UNDOREDOMANAGERIMPLBYINHERITANCE_H

@@ -5,16 +5,16 @@
  *      Author: Gerd
  */
 
-#ifndef SRC_DEFAULTUNDOREDOSTACKTEST_H_
-#define SRC_DEFAULTUNDOREDOSTACKTEST_H_
+#ifndef SRC_UNDOREDOSTACKINHERITANCETEST_H_
+#define SRC_UNDOREDOSTACKINHERITANCETEST_H_
 
 #include <memory>
 
-#include <include/UndoRedoStackImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
 #include "UndoRedoStackTest.h"
 
 
-class DefaultUndoRedoStackTest : public UndoRedoStackTest<UndoRedoFramework::UndoRedoStack> {
+class UndoRedoStackByInheritanceTest : public UndoRedoStackTest<UndoRedoFramework::UndoRedoStack> {
 public:
 	using base_type = UndoRedoStackTest<UndoRedoFramework::UndoRedoStack>;
 	using base_type::SUT;
@@ -27,11 +27,11 @@ public:
 
 };
 inline
-cute::suite DefaultUndoRedoStackTest::make_suite(){
+cute::suite UndoRedoStackByInheritanceTest::make_suite(){
 	cute::suite s { };
-	UndoRedoStackTests(DefaultUndoRedoStackTest)
+	UndoRedoStackTests(UndoRedoStackByInheritanceTest)
 	return s;
 }
 
 
-#endif /* SRC_DEFAULTUNDOREDOSTACKTEST_H_ */
+#endif /* SRC_UNDOREDOSTACKINHERITANCETEST_H_ */

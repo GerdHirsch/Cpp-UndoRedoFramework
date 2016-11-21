@@ -12,7 +12,7 @@
 
 #include<memory>
 
-class UndoRedoStack;
+namespace UndoRedoFramework{
 
 class CompositeCommand: public Command {
 public:
@@ -26,5 +26,7 @@ public:
 };
 inline
 CompositeCommand::~CompositeCommand(){}
+
+}
 
 #endif /* COMPOSITECOMMAND_H_ */

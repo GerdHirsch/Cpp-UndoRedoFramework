@@ -5,12 +5,15 @@
  *      Author: Gerd
  */
 
-#include "../include/CompositeCommandImpl.h"
-#include "../include/UndoRedoStack.h"
-#include "../include/CannotRollbackException.h"
+#include <UndoRedoFramework/CompositeCommandImpl.h>
+#include <UndoRedoFramework/UndoRedoStack.h>
+#include <UndoRedoFramework/CannotRollbackException.h>
 
 #include <iostream>
 using namespace std;
+
+namespace UndoRedoFramework{
+
 
 CompositeCommandImpl::CompositeCommandImpl(UndoRedoStack && urStack)
 : urStack( std::move(urStack).clone()),
@@ -108,4 +111,6 @@ void CompositeCommandImpl::undo() {
 		}
 	}
 }
+
+}//end namespace UndoRedoFramework
 

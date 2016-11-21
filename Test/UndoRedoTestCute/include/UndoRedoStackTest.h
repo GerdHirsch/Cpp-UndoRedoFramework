@@ -8,18 +8,24 @@
 #ifndef UNDOREDOSTACKTEST_H_
 #define UNDOREDOSTACKTEST_H_
 
+#include "cute.h"
+
 #include "UndoRedoTest.h"
 
 template<class SUTType>
 class UndoRedoStackTest : public UndoRedoTest<SUTType> {
 
 public:
-	using UndoRedoTest<SUTType>::getSUT;
-	using UndoRedoTest<SUTType>::plus;
-	using UndoRedoTest<SUTType>::plusValue;
-	using UndoRedoTest<SUTType>::minus;
-	using UndoRedoTest<SUTType>::minusValue;
-	using UndoRedoTest<SUTType>::calculator;
+	using base_type = UndoRedoTest<SUTType>;
+
+	using typename base_type::SUT;
+
+	using UndoRedoTest<SUT>::getSUT;
+	using UndoRedoTest<SUT>::plus;
+	using UndoRedoTest<SUT>::plusValue;
+	using UndoRedoTest<SUT>::minus;
+	using UndoRedoTest<SUT>::minusValue;
+	using UndoRedoTest<SUT>::calculator;
 
 	void DoIt();
 	void DoItWithException();
@@ -28,6 +34,7 @@ public:
 	void Undo();
 	void UndoWithException();
 	void UndoExceptionNeutral();
+
 	void Redo();
 	void RedoWithException();
 	void RedoExceptionNeutral();
@@ -44,22 +51,23 @@ public:
 		s.push_back(CUTE_SMEMFUN(DerivedTest, Undo));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));		\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, Redo));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));				\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));
 
-
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
-	UndoRedoStack& urMngr(this->getSUT());
+	auto& urMngr(this->getSUT());
 
 	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isUndoable());
 }
+
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsRedoable(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 	urMngr.undo();
@@ -68,7 +76,7 @@ void UndoRedoStackTest<SUTType>::IsRedoable(){
 
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::DoIt(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = false;
 
@@ -83,7 +91,7 @@ void UndoRedoStackTest<SUTType>::DoIt(){
 }
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::Undo(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -99,7 +107,7 @@ void UndoRedoStackTest<SUTType>::Undo(){
 }
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::Redo(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -116,7 +124,7 @@ void UndoRedoStackTest<SUTType>::Redo(){
 }
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::DoItWithException(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = true;
 	int result = calculator.getResult();
@@ -136,7 +144,7 @@ void UndoRedoStackTest<SUTType>::DoItWithException(){
 
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::UndoWithException(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	urMngr.doIt(plus);
 
@@ -161,7 +169,7 @@ void UndoRedoStackTest<SUTType>::UndoWithException(){
 
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::RedoWithException(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -183,7 +191,7 @@ void UndoRedoStackTest<SUTType>::RedoWithException(){
 
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::DoItExceptionNeutral(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = true;
 
@@ -192,7 +200,7 @@ void UndoRedoStackTest<SUTType>::DoItExceptionNeutral(){
 //==========
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::UndoExceptionNeutral(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);
@@ -203,7 +211,7 @@ void UndoRedoStackTest<SUTType>::UndoExceptionNeutral(){
 //==========
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::RedoExceptionNeutral(){
-	UndoRedoStack& urMngr(getSUT());
+	SUT& urMngr(getSUT());
 
 	Plus::throwException() = false;
 	urMngr.doIt(plus);

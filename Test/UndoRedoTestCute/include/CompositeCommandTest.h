@@ -7,19 +7,31 @@
 
 #ifndef COMPOSITECOMMANDTEST_H_
 #define COMPOSITECOMMANDTEST_H_
-
+#include <memory>
+#include <UndoRedoFramework/CompositeCommand.h>
 #include "../include/UndoRedoTest.h"
 
+namespace UndoRedoFramework{
+class UndoRedoStack;
+}
 
-class CompositeCommandTest: public UndoRedoTest<CompositeCommand> {
-//	CompositeCommand ccmd;
-	std::unique_ptr<CompositeCommand> pCommand;
-	std::unique_ptr<UndoRedoStack> pStack;
+class CompositeCommandTest: public UndoRedoTest<UndoRedoFramework::CompositeCommand> {
 public:
+	using base_type = UndoRedoTest<UndoRedoFramework::CompositeCommand>;
+	using base_type::SUT;
+	using UndoRedoStack = UndoRedoFramework::UndoRedoStack;
+
+	std::unique_ptr<SUT> pCommand;
+	std::unique_ptr<UndoRedoStack> pStack;
+
+
+
 	CompositeCommandTest()
 	: UndoRedoTest() {}
+	virtual ~CompositeCommandTest();
 
 	virtual std::unique_ptr<UndoRedoStack> createURStack() const = 0;
+
 	UndoRedoStack& getURStack(){
 		pStack = createURStack();
 		return *pStack;

@@ -5,16 +5,15 @@
  *      Author: Gerd
  */
 
-#ifndef INCLUDE_DEFAULTUNDOREDOMANAGERTEST_H_
-#define INCLUDE_DEFAULTUNDOREDOMANAGERTEST_H_
+#ifndef INCLUDE_UNDOREDOMANAGERINHERITANCETEST_H_
+#define INCLUDE_UNDOREDOMANAGERINHERITANCETEST_H_
 
 #include <memory>
 
-//#include <include/UndoRedoManager.h>
-#include <include/UndoRedoManagerImpl.h>
+#include <UndoRedoFramework/ByInheritance/UndoRedoManagerImpl.h>
 #include "UndoRedoManagerTest.h"
 
-class DefaultUndoRedoManagerTest :
+class UndoRedoManagerByInheritanceTest :
 		public UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager> {
 public:
 	using base_type = UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager>;
@@ -30,12 +29,12 @@ public:
 	static cute::suite make_suite();
 };
 inline
-cute::suite DefaultUndoRedoManagerTest::make_suite(){
+cute::suite UndoRedoManagerByInheritanceTest::make_suite(){
 	cute::suite s { };
-	UndoRedoManagerTests(DefaultUndoRedoManagerTest)
+	UndoRedoManagerTests(UndoRedoManagerByInheritanceTest)
 	return s;
 }
 
 
 
-#endif /* INCLUDE_DEFAULTUNDOREDOMANAGERTEST_H_ */
+#endif /* INCLUDE_UNDOREDOMANAGERINHERITANCETEST_H_ */
