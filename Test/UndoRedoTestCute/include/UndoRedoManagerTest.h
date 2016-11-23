@@ -27,7 +27,7 @@ public:
 	using UndoRedoTest<SUT>::calculator;
 
 	void IsModifiedSimple();
-	void IsModifiedAndIsRedoableWithNewCommand();
+	void IsModifiedAndIsNotRedoableWithNewCommand();
 	void ResetModified();
 	void IsNotModifiedAfterDoItAndUndo();
 
@@ -45,7 +45,7 @@ public:
 #define UndoRedoManagerTests(DerivedTest)										\
 	UndoRedoStackTests(DerivedTest)												\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));					\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsRedoableWithNewCommand));\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsNotRedoableWithNewCommand));\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, ResetModified));					\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotModifiedAfterDoItAndUndo));  \
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedwithExceptionDoIt));	\
@@ -98,7 +98,7 @@ void UndoRedoManagerTest<SUTType>::IsModifiedSimple(){
 }
 template<class SUTType>
 inline
-void UndoRedoManagerTest<SUTType>::IsModifiedAndIsRedoableWithNewCommand(){
+void UndoRedoManagerTest<SUTType>::IsModifiedAndIsNotRedoableWithNewCommand(){
 	auto& urMngr(getSUT());
 
 	urMngr.doIt(plus);

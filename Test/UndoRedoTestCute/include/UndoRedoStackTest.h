@@ -48,17 +48,17 @@ public:
 #define UndoRedoStackTests(DerivedTest)									\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, DoIt));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItWithException));		\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, Undo));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));		\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, Redo));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));				\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));				\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
-/*
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotRedoableAfterDoIt));
+/*
 */
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
