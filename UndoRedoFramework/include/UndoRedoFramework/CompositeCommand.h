@@ -16,7 +16,7 @@ namespace UndoRedoFramework{
 
 class CompositeCommand: public Command {
 public:
-	using SmartPointer = Command::SmartPointer;
+//	using SmartPointer = Command::SmartPointer;
 
 	virtual ~CompositeCommand();
 

@@ -41,6 +41,7 @@ public:
 
 	void IsUndoable();
 	void IsRedoable();
+	void IsNotRedoableAfterDoIt();
 
 //	static cute::suite make_suite();
 };
@@ -55,7 +56,8 @@ public:
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));				\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));				\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotRedoableAfterDoIt));
 
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
@@ -75,6 +77,16 @@ void UndoRedoStackTest<SUTType>::IsRedoable(){
 }
 
 template<class SUTType>
+void UndoRedoStackTest<SUTType>::IsNotRedoableAfterDoIt(){
+	SUT& urMngr(getSUT());
+
+	urMngr.doIt(plus);
+	urMngr.undo();
+	urMngr.doIt(plus);
+	ASSERT_EQUAL(false, urMngr.isRedoable());
+}
+
+template<class SUTType>
 void UndoRedoStackTest<SUTType>::DoIt(){
 	SUT& urMngr(getSUT());
 
@@ -86,9 +98,10 @@ void UndoRedoStackTest<SUTType>::DoIt(){
 	int result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 
-	ASSERT_EQUAL(true, urMngr.isUndoable());
-	ASSERT_EQUAL(false, urMngr.isRedoable());
+//	ASSERT_EQUAL(true, urMngr.isUndoable());
+//	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
+
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::Undo(){
 	SUT& urMngr(getSUT());
