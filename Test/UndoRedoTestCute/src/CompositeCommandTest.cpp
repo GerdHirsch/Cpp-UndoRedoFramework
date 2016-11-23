@@ -10,7 +10,7 @@
 
 #include <UndoRedoFramework/UndoRedoStack.h>
 #include <UndoRedoFramework/CompositeCommand.h>
-#include <UndoRedoFramework/CannotRollBackException.h>
+#include <UndoRedoFramework/CannotRollbackException.h>
 
 #include "cute.h"
 
