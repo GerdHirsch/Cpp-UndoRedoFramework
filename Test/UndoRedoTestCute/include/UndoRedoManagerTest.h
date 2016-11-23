@@ -35,9 +35,9 @@ public:
 	void IsModifiedtwithExceptionUndo();
 	void IsModifiedtwithExceptionRedo();
 
-	void DoItExceptionNeutral();
-	void UndoExceptionNeutral();
-	void RedoExceptionNeutral();
+//	void DoItExceptionNeutral();
+//	void UndoExceptionNeutral();
+//	void RedoExceptionNeutral();
 
 //	static cute::suite make_suite();
 };
@@ -50,11 +50,12 @@ public:
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotModifiedAfterDoItAndUndo));  \
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedwithExceptionDoIt));	\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionUndo));	\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionRedo));	\
+	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionRedo));
+
+/*
 	s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));			\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));			\
 	s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));
-/*
 */
 template<class SUTType>
 inline
@@ -221,36 +222,36 @@ void UndoRedoManagerTest<SUTType>::IsModifiedtwithExceptionRedo(){
 	ASSERT_EQUAL(true, urMngr.isRedoable());
 }
 
-template<class SUTType>
-inline
-void UndoRedoManagerTest<SUTType>::DoItExceptionNeutral(){
-	auto& urMngr(getSUT());
-
-	Plus::throwException() = true;
-	ASSERT_THROWSM("Command throws but Manager not!",
-			urMngr.doIt(plus), std::logic_error);
-}
-template<class SUTType>
-inline
-void UndoRedoManagerTest<SUTType>::UndoExceptionNeutral(){
-	auto& urMngr(getSUT());
-
-	urMngr.doIt(plus);
-	Plus::throwException() = true;
-	ASSERT_THROWSM("Command throws but Manager not!",
-			urMngr.undo(), std::logic_error);
-}
-template<class SUTType>
-inline
-void UndoRedoManagerTest<SUTType>::RedoExceptionNeutral(){
-	auto& urMngr(getSUT());
-
-	urMngr.doIt(plus);
-	urMngr.undo();
-	Plus::throwException() = true;
-	ASSERT_THROWSM("Command throws but Manager not!",
-			urMngr.redo(), std::logic_error);
-}
+//template<class SUTType>
+//inline
+//void UndoRedoManagerTest<SUTType>::DoItExceptionNeutral(){
+//	auto& urMngr(getSUT());
+//
+//	Plus::throwException() = true;
+//	ASSERT_THROWSM("Command throws but Manager not!",
+//			urMngr.doIt(plus), std::logic_error);
+//}
+//template<class SUTType>
+//inline
+//void UndoRedoManagerTest<SUTType>::UndoExceptionNeutral(){
+//	auto& urMngr(getSUT());
+//
+//	urMngr.doIt(plus);
+//	Plus::throwException() = true;
+//	ASSERT_THROWSM("Command throws but Manager not!",
+//			urMngr.undo(), std::logic_error);
+//}
+//template<class SUTType>
+//inline
+//void UndoRedoManagerTest<SUTType>::RedoExceptionNeutral(){
+//	auto& urMngr(getSUT());
+//
+//	urMngr.doIt(plus);
+//	urMngr.undo();
+//	Plus::throwException() = true;
+//	ASSERT_THROWSM("Command throws but Manager not!",
+//			urMngr.redo(), std::logic_error);
+//}
 
 
 #endif /* SRC_UNDOREDOMANAGERTEST_H_ */

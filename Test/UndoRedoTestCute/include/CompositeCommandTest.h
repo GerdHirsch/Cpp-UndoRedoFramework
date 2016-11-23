@@ -24,8 +24,6 @@ public:
 	std::unique_ptr<SUT> pCommand;
 	std::unique_ptr<UndoRedoStack> pStack;
 
-
-
 	CompositeCommandTest()
 	: UndoRedoTest() {}
 	virtual ~CompositeCommandTest();
@@ -54,10 +52,9 @@ public:
 	void UndoThrowsCannotRollback();
 	void RedoThrowsCannotRollback();
 
-
 //	static cute::suite make_suite();
 };
-#define CompositeCommandTests(DerivedTest)									\
+#define CompositeCommandTests(DerivedTest)								\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommand));			\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithException));\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoRedoDoIt));			\

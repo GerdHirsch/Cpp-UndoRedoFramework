@@ -48,17 +48,18 @@ public:
 #define UndoRedoStackTests(DerivedTest)									\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, DoIt));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, Undo));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, Redo));					\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));				\
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));				\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
+/*
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotRedoableAfterDoIt));
-
+*/
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
 	auto& urMngr(this->getSUT());
@@ -208,7 +209,8 @@ void UndoRedoStackTest<SUTType>::DoItExceptionNeutral(){
 
 	Plus::throwException() = true;
 
-	ASSERT_THROWS(urMngr.doIt(plus), std::logic_error);
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urMngr.doIt(plus), std::logic_error);
 }
 //==========
 template<class SUTType>
@@ -219,8 +221,8 @@ void UndoRedoStackTest<SUTType>::UndoExceptionNeutral(){
 	urMngr.doIt(plus);
 	Plus::throwException() = true;
 
-	ASSERT_THROWS(urMngr.undo(), std::logic_error);
-}
+	ASSERT_THROWSM("Command throws but SUT not!",
+				urMngr.undo(), std::logic_error);}
 //==========
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::RedoExceptionNeutral(){
@@ -231,7 +233,8 @@ void UndoRedoStackTest<SUTType>::RedoExceptionNeutral(){
 	urMngr.undo();
 	Plus::throwException() = true;
 
-	ASSERT_THROWS(urMngr.redo(), std::logic_error);
+	ASSERT_THROWSM("Command throws but SUT not!",
+				urMngr.redo(), std::logic_error);
 }
 
 

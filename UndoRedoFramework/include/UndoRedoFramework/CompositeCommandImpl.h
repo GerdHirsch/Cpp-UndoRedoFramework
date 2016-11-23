@@ -17,6 +17,7 @@ class UndoRedoStack;
 class CompositeCommandImpl : public CompositeCommand{
 public:
 	CompositeCommandImpl(UndoRedoStack && urStack);
+//	CompositeCommandImpl(std::unique_ptr<UndoRedoStack> && urStack);
 	CompositeCommandImpl(CompositeCommandImpl && rhs);
 	virtual ~CompositeCommandImpl();
 

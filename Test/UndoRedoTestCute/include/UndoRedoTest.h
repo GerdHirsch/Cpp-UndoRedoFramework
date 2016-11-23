@@ -33,14 +33,15 @@ public:
 	virtual std::unique_ptr<SUT> createSUT() const = 0;
 
 	SUT& getSUT() {
-		pSUT = createSUT();
+		if(!pSUT) // one SUT for each test
+			pSUT = createSUT();
 		return *pSUT;
 	}
 
 protected:
 	Calculator calculator;
-	int plusValue;
-	int minusValue;
+	int plusValue;// = 3;
+	int minusValue;// = 1;
 	Plus plus;
 	Minus minus;
 	std::unique_ptr<SUT> pSUT;
