@@ -40,7 +40,11 @@ public:
 	template<class DerivedTest>
 	static cute::suite make_suite(){
 
+<<<<<<< HEAD
 		cute::suite s( base_type::template make_suite<DerivedTest>() );
+=======
+		cute::suite s(base_type::template make_suite<DerivedTest>() );
+>>>>>>> branch 'master' of https://github.com/GerdHirsch/Cpp-UndoRedoFramework.git
 
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsNotRedoableWithNewCommand));
