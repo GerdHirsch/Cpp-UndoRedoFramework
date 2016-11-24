@@ -16,6 +16,7 @@
 class UndoRedoManagerByInheritanceTest :
 		public UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager> {
 public:
+	using this_type = UndoRedoManagerByInheritanceTest;
 	using base_type = UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager>;
 	using base_type::SUT;
 	using UndoRedoManagerImpl = UndoRedoFramework::ByInheritance::UndoRedoManagerImpl;
@@ -26,14 +27,10 @@ public:
 				new UndoRedoManagerImpl
 		);
 	}
-	static cute::suite make_suite();
+	static cute::suite make_suite(){
+		return base_type::make_suite<this_type>();
+	}
 };
-inline
-cute::suite UndoRedoManagerByInheritanceTest::make_suite(){
-	cute::suite s { };
-	UndoRedoManagerTests(UndoRedoManagerByInheritanceTest)
-	return s;
-}
 
 
 
