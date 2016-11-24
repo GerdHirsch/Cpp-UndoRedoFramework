@@ -98,23 +98,22 @@ void UndoRedoManagerTest<SUTType>::IsModifiedAndIsNotRedoableWithNewCommand(){
 	auto& urMngr(getSUT());
 
 	urMngr.doIt(plus);
-	urMngr.doIt(plus); // modified Count == 2
+	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isModified());
 
-	// modified Count == 0 undoStack.size == 1
 	urMngr.resetModified();
 	ASSERT_EQUAL(false, urMngr.isModified());
 
-	urMngr.undo(); // -1
+	urMngr.undo();
 	ASSERT_EQUAL(true, urMngr.isModified());
-	urMngr.redo(); // 0
+	urMngr.redo();
 	ASSERT_EQUAL(false, urMngr.isModified());
-	urMngr.undo(); // -1
+	urMngr.undo();
 	ASSERT_EQUAL(true, urMngr.isModified());
 
 	// NewCommand danach kommen wir nicht mehr
 	// in den unmodified State
-	urMngr.doIt(plus); // modified Count == 3 undoStack.size == 2
+	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isModified());
 	//nach neuem Command darf kein redo mehr möglich sein
 	ASSERT_EQUAL(false, urMngr.isRedoable());
