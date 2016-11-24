@@ -62,7 +62,6 @@ public:
 	}
 };
 
-
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
 	auto& urMngr(this->getSUT());

@@ -39,7 +39,7 @@ public:
 
 	template<class DerivedTest>
 	static cute::suite make_suite(){
-		cute::suite s(base_type::template make_suite<DerivedTest>() );
+		cute::suite s( base_type::template make_suite<DerivedTest>() );
 
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsNotRedoableWithNewCommand));
