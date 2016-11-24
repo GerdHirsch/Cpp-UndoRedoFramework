@@ -15,16 +15,18 @@ using namespace std;
 namespace UndoRedoFramework{
 
 
-CompositeCommandImpl::CompositeCommandImpl(UndoRedoStack && urStack)
-: urStack( std::move(urStack).clone()),
+CompositeCommandImpl::CompositeCommandImpl(std::unique_ptr<UndoRedoStack> && urStack)
+: urStack(std::move(urStack)),
   doItExceptionCatched(false),
   undoExceptionCatched(false)
 { }
 
+CompositeCommandImpl::CompositeCommandImpl(UndoRedoStack && urStack)
+: CompositeCommandImpl(std::move(urStack).clone()) // Delegate Ctor
+{ }
+
 CompositeCommandImpl::CompositeCommandImpl(CompositeCommandImpl && rhs)
-: urStack( std::move(rhs.urStack) ),
-  doItExceptionCatched(false),
-  undoExceptionCatched(false)
+: CompositeCommandImpl(std::move(rhs.urStack)) // Delegate Ctor
 {  }
 
 std::unique_ptr<Command> CompositeCommandImpl::clone() const&

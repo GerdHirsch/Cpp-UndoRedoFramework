@@ -18,12 +18,13 @@ public:
 	using base_type = CompositeCommandTest;
 	using base_type::SUT;
 	using CompositeCommandImpl = UndoRedoFramework::CompositeCommandImpl;
-	using UndoRedoStackImpl = UndoRedoFramework::ByInheritance::UndoRedoStackImpl;
+	using UndoRedoStackImpl = UndoRedoFramework::ByInheritance::UndoRedoManagerImpl;
+//	using UndoRedoStackImpl = UndoRedoFramework::ByInheritance::UndoRedoStackImpl;
 
 	virtual std::unique_ptr<SUT> createSUT() const override {
 		return
 			std::unique_ptr<SUT>(
-					new CompositeCommandImpl( (UndoRedoStackImpl()) )
+					new CompositeCommandImpl( (createURStack()) )
 			);
 		}
 

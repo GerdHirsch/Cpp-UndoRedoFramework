@@ -9,6 +9,7 @@
 #define COMPOSITECOMMANDIMPL_H_
 
 #include "CompositeCommand.h"
+#include <memory>
 
 namespace UndoRedoFramework{
 
@@ -17,7 +18,7 @@ class UndoRedoStack;
 class CompositeCommandImpl : public CompositeCommand{
 public:
 	CompositeCommandImpl(UndoRedoStack && urStack);
-//	CompositeCommandImpl(std::unique_ptr<UndoRedoStack> && urStack);
+	CompositeCommandImpl(std::unique_ptr<UndoRedoStack> && urStack);
 	CompositeCommandImpl(CompositeCommandImpl && rhs);
 	virtual ~CompositeCommandImpl();
 
