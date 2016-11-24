@@ -11,8 +11,10 @@
 
 #include "Calculator.h"
 #include "CalculatorCommands.h"
+#include "cute.h"
 
 #include <memory>
+
 //#include <iostream>
 
 template<class SUTType>

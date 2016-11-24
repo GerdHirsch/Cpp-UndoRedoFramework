@@ -16,6 +16,7 @@
 class UndoRedoManagerByDelegationTest :
 		public UndoRedoManagerTest<UndoRedoFramework::ByDelegation::UndoRedoManager> {
 public:
+	using this_type = UndoRedoManagerByDelegationTest;
 	using base_type = UndoRedoManagerTest<UndoRedoFramework::ByDelegation::UndoRedoManager>;
 	using base_type::SUT;
 	using UndoRedoManagerImpl = UndoRedoFramework::ByDelegation::UndoRedoManagerImpl;
@@ -26,15 +27,9 @@ public:
 				new UndoRedoManagerImpl
 		);
 	}
-	static cute::suite make_suite();
+	static cute::suite make_suite(){
+		return base_type::make_suite<this_type>();
+	}
 };
-inline
-cute::suite UndoRedoManagerByDelegationTest::make_suite(){
-	cute::suite s { };
-	UndoRedoManagerTests(UndoRedoManagerByDelegationTest)
-	return s;
-}
-
-
 
 #endif /* INCLUDE_UNDOREDOMANAGERDELEGATIONTEST_H_ */

@@ -15,7 +15,9 @@ class UndoRedoManagerTest : public UndoRedoStackTest<SUTType>
 {
 
 public:
+	using this_type = UndoRedoManagerTest;
 	using base_type = UndoRedoStackTest<SUTType>;
+	using base_type::make_suite;
 
 	using typename base_type::SUT;
 
@@ -35,28 +37,23 @@ public:
 	void IsModifiedtwithExceptionUndo();
 	void IsModifiedtwithExceptionRedo();
 
-//	void DoItExceptionNeutral();
-//	void UndoExceptionNeutral();
-//	void RedoExceptionNeutral();
+	template<class DerivedTest>
+	static cute::suite make_suite(){
 
-//	static cute::suite make_suite();
+		cute::suite s( base_type::template make_suite<DerivedTest>() );
+
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsNotRedoableWithNewCommand));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, ResetModified));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotModifiedAfterDoItAndUndo));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedwithExceptionDoIt));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionUndo));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionRedo));
+
+		return s;
+	}
 };
 
-#define UndoRedoManagerTests(DerivedTest)										\
-	UndoRedoStackTests(DerivedTest)												\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedSimple));					\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedAndIsNotRedoableWithNewCommand));\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, ResetModified));					\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotModifiedAfterDoItAndUndo));  \
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedwithExceptionDoIt));	\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionUndo));	\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, IsModifiedtwithExceptionRedo));
-
-/*
-	s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));			\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));			\
-	s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));
-*/
 template<class SUTType>
 inline
 void UndoRedoManagerTest<SUTType>::IsNotModifiedAfterDoItAndUndo() {

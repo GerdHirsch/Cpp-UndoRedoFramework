@@ -16,6 +16,7 @@
 
 class UndoRedoStackByInheritanceTest : public UndoRedoStackTest<UndoRedoFramework::UndoRedoStack> {
 public:
+	using this_type = UndoRedoStackByInheritanceTest;
 	using base_type = UndoRedoStackTest<UndoRedoFramework::UndoRedoStack>;
 	using base_type::SUT;
 	using UndoRedoStackImpl = UndoRedoFramework::ByInheritance::UndoRedoStackImpl;
@@ -23,15 +24,9 @@ public:
 	virtual std::unique_ptr<SUT> createSUT() const override {
 		return std::unique_ptr<SUT>( new UndoRedoStackImpl );
 	}
-	static cute::suite make_suite();
-
+	static cute::suite make_suite(){
+		return base_type::make_suite<this_type>();
+	}
 };
-inline
-cute::suite UndoRedoStackByInheritanceTest::make_suite(){
-	cute::suite s { };
-	UndoRedoStackTests(UndoRedoStackByInheritanceTest)
-	return s;
-}
-
 
 #endif /* SRC_UNDOREDOSTACKINHERITANCETEST_H_ */

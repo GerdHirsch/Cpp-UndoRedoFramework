@@ -8,8 +8,6 @@
 #ifndef UNDOREDOSTACKTEST_H_
 #define UNDOREDOSTACKTEST_H_
 
-#include "cute.h"
-
 #include "UndoRedoTest.h"
 
 template<class SUTType>
@@ -43,23 +41,27 @@ public:
 	void IsRedoable();
 	void IsNotRedoableAfterDoIt();
 
-//	static cute::suite make_suite();
-};
-#define UndoRedoStackTests(DerivedTest)									\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoIt));					\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, Undo));					\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, Redo));					\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));				\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));				\
+	template<class DerivedTest>
+	static cute::suite make_suite(){
+		cute::suite s { };
+
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoIt));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItWithException));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, Undo));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, Redo));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotRedoableAfterDoIt));
-/*
-*/
+
+		return s;
+	}
+};
+
 template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
 	auto& urMngr(this->getSUT());

@@ -52,20 +52,25 @@ public:
 	void UndoThrowsCannotRollback();
 	void RedoThrowsCannotRollback();
 
-//	static cute::suite make_suite();
-};
-#define CompositeCommandTests(DerivedTest)								\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommand));			\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithException));\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoRedoDoIt));			\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));		\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));	\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithExceptionInRollback));\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItThrowsCannotRollback));\
-		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoThrowsCannotRollback));\
+	template<class DerivedTest>
+	static cute::suite make_suite(){
+		cute::suite s { };
+
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommand));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithException));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoRedoDoIt));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoWithException));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoWithException));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItExceptionNeutral));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoExceptionNeutral));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoExceptionNeutral));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItCommandWithExceptionInRollback));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, DoItThrowsCannotRollback));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoThrowsCannotRollback));
 		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoThrowsCannotRollback));
+		return s;
+	}
+};
+
 
 #endif /* COMPOSITECOMMANDTEST_H_ */

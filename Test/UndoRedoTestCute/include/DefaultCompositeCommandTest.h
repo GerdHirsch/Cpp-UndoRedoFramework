@@ -15,6 +15,7 @@
 
 class DefaultCompositeCommandTest : public CompositeCommandTest {
 public:
+	using this_type = DefaultCompositeCommandTest;
 	using base_type = CompositeCommandTest;
 	using base_type::SUT;
 	using CompositeCommandImpl = UndoRedoFramework::CompositeCommandImpl;
@@ -33,16 +34,9 @@ public:
 		return
 			std::unique_ptr<UndoRedoStack>(new UndoRedoStackImpl());
 	}
-	static cute::suite make_suite();
-
+	static cute::suite make_suite(){
+		return base_type::make_suite<this_type>();
+	}
 };
-inline
-cute::suite DefaultCompositeCommandTest::make_suite(){
-	cute::suite s { };
-	CompositeCommandTests(DefaultCompositeCommandTest)
-	return s;
-}
-
-
 
 #endif /* INCLUDE_DEFAULTCOMPOSITECOMMANDTEST_H_ */
