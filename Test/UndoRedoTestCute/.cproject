@@ -32,7 +32,6 @@
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level.1443746895" name="Optimization Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level.569587335" name="Debug Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.273125603" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
 								</option>
@@ -62,7 +61,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.739875782" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug">
 								<option id="gnu.cpp.link.option.paths.1698898576" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug Gcov}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug}&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.1023338181" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="UndoRedoFramework"/>
@@ -84,7 +83,7 @@
 				<externalSettings containerId="UndoRedoFramework;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/UndoRedoFramework"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug Gcov"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="UndoRedoFramework" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
@@ -153,7 +152,7 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.release.709667028" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.release">
 								<option id="gnu.cpp.link.option.paths.991201619" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug Gcov}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Release}&quot;"/>
 								</option>
 								<option id="gnu.cpp.link.option.libs.879763093" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
@@ -172,11 +171,95 @@
 				<externalSettings containerId="UndoRedoFramework;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier">
 					<externalSetting>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/UndoRedoFramework"/>
-						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug Gcov"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/UndoRedoFramework/Debug"/>
 						<entry flags="RESOLVED" kind="libraryFile" name="UndoRedoFramework" srcPrefixMapping="" srcRootPath=""/>
 					</externalSetting>
 				</externalSettings>
 			</storageModule>
+		</cconfiguration>
+		<cconfiguration id="gcov">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="gcov" moduleId="org.eclipse.cdt.core.settings" name="Debug Gcov">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug" cleanCommand="rm -rf" description="" id="gcov" name="Debug Gcov" parent="cdt.managedbuild.config.gnu.cygwin.exe.debug">
+					<folderInfo id="gcov." name="/" resourcePath="">
+						<toolChain id="cdt.managedbuild.toolchain.gnu.cygwin.exe.debug.2021991717" name="Cygwin GCC" nonInternalBuilderId="cdt.managedbuild.target.gnu.builder.cygwin.exe.debug" superClass="cdt.managedbuild.toolchain.gnu.cygwin.exe.debug">
+							<targetPlatform id="cdt.managedbuild.target.gnu.platform.cygwin.exe.debug.87187129" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.cygwin.exe.debug"/>
+							<builder autoBuildTarget="all" buildPath="${workspace_loc:/UndoRedoTestCute}/Debug" cleanBuildTarget="clean" id="org.eclipse.cdt.build.core.internal.builder.148172136" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CDT Internal Builder" superClass="org.eclipse.cdt.build.core.internal.builder"/>
+							<tool id="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.debug.1404385485" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.cygwin.exe.debug">
+								<option id="gnu.both.asm.option.include.paths.47023233" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.120448363" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.archiver.cygwin.base.1021927006" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.cygwin.base"/>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.2083809155" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug">
+								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level.1665102556" name="Optimization Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level.436733589" name="Debug Level" superClass="gnu.cpp.compiler.cygwin.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.1932437421" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.dialect.std.1232151980" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.c++1y" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.other.other.730730484" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fprofile-arcs -ftest-coverage " valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.123519456" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug.580358320" name="Cygwin C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cygwin.exe.debug.option.optimization.level.84689572" name="Optimization Level" superClass="gnu.c.compiler.cygwin.exe.debug.option.optimization.level" useByScannerDiscovery="false" valueType="enumerated"/>
+								<option id="gnu.c.compiler.cygwin.exe.debug.option.debugging.level.1578452589" name="Debug Level" superClass="gnu.c.compiler.cygwin.exe.debug.option.debugging.level" useByScannerDiscovery="false" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="gnu.c.compiler.option.include.paths.163104663" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/cute}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/DemoTestProjectCute/boost}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/src}&quot;"/>
+								</option>
+								<option id="gnu.c.compiler.option.misc.other.807921855" name="Other flags" superClass="gnu.c.compiler.option.misc.other" useByScannerDiscovery="false" value="-c -fmessage-length=0 -fprofile-arcs -ftest-coverage -std=c99 " valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1908447403" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.279047157" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug">
+								<option id="gnu.c.link.option.paths.1038647911" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug Gcov}&quot;"/>
+								</option>
+								<option id="gnu.c.link.option.libs.2141944430" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="UndoRedoFramework"/>
+								</option>
+							</tool>
+							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug.1037705991" name="Cygwin C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.cygwin.exe.debug">
+								<option id="gnu.cpp.link.option.paths.1152525724" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/UndoRedoFramework/Debug Gcov}&quot;"/>
+								</option>
+								<option id="gnu.cpp.link.option.libs.474428368" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="UndoRedoFramework"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.377583450" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-fprofile-arcs -ftest-coverage -std=c99" valueType="string"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.952270663" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+						</toolChain>
+					</folderInfo>
+					<fileInfo id="gcov.include/CalculatorCommands.h" name="CalculatorCommands.h" rcbsApplicability="disable" resourcePath="include/CalculatorCommands.h" toolsToInvoke=""/>
+					<sourceEntries>
+						<entry excluding="src/UndoRedoStackTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -191,6 +274,7 @@
 			<resource resourceType="PROJECT" workspacePath="/UndoRedoTestCute"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cygwin.exe.release.2128569341;cdt.managedbuild.config.gnu.cygwin.exe.release.2128569341.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.release.72134554;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.431598909">
@@ -205,6 +289,11 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cygwin.exe.release.2128569341;cdt.managedbuild.config.gnu.cygwin.exe.release.2128569341.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.release.478964115;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.1026500612">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="gcov;gcov.;cdt.managedbuild.tool.gnu.c.compiler.cygwin.exe.debug.580358320;cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1908447403">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="gcov;gcov.;cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.2083809155;cdt.managedbuild.tool.gnu.cpp.compiler.input.cygwin.123519456">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
