@@ -54,13 +54,10 @@ void CompositeCommandTest::DoItCommandWithException() {
 	int result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
 
-	try{
 		ccmd.doIt(minus);
 		ccmd.doIt(minus);
-		ccmd.doIt(plus);
-	}catch(std::exception& e){
-		cout << "catch DoItCommandWith'Exception" << endl;
-	}
+		ASSERT_THROWSM("Command throws but SUT not!",
+				ccmd.doIt(plus), std::logic_error);
 
 	result = calculator.getResult();
 	cout << "result: " << result << endl;
@@ -115,9 +112,9 @@ void CompositeCommandTest::UndoWithException() {
 	ASSERT_EQUAL(expected, result);
 
 	Plus::throwException() = true;
-	try{
-		urStack.undo();
-	}catch(std::exception& e){}
+
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urStack.undo(), std::logic_error);
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
@@ -134,9 +131,8 @@ void CompositeCommandTest::UndoWithException() {
 	//check a second Exception
 	Plus::throwException() = true;
 
-	try{
-		urStack.redo();
-	}catch(std::exception& e){}
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urStack.redo(), std::logic_error);
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
@@ -163,9 +159,8 @@ void CompositeCommandTest::RedoWithException() {
 
 	Plus::throwException() = true;
 
-	try{
-		urStack.redo();
-	}catch(std::exception& e){}
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urStack.redo(), std::logic_error);
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
@@ -180,9 +175,8 @@ void CompositeCommandTest::RedoWithException() {
 
 	Plus::throwException() = true;
 
-	try{
-		urStack.undo();
-	}catch(std::exception& e){}
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urStack.undo(), std::logic_error);
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
@@ -232,9 +226,9 @@ void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 	ccmd.doIt(minus);
 
 	Plus::throwException() = true;
-	try{
-		ccmd.doIt(plus);
-	}catch(CannotRollbackException& e){
+
+	ASSERT_THROWSM("CannotRollbackException not thrown!",
+			ccmd.doIt(plus), CannotRollbackException);
 
 		int result = calculator.getResult();
 		int expected { 2 };
@@ -246,7 +240,6 @@ void CompositeCommandTest::DoItCommandWithExceptionInRollback(){
 		result = calculator.getResult();
 		expected = 0;
 		ASSERT_EQUAL(expected, result);
-	}
 }
 
 void CompositeCommandTest::DoItThrowsCannotRollback(){
@@ -293,21 +286,4 @@ void CompositeCommandTest::RedoThrowsCannotRollback(){
 
 	ASSERT_THROWS(urStack.redo(), CannotRollbackException);
 }
-
-//cute::suite CompositeCommandTest::make_suite(){
-//	cute::suite s { };
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommand));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommandWithException));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoRedoDoIt));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoWithException));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoWithException));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItCommandWithExceptionInRollback));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoThrowsCannotRollback));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoThrowsCannotRollback));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItThrowsCannotRollback));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, DoItExceptionNeutral));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, UndoExceptionNeutral));
-//	s.push_back(CUTE_SMEMFUN(CompositeCommandTest, RedoExceptionNeutral));
-//	return s;
-//}
 

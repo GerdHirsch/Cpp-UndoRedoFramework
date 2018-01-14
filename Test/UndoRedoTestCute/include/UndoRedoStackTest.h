@@ -170,9 +170,8 @@ void UndoRedoStackTest<SUTType>::DoItWithException(){
 	int expected = 0;
 	ASSERT_EQUAL(expected, result);
 
-	try{
-		urMngr.doIt(plus);
-	}catch(...){}
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urMngr.doIt(plus), std::logic_error);
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
@@ -193,11 +192,13 @@ void UndoRedoStackTest<SUTType>::UndoWithException(){
 
 	Plus::throwException() = true;
 
-	try{
-		urMngr.undo();
-	}catch(...){
-//		cout << "catch UndoWithException" << endl;
-	}
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urMngr.undo(), std::logic_error);
+//	try{
+//		urMngr.undo();
+//	}catch(...){
+////		cout << "catch UndoWithException" << endl;
+//	}
 
 	result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
@@ -214,11 +215,15 @@ void UndoRedoStackTest<SUTType>::RedoWithException(){
 	urMngr.doIt(plus);
 	urMngr.undo();
 	Plus::throwException() = true;
-	try{
-		urMngr.redo();
-	}catch(...){
-//		cout << "catch RedoWithException" << endl;
-	}
+
+	ASSERT_THROWSM("Command throws but SUT not!",
+			urMngr.redo(), std::logic_error);
+
+//	try{
+//		urMngr.redo();
+//	}catch(...){
+////		cout << "catch RedoWithException" << endl;
+//	}
 
 	int result = calculator.getResult();
 	int expected { 0 };
