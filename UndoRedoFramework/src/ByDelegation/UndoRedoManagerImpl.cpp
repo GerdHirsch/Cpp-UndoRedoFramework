@@ -54,10 +54,7 @@ void UndoRedoManagerImpl::doIt(SmartPointer && command)
 {
 	urStack->doIt(std::move(command));
 
-	if(modifications < 0)
-//		modifications = urStack->undoStackSize() + 1;
-		modifications = -1; // no need for undoStackSize() anymore
-	else
+	if(modifications >= 0) // else do not change it
 		modifications++;
 }
 

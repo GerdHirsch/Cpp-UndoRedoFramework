@@ -33,9 +33,7 @@ void UndoRedoManagerImpl::doIt(SmartPointer && command)
 {
 	UndoRedoStackImpl::doIt(std::move(command));
 
-	if(modifications < 0)
-		modifications = UndoRedoStackImpl::undoStackSize() + 1;
-	else
+	if(modifications >= 0) // else do not change it
 		modifications++;
 }
 
