@@ -16,9 +16,7 @@ UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 {
 	rhs.modifications = 0;
 //	cout << "UndoRedoManagerImpl(UndoRedoManagerImpl&& rhs)" << endl;
-
 }
-
 
 UndoRedoManagerImpl::UndoRedoManagerImpl() : modifications(0)
 {

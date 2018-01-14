@@ -22,9 +22,12 @@ public:
 	CompositeCommandImpl(CompositeCommandImpl && rhs);
 	virtual ~CompositeCommandImpl();
 
+	//CompositeCommand Interface
 	void doIt(Command&& c);
 	void doIt(Command const& c);
 	void doIt(SmartPointer && cmd);
+
+	// Command Interface
 	void doIt() override;
 	void undo() override;
 

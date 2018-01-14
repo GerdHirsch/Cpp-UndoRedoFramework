@@ -12,7 +12,6 @@ namespace ByDelegation{
 
 UndoRedoManagerImpl::UndoRedoManagerImpl(UndoRedoManagerImpl && rhs)
 	:
-		//UndoRedoStackImpl(std::move(rhs)),
 	urStack(std::move(rhs).urStack),
 	modifications( rhs.modifications)
 {
@@ -56,7 +55,8 @@ void UndoRedoManagerImpl::doIt(SmartPointer && command)
 	urStack->doIt(std::move(command));
 
 	if(modifications < 0)
-		modifications = urStack->undoStackSize() + 1;
+//		modifications = urStack->undoStackSize() + 1;
+		modifications = -1; // no need for undoStackSize() anymore
 	else
 		modifications++;
 }
@@ -76,6 +76,9 @@ bool UndoRedoManagerImpl::isRedoable() const {
 
 std::size_t UndoRedoManagerImpl::undoStackSize() const {
 	return urStack->undoStackSize();
+}
+std::size_t UndoRedoManagerImpl::redoStackSize() const {
+	return urStack->redoStackSize();
 }
 
 bool UndoRedoManagerImpl::isModified() const

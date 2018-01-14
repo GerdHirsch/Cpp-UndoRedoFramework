@@ -7,8 +7,7 @@ namespace UndoRedoFramework{
 class Command
 {
 public:
-//	using SmartPointer = std::unique_ptr<Command>;
-	typedef std::unique_ptr<Command> SmartPointer;
+	using SmartPointer = std::unique_ptr<Command>;
 //	using SmartPointer = std::shared_ptr<Command>;
 //	using SmartPointer = boost::shared_ptr<Command>;
 

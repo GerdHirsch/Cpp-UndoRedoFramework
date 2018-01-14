@@ -42,8 +42,11 @@ public:
 	virtual std::unique_ptr<UndoRedoStack> clone() && override;
 
 	virtual void clear() override;
-	virtual std::size_t undoStackSize() const{
+	virtual std::size_t undoStackSize() const override {
 		return undoStack.size();
+	}
+	virtual std::size_t redoStackSize() const override {
+		return redoStack.size();
 	}
 private:
 	void clearRedoStack();

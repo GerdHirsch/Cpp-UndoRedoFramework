@@ -35,7 +35,9 @@ public:
 	
 	virtual bool isModified() const override;
 	virtual void resetModified() override;
+
 	virtual std::size_t undoStackSize() const override;
+	virtual std::size_t redoStackSize() const override;
 	virtual void clear() override;
 	virtual std::unique_ptr<UndoRedoStack> clone() && override;
 private:

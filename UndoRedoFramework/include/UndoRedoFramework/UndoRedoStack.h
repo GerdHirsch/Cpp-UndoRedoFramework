@@ -33,6 +33,7 @@ public:
 
 	virtual void clear() = 0;
 	virtual std::size_t undoStackSize() const = 0;
+	virtual std::size_t redoStackSize() const = 0;
 //	virtual std::unique_ptr<UndoRedoManager> clone() const & = 0;
 	// move clone!
 	virtual std::unique_ptr<UndoRedoStack> clone() && = 0;

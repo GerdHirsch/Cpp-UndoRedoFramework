@@ -51,10 +51,6 @@ void UndoRedoStackImpl::doIt(SmartPointer && command)
 	undoStack.push( std::move(command) );
 	clearRedoStack();
 
-//	if(modifications < 0)
-//		modifications = undoStack.size() + 1;
-//	else
-//		modifications++;
 }
 void UndoRedoStackImpl::clearRedoStack(){
 	while(!redoStack.empty())
@@ -74,41 +70,23 @@ bool UndoRedoStackImpl::isUndoable() const
 }
 void UndoRedoStackImpl::undo()
 {
-/* ohne move nur mit shared_ptr möglich
-	undoStack.top()->undo();
-	modifications--;
-	redoStack.push(undoStack.top());
-	undoStack.pop();
-*/
 	if(undoStack.empty()) throw EmptyStackException("Nothing to undo!");
 
 	undoStack.top()->undo();
 	redoStack.push(std::move(undoStack.top()));
 	undoStack.pop();
-
-//	modifications--;
 }
-
 bool UndoRedoStackImpl::isRedoable() const
 {
 	return !redoStack.empty();
 }
 void UndoRedoStackImpl::redo()
 {
-/* ohne move nur mit shared_ptr möglich
-	redoStack.top()->doIt();
-	modifications++;
-	undoStack.push(redoStack.top());
-	redoStack.pop();
-*/
 	if(redoStack.empty()) throw EmptyStackException("Nothing to redo!");
 
 	redoStack.top()->doIt();
 	undoStack.push(std::move(redoStack.top()));
 	redoStack.pop();
-
-//	modifications++;
-
 }
 
 }} // end namespace

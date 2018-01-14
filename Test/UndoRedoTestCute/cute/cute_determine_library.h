@@ -20,7 +20,6 @@
 
 #ifndef CUTE_DETERMINE_LIBRARY_H_
 #define CUTE_DETERMINE_LIBRARY_H_
-
 #if defined(USE_TR1)
 #include <tr1/functional>
 // bind already given by <functional> in cute_test.h from cute_suite.h
@@ -35,8 +34,8 @@ namespace cute {
 	using namespace boost_or_tr1::placeholders;
 }
 #else
-#include "../_boost_/boost/bind.hpp"
-#include "../_boost_/boost/function.hpp"
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
 namespace boost_or_tr1 = boost;
 #endif
 

@@ -41,6 +41,9 @@ public:
 	void IsRedoable();
 	void IsNotRedoableAfterDoIt();
 
+	void UndoStackSize();
+	void RedoStackSize();
+
 	template<class DerivedTest>
 	static cute::suite make_suite(){
 		cute::suite s { };
@@ -57,14 +60,37 @@ public:
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsUndoable));
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsRedoable));
 		s.push_back(CUTE_SMEMFUN(DerivedTest, IsNotRedoableAfterDoIt));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, UndoStackSize));
+		s.push_back(CUTE_SMEMFUN(DerivedTest, RedoStackSize));
 
 		return s;
 	}
 };
 
 template<class SUTType>
+void UndoRedoStackTest<SUTType>::UndoStackSize(){
+	auto& urMngr(this->getSUT());
+	ASSERT_EQUAL(0, urMngr.undoStackSize());
+
+	urMngr.doIt(plus);
+	ASSERT_EQUAL(1, urMngr.undoStackSize());
+}
+
+
+template<class SUTType>
+void UndoRedoStackTest<SUTType>::RedoStackSize(){
+	auto& urMngr(this->getSUT());
+	ASSERT_EQUAL(0, urMngr.redoStackSize());
+
+	urMngr.doIt(plus);
+	urMngr.undo();
+	ASSERT_EQUAL(1, urMngr.redoStackSize());
+}
+
+template<class SUTType>
 void UndoRedoStackTest<SUTType>::IsUndoable(){
 	auto& urMngr(this->getSUT());
+	ASSERT_EQUAL(false, urMngr.isUndoable());
 
 	urMngr.doIt(plus);
 	ASSERT_EQUAL(true, urMngr.isUndoable());
@@ -100,9 +126,6 @@ void UndoRedoStackTest<SUTType>::DoIt(){
 	int expected = plusValue;
 	int result = calculator.getResult();
 	ASSERT_EQUAL(expected, result);
-
-//	ASSERT_EQUAL(true, urMngr.isUndoable());
-//	ASSERT_EQUAL(false, urMngr.isRedoable());
 }
 
 template<class SUTType>

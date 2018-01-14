@@ -18,7 +18,7 @@ class CompositeCommand: public Command {
 public:
 //	using SmartPointer = Command::SmartPointer;
 
-	virtual ~CompositeCommand();
+	virtual ~CompositeCommand() = 0;
 
 	virtual void doIt(Command&& c) = 0;
 	virtual void doIt(Command const& c) = 0;
