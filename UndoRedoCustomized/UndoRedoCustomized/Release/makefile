@@ -44,7 +44,7 @@ all: UndoRedoCustomized.exe
 UndoRedoCustomized.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cygwin C++ Linker'
-	g++ -ftest-coverage -fprofile-arcs -o "UndoRedoCustomized.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++  -o "UndoRedoCustomized.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
