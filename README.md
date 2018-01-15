@@ -1,2 +1,2 @@
 # Cpp-UndoRedoFramework
-see java-UndoRedoFramework for further description
+see wiki and java-UndoRedoFramework for further description
