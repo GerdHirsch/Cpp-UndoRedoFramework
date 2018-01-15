@@ -5,8 +5,7 @@
  *      Author: Gerd
  */
 
-#include "../include/CompositeCommandTest.h"
-
+#include "../include/UndoRedoTest/CompositeCommandTest.h"
 
 #include <UndoRedoFramework/UndoRedoStack.h>
 #include <UndoRedoFramework/CompositeCommand.h>

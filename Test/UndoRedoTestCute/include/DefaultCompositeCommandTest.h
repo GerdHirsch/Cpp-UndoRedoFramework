@@ -10,7 +10,8 @@
 
 #include <UndoRedoFramework/ByInheritance/UndoRedoStackImpl.h>
 #include <UndoRedoFramework/CompositeCommandImpl.h>
-#include "CompositeCommandTest.h"
+
+#include "UndoRedoTest/CompositeCommandTest.h"
 
 
 class DefaultCompositeCommandTest : public CompositeCommandTest {

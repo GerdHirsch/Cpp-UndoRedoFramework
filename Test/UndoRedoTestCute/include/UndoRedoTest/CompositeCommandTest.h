@@ -9,7 +9,7 @@
 #define COMPOSITECOMMANDTEST_H_
 #include <memory>
 #include <UndoRedoFramework/CompositeCommand.h>
-#include "../include/UndoRedoTest.h"
+#include "UndoRedoTest.h"
 
 namespace UndoRedoFramework{
 class UndoRedoStack;

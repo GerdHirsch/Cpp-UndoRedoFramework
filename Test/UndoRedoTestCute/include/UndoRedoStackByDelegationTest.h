@@ -11,7 +11,7 @@
 #include <memory>
 
 #include <UndoRedoFramework/ByDelegation/UndoRedoStackImpl.h>
-#include "UndoRedoStackTest.h"
+#include "UndoRedoTest/UndoRedoStackTest.h"
 
 
 class UndoRedoStackByDelegationTest : public UndoRedoStackTest<UndoRedoFramework::UndoRedoStack> {

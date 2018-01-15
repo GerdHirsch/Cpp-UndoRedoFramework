@@ -9,8 +9,8 @@
 #define SRC_UNDOREDOTEST_H_
 
 
-#include "Calculator.h"
-#include "CalculatorCommands.h"
+#include "../Calculator.h"
+#include "../CalculatorCommands.h"
 #include "cute.h"
 
 #include <memory>

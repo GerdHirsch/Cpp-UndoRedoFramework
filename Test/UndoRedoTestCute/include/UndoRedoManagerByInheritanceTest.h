@@ -11,7 +11,8 @@
 #include <memory>
 
 #include <UndoRedoFramework/ByInheritance/UndoRedoManagerImpl.h>
-#include "UndoRedoManagerTest.h"
+
+#include "UndoRedoTest/UndoRedoManagerTest.h"
 
 class UndoRedoManagerByInheritanceTest :
 		public UndoRedoManagerTest<UndoRedoFramework::ByInheritance::UndoRedoManager> {

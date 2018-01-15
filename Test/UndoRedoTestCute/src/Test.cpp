@@ -28,7 +28,7 @@ void runAllTests(int argc, char const *argv[]){
 }
 
 int main(int argc, char const *argv[]){
-	cout << "main()" << endl;
+	cout << "UndoRedoDefaultTest" << endl;
 
     runAllTests(argc,argv);
     return 0;
