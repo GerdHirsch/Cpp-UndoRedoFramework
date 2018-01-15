@@ -1,0 +1,94 @@
+<testsuites>
+	<testsuite name="UndoRedoStack ByInheritance" tests="14">
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::DoIt"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::DoItWithException"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::DoItExceptionNeutral"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::Undo"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::UndoWithException"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::UndoExceptionNeutral"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::Redo"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::RedoWithException"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::RedoExceptionNeutral"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::IsUndoable"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::IsRedoable"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::IsNotRedoableAfterDoIt"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::UndoStackSize"/>
+		<testcase classname="UndoRedoStack ByInheritance" name="UndoRedoStackByInheritanceTest::RedoStackSize"/>
+	</testsuite>
+	<testsuite name="UndoRedoStack ByDelegation" tests="14">
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::DoIt"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::DoItWithException"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::DoItExceptionNeutral"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::Undo"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::UndoWithException"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::UndoExceptionNeutral"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::Redo"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::RedoWithException"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::RedoExceptionNeutral"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::IsUndoable"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::IsRedoable"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::IsNotRedoableAfterDoIt"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::UndoStackSize"/>
+		<testcase classname="UndoRedoStack ByDelegation" name="UndoRedoStackByDelegationTest::RedoStackSize"/>
+	</testsuite>
+	<testsuite name="UndoRedoManager ByInheritance" tests="21">
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::DoIt"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::DoItWithException"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::DoItExceptionNeutral"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::Undo"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::UndoWithException"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::UndoExceptionNeutral"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::Redo"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::RedoWithException"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::RedoExceptionNeutral"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsUndoable"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsRedoable"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsNotRedoableAfterDoIt"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::UndoStackSize"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::RedoStackSize"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsModifiedSimple"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsModifiedAndIsNotRedoableWithNewCommand"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::ResetModified"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsNotModifiedAfterDoItAndUndo"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsModifiedwithExceptionDoIt"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsModifiedtwithExceptionUndo"/>
+		<testcase classname="UndoRedoManager ByInheritance" name="UndoRedoManagerByInheritanceTest::IsModifiedtwithExceptionRedo"/>
+	</testsuite>
+	<testsuite name="UndoRedoManager ByDelegation" tests="21">
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::DoIt"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::DoItWithException"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::DoItExceptionNeutral"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::Undo"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::UndoWithException"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::UndoExceptionNeutral"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::Redo"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::RedoWithException"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::RedoExceptionNeutral"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsUndoable"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsRedoable"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsNotRedoableAfterDoIt"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::UndoStackSize"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::RedoStackSize"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsModifiedSimple"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsModifiedAndIsNotRedoableWithNewCommand"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::ResetModified"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsNotModifiedAfterDoItAndUndo"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsModifiedwithExceptionDoIt"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsModifiedtwithExceptionUndo"/>
+		<testcase classname="UndoRedoManager ByDelegation" name="UndoRedoManagerByDelegationTest::IsModifiedtwithExceptionRedo"/>
+	</testsuite>
+	<testsuite name="CompositeCommand" tests="12">
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::DoItCommand"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::DoItCommandWithException"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::UndoRedoDoIt"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::UndoWithException"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::RedoWithException"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::DoItExceptionNeutral"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::UndoExceptionNeutral"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::RedoExceptionNeutral"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::DoItCommandWithExceptionInRollback"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::DoItThrowsCannotRollback"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::UndoThrowsCannotRollback"/>
+		<testcase classname="CompositeCommand" name="DefaultCompositeCommandTest::RedoThrowsCannotRollback"/>
+	</testsuite>
+</testsuites>
