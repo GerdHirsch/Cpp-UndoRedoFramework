@@ -85,9 +85,6 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.2087371820" name="CalculatorCommands.h" rcbsApplicability="disable" resourcePath="include/CalculatorCommands.h" toolsToInvoke=""/>
-					<fileInfo id="cdt.managedbuild.config.gnu.cygwin.exe.debug.725370663.510555721" name="Test.cpp" rcbsApplicability="disable" resourcePath="src/Test.cpp" toolsToInvoke="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.2145709997">
-						<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124.2145709997" name="Cygwin C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.cygwin.exe.debug.1166272124"/>
-					</fileInfo>
 					<sourceEntries>
 						<entry excluding="src/Test.cpp|src/UndoRedoStackTest.cpp" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
