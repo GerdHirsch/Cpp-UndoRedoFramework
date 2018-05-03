@@ -17,13 +17,12 @@ public:
 	using base_type = UndoRedoTest<SUTType>;
 
 	using typename base_type::SUT;
-
-	using UndoRedoTest<SUT>::getSUT;
-	using UndoRedoTest<SUT>::plus;
-	using UndoRedoTest<SUT>::plusValue;
-	using UndoRedoTest<SUT>::minus;
-	using UndoRedoTest<SUT>::minusValue;
-	using UndoRedoTest<SUT>::calculator;
+	using base_type::getSUT;
+	using base_type::plus;
+	using base_type::plusValue;
+	using base_type::minus;
+	using base_type::minusValue;
+	using base_type::calculator;
 
 	void DoIt();
 	void DoItWithException();
