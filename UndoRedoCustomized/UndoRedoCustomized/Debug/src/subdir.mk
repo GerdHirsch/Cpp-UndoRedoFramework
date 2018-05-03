@@ -17,7 +17,7 @@ CPP_DEPS += \
 src/%.o: ../src/%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cygwin C++ Compiler'
-	g++ -std=c++1y -I"D:\DevProjects\Cpp\GitProjectsNeon\UndoRedoCustomized\include" -I"C:\Users\Gerd\git\CppNeon\Cpp-UndoRedoFramework\UndoRedoFramework\include" -O0 -g3 -ftest-coverage -fprofile-arcs -Wall -c -fmessage-length=0 -Wno-attributes -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
+	g++ -std=c++1y -I"C:\Users\Gerd\git\RepositoriesNeon\Cpp-UndoRedoFramework\UndoRedoCustomized\UndoRedoCustomized\include" -I"C:\Users\Gerd\git\RepositoriesNeon\Cpp-UndoRedoFramework\UndoRedoFramework\include" -O0 -g3 -Wall -c -fmessage-length=0 -Wno-attributes -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
