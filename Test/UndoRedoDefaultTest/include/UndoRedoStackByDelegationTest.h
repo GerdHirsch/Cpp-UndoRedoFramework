@@ -27,7 +27,6 @@ public:
 	static cute::suite make_suite(){
 		return base_type::make_suite<this_type>();
 	}
-
 };
 
 
